@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pokemonrekisteri.PokemonRekisteriGUIController">
+   <center>
+      <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="NEVER" />
+            <RowConstraints minHeight="0.0" vgrow="NEVER" />
+            <RowConstraints minHeight="0.0" vgrow="NEVER" />
+        </rowConstraints>
+         <children>
+            <Label text="Nimi: " />
+            <TextField prefWidth="160.0" text="Pikachu" GridPane.columnIndex="1" GridPane.columnSpan="2">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Elementi(t):" GridPane.rowIndex="1" />
+            <Label text="Vahvuus:" GridPane.rowIndex="4" />
+            <Label text="Ikä:" GridPane.rowIndex="5" />
+            <Label text="Lisätiedot:" GridPane.rowIndex="6" />
+            <TextField text="1234" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextArea prefHeight="200.0" prefWidth="160.0" text="Osaa uida sekä&#10;hoidella viholliset" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextArea>
+            <CheckBox mnemonicParsing="false" text="Maa" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Vesi" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Ruoho" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Tuli" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </CheckBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="10.0" top="5.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+         </padding>
+      </GridPane>
+   </center>
+   <bottom>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Tallenna" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Peruuta" />
+         </children>
+      </VBox>
+   </bottom>
+   <top>
+      <Label text="Muokkaa pokemonin tietoja" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+   </top>
+</BorderPane>
