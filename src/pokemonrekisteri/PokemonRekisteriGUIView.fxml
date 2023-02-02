@@ -77,10 +77,10 @@
                                              </GridPane.margin></Label>
                                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <ComboBoxChooser prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
-                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Hae" GridPane.rowIndex="1" />
+                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
-                                    <TitledPane animated="false" text="Tarkempi haku">
+                                    <TitledPane animated="false" expanded="false" text="Tarkempi haku">
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
@@ -279,9 +279,9 @@
                                           </AnchorPane>
                                       </content>
                                     </TitledPane>
-                                    <ScrollPane prefHeight="249.0" prefWidth="287.0" vbarPolicy="ALWAYS">
+                                    <ScrollPane prefHeight="400.0" prefWidth="320.0" vbarPolicy="ALWAYS">
                                        <content>
-                                          <ListChooser prefHeight="234.0" prefWidth="258.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
+                                          <ListChooser prefHeight="400.0" prefWidth="320.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
                                        </content></ScrollPane>
                                  </children>
                                  <BorderPane.margin>
@@ -292,8 +292,8 @@
                            <center>
                               <GridPane BorderPane.alignment="CENTER">
                                 <columnConstraints>
-                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="60.0" />
-                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="134.0" />
+                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="140.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" vgrow="NEVER" />
@@ -412,10 +412,10 @@
                                           </Label>
                                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <ComboBoxChooser prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
-                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Hae" GridPane.rowIndex="1" />
+                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
-                                    <TitledPane animated="false" text="Tarkempi haku">
+                                    <TitledPane animated="false" expanded="false" text="Tarkempi haku">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
@@ -611,21 +611,33 @@
                                                    </padding>
                                                 </VBox>
                                              </children>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
                                           </AnchorPane>
                                        </content>
                                     </TitledPane>
-                                    <ScrollPane prefHeight="249.0" prefWidth="287.0" vbarPolicy="ALWAYS">
-                                       <content>
-                                          <ListChooser prefHeight="234.0" prefWidth="258.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
-                                       </content>
-                                    </ScrollPane>
+                                    <HBox prefHeight="400.0" prefWidth="320.0">
+                                       <children>
+                                          <ScrollPane prefHeight="400.0" prefWidth="160.0" vbarPolicy="ALWAYS">
+                                             <content>
+                                                <ListChooser prefHeight="400.0" prefWidth="160.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
+                                             </content>
+                                          </ScrollPane>
+                                          <ScrollPane prefHeight="400.0" prefWidth="160.0" vbarPolicy="ALWAYS">
+                                             <content>
+                                                <ListChooser prefHeight="400.0" prefWidth="160.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </left>
                            <center>
-                              <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                              <VBox prefHeight="501.0" prefWidth="438.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <HBox prefHeight="550.0" prefWidth="435.0">
+                                    <HBox prefHeight="342.0" prefWidth="438.0">
                                        <children>
                                           <GridPane minHeight="-Infinity" minWidth="-Infinity">
                                              <columnConstraints>
@@ -753,13 +765,13 @@
                                           </GridPane>
                                        </children>
                                     </HBox>
-                                    <GridPane prefHeight="718.0" prefWidth="324.0">
+                                    <GridPane prefWidth="324.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                       </columnConstraints>
                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
