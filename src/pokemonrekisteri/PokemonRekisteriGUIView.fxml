@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ComboBoxChooser?>
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pokemonrekisteri.PokemonRekisteriGUIController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Tiedosto">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Tallenna" />
+                  <MenuItem mnemonicParsing="false" text="Tulosta" />
+              <MenuItem mnemonicParsing="false" text="Lopeta" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Muokkaa">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Lisää uusi pokemon" />
+              <MenuItem mnemonicParsing="false" text="Poista pokemon" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Apua">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Apua" />
+              <MenuItem mnemonicParsing="false" text="Tietoja" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Tiedot">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <BorderPane>
+                           <left>
+                              <VBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.20001220703125" minWidth="10.0" prefWidth="82.39999618530274" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.99999618530273" minWidth="10.0" prefWidth="176.80000381469725" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Järjestys:" GridPane.halignment="RIGHT">
+                                             <GridPane.margin>
+                                                <Insets right="10.0" />
+                                             </GridPane.margin></Label>
+                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ComboBoxChooser prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
+                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <TitledPane animated="false" expanded="false" text="Tarkempi haku">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                                             <children>
+                                                <VBox>
+                                                   <children>
+                                                      <GridPane>
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Label text="Elementit:">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <CheckBox mnemonicParsing="false" prefHeight="22.0" prefWidth="146.0" text="Valitse kaikki" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="30.0" right="2.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Vesi" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Maa" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Ruoho" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                      </GridPane>
+                                                      <GridPane>
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Label text="Ikä:">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="0-10" GridPane.columnIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="11-20" GridPane.columnIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="21-30" GridPane.columnIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="31-40" GridPane.columnIndex="4">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="40+" GridPane.columnIndex="5">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                               <padding>
+                                                                  <Insets left="4.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                               <padding>
+                                                                  <Insets left="8.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                               <padding>
+                                                                  <Insets left="8.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                               <padding>
+                                                                  <Insets left="8.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </CheckBox>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="20.0" />
+                                                         </VBox.margin>
+                                                      </GridPane>
+                                                      <GridPane>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label text="Vahvuus:" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="Min" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="Max" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField prefWidth="80.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="12.0" right="12.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <TextField prefWidth="80.0" promptText="100" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="12.0" right="12.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="20.0" />
+                                                         </VBox.margin>
+                                                      </GridPane>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="10.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </TitledPane>
+                                    <ScrollPane prefHeight="400.0" prefWidth="320.0" vbarPolicy="ALWAYS">
+                                       <content>
+                                          <ListChooser prefHeight="400.0" prefWidth="320.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
+                                       </content></ScrollPane>
+                                 </children>
+                                 <BorderPane.margin>
+                                    <Insets />
+                                 </BorderPane.margin>
+                              </VBox>
+                           </left>
+                           <center>
+                              <GridPane BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="140.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                  <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                  <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                    <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="0.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="0.0" vgrow="NEVER" />
+                                    <RowConstraints maxHeight="150.0" minHeight="-Infinity" prefHeight="70.0" vgrow="NEVER" />
+                                    <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="47.0" vgrow="NEVER" />
+                                    <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="80.0" vgrow="ALWAYS" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Nimi: " />
+                                    <TextField text="Pikachu" GridPane.columnIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                       </GridPane.margin></TextField>
+                                    <Label text="Elementi(t):" GridPane.rowIndex="1" />
+                                    <TextField text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label text="Vahvuus:" GridPane.rowIndex="3" />
+                                    <Label text="Ikä:" GridPane.rowIndex="4" />
+                                    <Label text="Lisätiedot:" GridPane.rowIndex="6" />
+                                    <TextField text="1234" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Muokkaa" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets bottom="1.0" top="1.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Tallenna" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="227.0" text="Peru muutokset" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextArea prefHeight="200.0" prefWidth="200.0" text="Osaa uida sekä&#10;hoidella viholliset" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                       <GridPane.margin>
+                                          <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                       </GridPane.margin>
+                                    </TextArea>
+                                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" text="Lisää uusi pokemon" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" text="Tallenna" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="205.0" text="Lopeta" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                                       <GridPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextField text="2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                       <GridPane.margin>
+                                          <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label text="Evoluutio:" GridPane.rowIndex="5" />
+                                 </children>
+                                 <BorderPane.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </BorderPane.margin>
+                              </GridPane>
+                           </center>
+                           <right>
+                              <VBox prefHeight="524.0" prefWidth="230.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <GridPane prefHeight="519.0" prefWidth="240.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="180.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="NEVER" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Nimi: " GridPane.rowIndex="1" />
+                                          <TextField text="Pikachu --&gt; Raichu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Label text="Elementi(t):" GridPane.rowIndex="2" />
+                                          <TextField text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Label text="Vahvuus:" GridPane.rowIndex="4" />
+                                          <Label text="Ikä:" GridPane.rowIndex="5" />
+                                          <Label text="Lisätiedot:" GridPane.rowIndex="7" />
+                                          <TextField text="1234 --&gt; 2312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextArea minHeight="-Infinity" prefHeight="81.0" prefWidth="200.0" text="Suurempi&#10;jännite" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextArea>
+                                          <TextField text="2 --&gt; 3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Label text="Evoluutio:" GridPane.rowIndex="6" />
+                                          <Label text="Seuraava evoluutio (jos on):" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                    <GridPane prefHeight="519.0" prefWidth="240.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="180.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                          <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="NEVER" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Nimi: " GridPane.rowIndex="1" />
+                                          <TextField text="Raichu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Label text="Elementi(t):" GridPane.rowIndex="2" />
+                                          <TextField text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Label text="Vahvuus:" GridPane.rowIndex="4" />
+                                          <Label text="Ikä:" GridPane.rowIndex="5" />
+                                          <Label text="Lisätiedot:" GridPane.rowIndex="7" />
+                                          <TextField text="2312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextArea prefHeight="200.0" prefWidth="200.0" text="Suurempi&#10;jännite" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextArea>
+                                          <TextField text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <GridPane.margin>
+                                                <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Label text="Evoluutio:" GridPane.rowIndex="6" />
+                                          <Label text="Seuraava evoluutio (jos on):" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="5.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </right>
+                        </BorderPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Vertaile">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane>
+                           <left>
+                              <VBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <GridPane>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.20001220703125" minWidth="10.0" prefWidth="82.39999618530274" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.99999618530273" minWidth="10.0" prefWidth="176.80000381469725" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Järjestys:" GridPane.halignment="RIGHT">
+                                             <GridPane.margin>
+                                                <Insets right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ComboBoxChooser prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
+                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <TitledPane animated="false" expanded="false" text="Tarkempi haku">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0">
+                                             <children>
+                                                <VBox>
+                                                   <children>
+                                                      <GridPane>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label text="Elementit:">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <CheckBox mnemonicParsing="false" prefHeight="22.0" prefWidth="146.0" text="Valitse kaikki" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="30.0" right="2.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Vesi" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Maa" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Ruoho" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                               <padding>
+                                                                  <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </VBox.margin>
+                                                      </GridPane>
+                                                      <GridPane>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label text="Ikä:">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="0-10" GridPane.columnIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="11-20" GridPane.columnIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="21-30" GridPane.columnIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="31-40" GridPane.columnIndex="4">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="40+" GridPane.columnIndex="5">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                               <padding>
+                                                                  <Insets left="4.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                               <padding>
+                                                                  <Insets left="8.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                               <padding>
+                                                                  <Insets left="8.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                               <padding>
+                                                                  <Insets left="8.0" />
+                                                               </padding>
+                                                            </CheckBox>
+                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </CheckBox>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="20.0" />
+                                                         </VBox.margin>
+                                                      </GridPane>
+                                                      <GridPane>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Label text="Vahvuus:" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="Min" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <Label text="Max" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                                               <GridPane.margin>
+                                                                  <Insets />
+                                                               </GridPane.margin>
+                                                            </Label>
+                                                            <TextField prefWidth="80.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="12.0" right="12.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <TextField prefWidth="80.0" promptText="100" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="12.0" right="12.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="20.0" />
+                                                         </VBox.margin>
+                                                      </GridPane>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="10.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </children>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <HBox prefHeight="400.0" prefWidth="320.0">
+                                       <children>
+                                          <ScrollPane prefHeight="400.0" prefWidth="160.0" vbarPolicy="ALWAYS">
+                                             <content>
+                                                <ListChooser prefHeight="400.0" prefWidth="160.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
+                                             </content>
+                                          </ScrollPane>
+                                          <ScrollPane prefHeight="400.0" prefWidth="160.0" vbarPolicy="ALWAYS">
+                                             <content>
+                                                <ListChooser prefHeight="400.0" prefWidth="160.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </left>
+                           <center>
+                              <VBox prefHeight="551.0" prefWidth="438.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="342.0" prefWidth="438.0">
+                                       <children>
+                                          <GridPane minHeight="-Infinity" minWidth="-Infinity">
+                                             <columnConstraints>
+                                                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="60.0" />
+                                                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="148.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="0.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="0.0" vgrow="NEVER" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="Nimi: " GridPane.rowIndex="1" />
+                                                <TextField text="Bulbasaur" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Label text="Elementi(t):" GridPane.rowIndex="2" />
+                                                <TextField text="Vesi" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <TextField text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Label text="Vahvuus:" GridPane.rowIndex="4" />
+                                                <Label text="Ikä:" GridPane.rowIndex="5" />
+                                                <Label text="Lisätiedot:" GridPane.rowIndex="7" />
+                                                <TextField text="1234" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0" text="Osaa uida sekä&#10;hoidella viholliset&#10;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextArea>
+                                                <TextField alignment="CENTER" text="&quot;Bulbasaur&quot;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Label text="Evoluutio:" GridPane.rowIndex="6" />
+                                                <TextField text="1" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="10.0" top="5.0" />
+                                             </HBox.margin>
+                                          </GridPane>
+                                          <GridPane minHeight="-Infinity" minWidth="-Infinity">
+                                             <columnConstraints>
+                                                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="76.0" minWidth="10.0" prefWidth="60.0" />
+                                                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="148.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                                                <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="NEVER" />
+                                                <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="NEVER" />
+                                                <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="NEVER" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label text="Nimi: " GridPane.rowIndex="1" />
+                                                <TextField text="Charizard" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Label text="Elementi(t):" GridPane.rowIndex="2" />
+                                                <TextField text="Ruoho" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <TextField text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Label text="Vahvuus:" GridPane.rowIndex="4" />
+                                                <Label text="Ikä:" GridPane.rowIndex="5" />
+                                                <Label text="Lisätiedot:" GridPane.rowIndex="7" />
+                                                <TextField text="312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <TextField text="23" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <TextArea prefHeight="200.0" prefWidth="200.0" text="Haavoittuu vedestä&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextArea>
+                                                <TextField alignment="CENTER" text="&quot;Charizard&quot;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                                <Label text="Evoluutio:" GridPane.rowIndex="6" />
+                                                <TextField text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+                                                   </GridPane.margin>
+                                                </TextField>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="10.0" top="5.0" />
+                                             </HBox.margin>
+                                          </GridPane>
+                                       </children>
+                                    </HBox>
+                                    <GridPane prefWidth="324.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <VBox.margin>
+                                          <Insets bottom="25.0" left="50.0" right="50.0" top="50.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <TextField alignment="CENTER_RIGHT" text="1234" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField text="312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField alignment="CENTER_RIGHT" text="Vesi + Myrkky" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField text="Ruoho + Tuli" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField alignment="CENTER_RIGHT" text="80 %" GridPane.rowIndex="8">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField text="20 %" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="KAKSINTAISTELU" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Elementit" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vahvuudet" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Todennäköisyys voittaa" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Evoluutiot" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                          <TextField alignment="CENTER_RIGHT" text="1" GridPane.rowIndex="6">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <GridPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
