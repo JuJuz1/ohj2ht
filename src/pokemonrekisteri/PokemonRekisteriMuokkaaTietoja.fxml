@@ -27,6 +27,7 @@
             <RowConstraints minHeight="10.0" vgrow="NEVER" />
             <RowConstraints minHeight="10.0" vgrow="NEVER" />
             <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
             <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="NEVER" />
             <RowConstraints minHeight="0.0" vgrow="NEVER" />
             <RowConstraints minHeight="0.0" vgrow="NEVER" />
@@ -41,7 +42,7 @@
             <Label text="Elementi(t):" GridPane.rowIndex="1" />
             <Label text="Vahvuus:" GridPane.rowIndex="4" />
             <Label text="Ikä:" GridPane.rowIndex="5" />
-            <Label text="Lisätiedot:" GridPane.rowIndex="6" />
+            <Label text="Lisätiedot:" GridPane.rowIndex="7" />
             <TextField text="1234" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
@@ -52,7 +53,7 @@
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
             </TextField>
-            <TextArea prefHeight="200.0" prefWidth="160.0" text="Osaa uida sekä&#10;hoidella viholliset" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+            <TextArea prefHeight="200.0" prefWidth="160.0" text="Osaa uida sekä&#10;hoidella viholliset" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
@@ -87,6 +88,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </CheckBox>
+            <Label text="Evoluutio:" GridPane.rowIndex="6" />
+            <TextField text="2" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextField>
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="5.0" />
