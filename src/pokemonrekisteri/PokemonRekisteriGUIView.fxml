@@ -30,21 +30,21 @@
         <menus>
           <Menu mnemonicParsing="false" text="Tiedosto">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Tallenna" />
-                  <MenuItem mnemonicParsing="false" text="Tulosta" />
-              <MenuItem mnemonicParsing="false" text="Lopeta" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleTulosta" text="Tulosta" />
+              <MenuItem mnemonicParsing="false" onAction="#handleLopeta" text="Lopeta" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Muokkaa">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Lisää uusi pokemon" />
-              <MenuItem mnemonicParsing="false" text="Poista pokemon" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleLisaaPokemon" text="Lisää uusi pokemon" />
+              <MenuItem mnemonicParsing="false" onAction="#handlePoistaPokemon" text="Poista pokemon" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Apua">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Apua" />
-              <MenuItem mnemonicParsing="false" text="Tietoja" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleApua" text="Apua" />
+              <MenuItem mnemonicParsing="false" onAction="#handleTietoja" text="Tietoja" />
             </items>
           </Menu>
         </menus>
@@ -77,7 +77,7 @@
                                              </GridPane.margin></Label>
                                           <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <ComboBoxChooser prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
-                                          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
+                                          <Button mnemonicParsing="false" onAction="#handleHae" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                     <TitledPane animated="false" expanded="false" text="Tarkempi haku">
@@ -339,12 +339,12 @@
                                           <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Muokkaa" GridPane.rowIndex="7">
+                                    <Button mnemonicParsing="false" onAction="#handleMuokkaa" prefHeight="25.0" prefWidth="101.0" text="Muokkaa" GridPane.rowIndex="7">
                                        <GridPane.margin>
                                           <Insets bottom="1.0" top="1.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Tallenna" GridPane.rowIndex="8">
+                                    <Button mnemonicParsing="false" onAction="#handleTallenna" prefHeight="25.0" prefWidth="80.0" text="Tallenna" GridPane.rowIndex="8">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -359,17 +359,17 @@
                                           <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                        </GridPane.margin>
                                     </TextArea>
-                                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" text="Lisää uusi pokemon" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
+                                    <Button mnemonicParsing="false" onAction="#handleLisaaPokemon" prefHeight="35.0" prefWidth="190.0" text="Lisää uusi pokemon" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" text="Tallenna" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+                                    <Button mnemonicParsing="false" onAction="#handleTallenna" prefHeight="35.0" prefWidth="190.0" text="Tallenna" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="205.0" text="Lopeta" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                                    <Button mnemonicParsing="false" onAction="#handleLopeta" prefHeight="62.0" prefWidth="205.0" text="Lopeta" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>

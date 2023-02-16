@@ -8,8 +8,8 @@ import javafx.fxml.FXMLLoader;
 
 
 /**
- * @author juuso
- * @version 1.2.2023
+ * @author Juuso Piippo & Elias Lehtinen
+ * @version 16.2.2023
  *
  */
 public class PokemonRekisteriMain extends Application {
