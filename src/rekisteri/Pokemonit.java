@@ -14,14 +14,14 @@ public class Pokemonit {
     private int lkm;
     private int maxLkm = 8;
     private Pokemon[] taulukko = new Pokemon[maxLkm];
-    
-    
+
     /**
      * Oletusmuodostaja
      */
     public Pokemonit() {
         //
     }
+
 
     /**
      * Lisaa pokemonin taulukkoon
@@ -55,14 +55,15 @@ public class Pokemonit {
         taulukko[lkm] = pokemon;
         lkm++;
     }
-    
-    
+
+
     /**
      * Tallentaa jäsenistön tiedostoon.  Kesken.
      * @throws SailoException jos talletus epäonnistuu
      */
     public void talleta() throws SailoException {
-        throw new SailoException("Ei osata vielä tallettaa tiedostoa " + tiedostoNimi);
+        throw new SailoException(
+                "Ei osata vielä tallettaa tiedostoa " + tiedostoNimi);
     }
 
 
@@ -88,6 +89,26 @@ public class Pokemonit {
 
 
     /**
+     * Lukee jäsenistön tiedostosta.  Kesken. TODO: tee valmiiks
+     * @throws SailoException jos lukeminen epäonnistuu
+     */
+    public void lueTiedostosta() throws SailoException {
+        throw new SailoException(
+                "Ei osata viela lukea tiedostoa " + tiedostoNimi);
+    }
+
+
+    /**
+     * Tallentaa jäsenistön tiedostoon.  Kesken. TODO: tee valmiiks
+     * @throws SailoException jos talletus epäonnistuu
+     */
+    public void tallenna() throws SailoException {
+        throw new SailoException(
+                "Ei osata viela tallettaa tiedostoa " + tiedostoNimi);
+    }
+
+
+    /**
      * @param args ei kayt.
      */
     public static void main(String[] args) {
@@ -103,7 +124,8 @@ public class Pokemonit {
             pokemonit.lisaa(pikachu);
             pokemonit.lisaa(charizard);
 
-            System.out.println("============= Pokemonit testi =================");
+            System.out
+                    .println("============= Pokemonit testi =================");
 
             for (int i = 0; i < pokemonit.getLkm(); i++) {
                 Pokemon Pokemon = pokemonit.getPokemon(i);
@@ -112,9 +134,17 @@ public class Pokemonit {
                 System.out.println();
             }
 
+            pokemonit.tallenna();
+
+        } catch (SailoException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        try {
+            pokemonit.lueTiedostosta();
+
         } catch (SailoException ex) {
             System.out.println(ex.getMessage());
         }
     }
-
 }
