@@ -1,4 +1,4 @@
-package pokemonrekisteri;
+package pokemonrekisterifx;
 
 import fi.jyu.mit.fxgui.Dialogs;
 import fi.jyu.mit.fxgui.ModalController;
