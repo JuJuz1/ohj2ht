@@ -172,6 +172,14 @@ public class Pokemon {
     
     
     /**
+     * @return pokemonin nimi
+     */
+    public String getNimi() {
+        return nimi;
+    }
+    
+    
+    /**
      * @param args ei kayt.
      */
     public static void main(String[] args) {
@@ -188,6 +196,5 @@ public class Pokemon {
         charizard.tulosta(System.out);
     
     }
-
 
 }
