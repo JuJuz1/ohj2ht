@@ -9,7 +9,7 @@ package rekisteri;
  *
  */
 public class Rekisteri {
-    Pokemonit pokemonit = new Pokemonit();
+    private Pokemonit pokemonit = new Pokemonit();
     // TODO: Elementit
     // TODO: Iat
 

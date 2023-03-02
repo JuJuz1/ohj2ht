@@ -170,9 +170,7 @@ public class PokemonRekisteriGUIController implements Initializable{
                 index = i;
             chooserPokemonit.add(pokemon.getNimi(), pokemon);
         }
-        chooserPokemonit.setSelectedIndex(index); // tästä tulee muutosviesti
-                                                  // joka
-                                                 // näyttää jäsenen
+        chooserPokemonit.setSelectedIndex(index);
     }
 
 
