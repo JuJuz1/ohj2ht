@@ -4,6 +4,7 @@
 package rekisteri;
 
 /**
+ * Oma säilöpoikkeus-luokka
  * @author Juuso Piippo & Elias Lehtinen
  * @version 2.3.2023
  *

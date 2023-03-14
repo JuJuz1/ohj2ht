@@ -4,6 +4,13 @@
 package rekisteri;
 
 /**
+ * Sisältää taulukon pokemoneja (ja pokemonien lukumäärän sekä taulukon pituuden).
+ * TODO: Taulukon koko kasvaa automaattisesti tarpeen mukaan.
+ * Osaa lisätä ja TODO: poistaa pokemonin.
+ * TODO: Osaa lajitella pokemonit järjestykseen nimen, iän tai vahvuuden mukaan.
+ * TODO: Osaa etsiä pokemoneja listasta nimen perusteella.
+ * TODO: Lukee ja kirjoittaa pokemonit tiedostoon
+ * TODO: Osaa vertailla kahta pokemonia kaksintaistelussa
  * @author Juuso Piippo & Elias Lehtinen
  * @version 2.3.2023
  *
@@ -58,17 +65,7 @@ public class Pokemonit {
 
 
     /**
-     * Tallentaa jäsenistön tiedostoon.  Kesken.
-     * @throws SailoException jos talletus epäonnistuu
-     */
-    public void talleta() throws SailoException {
-        throw new SailoException(
-                "Ei osata vielä tallettaa tiedostoa " + tiedostoNimi);
-    }
-
-
-    /**
-     * @return taulukon alkioiden lkm
+     * @return Olion sisältämien pokemonien lkm
      */
     public int getLkm() {
         return lkm;
@@ -76,6 +73,8 @@ public class Pokemonit {
 
 
     /**
+     * Palauttaa pokemonin taulukon indeksistä i.
+     * HUOM: Ei liity pokemonin ID-lukuun.
      * @param i indeksi
      * @return pokemon paikassa i
      * @throws IndexOutOfBoundsException heitetään jos ei ole indeksissä pokemonia
@@ -89,7 +88,7 @@ public class Pokemonit {
 
 
     /**
-     * Lukee jäsenistön tiedostosta.  Kesken. TODO: tee valmiiks
+     * Lukee jäsenistön tiedostosta.  Kesken. TODO: Tiedostosta luku
      * @throws SailoException jos lukeminen epäonnistuu
      */
     public void lueTiedostosta() throws SailoException {
@@ -99,7 +98,7 @@ public class Pokemonit {
 
 
     /**
-     * Tallentaa jäsenistön tiedostoon.  Kesken. TODO: tee valmiiks
+     * Tallentaa jäsenistön tiedostoon.  Kesken. TODO: Tiedostoon tallennus
      * @throws SailoException jos talletus epäonnistuu
      */
     public void tallenna() throws SailoException {
@@ -109,6 +108,7 @@ public class Pokemonit {
 
 
     /**
+     * Testipääohjelma Pokemonit-luokalle
      * @param args ei kayt.
      */
     public static void main(String[] args) {

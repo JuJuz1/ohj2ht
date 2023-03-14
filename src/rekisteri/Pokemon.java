@@ -7,24 +7,38 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 
 /**
+ * Sisältää pokemonin tiedot (attribuutit). 
+ * Osaa antaa pokemonille uniikin ID:n (rekisteroi). 
+ * Osaa tarkistaa kenttään syötettävän tiedon oikeellisuuden. 
+ * TODO: Osaa muuttaa merkkijonon pokemonin tiedoiksi. 
+ * Osaa antaa pokemonin tiedot merkkijonona.
+ * TODO: Osaa antaa i:nnen kentän tiedon.
+ * TODO: Osaa asettaa merkkijonon kentän sisällöksi.
  * @author Juuso Piippo & Elias Lehtinen
  * @version 2.3.2023
  *
  */
 public class Pokemon {
     
-    private int ID;
-    private String nimi;
-    private int vahvuus;
-    private int ikaID;
-    private int elementtiID1;
-    private int elementtiID2;
-    private int evoluutio;
-    private int evoluutioIDseuraava;
-    private String lisatiedot;
+    private int ID;                     // ID-luku, jolla voidaan erottaa pokemon muista. (ID = 0 on oletus ja tarkoittaa virheellistä)
+    private String nimi;                // Pokemonin nimi
+    private int vahvuus;                // Lukuarvo, joka kuvaa pokemonin vahvuutta taistelussa
+    private int ikaID;                  // Liittää pokemoniin yhden ikaryhmän erillisestä tiedostosta
+    private int elementtiID1;           // Liittää pokemoniin elementin toisesta tiedostosta
+    private int elementtiID2;           // -//-
+    private int evoluutio;              // Kuinka mones evoluutio (1-3)
+    private int evoluutioIDseuraava;    // Pokemonin seuraavan evoluution ID (0 jos ei ole)
+    private String lisatiedot;          // Mitä tahansa lisätietoa pokemonista
     
-    private static int seuraavaID = 1;
+    private static int seuraavaID = 1;  // Seuraava vapaa ID-luku. Käytetään kun pokemonille annetaan uusi ID.
 
+
+    /**
+     * Oletusmuodostaja
+     */
+    public Pokemon() {
+        // Attribuuttien arvot asetetaan vastaa_pikachu()-metodilla ja myöhemmin käyttäjän syötteestä
+    }
     
     
     /**
@@ -32,7 +46,7 @@ public class Pokemon {
      * @param out tietovirta mihin tulostetaan
      */
     public void tulosta(PrintStream out) {
-        // TODO: elementit ja ikaid ?
+        // TODO: Muuta: Tällä hetkellä tulostetaan IkaID ja elementtiID:t iän ja elementtien sijasta
         out.println("ID: " + ID);
         out.println("Nimi: " + nimi);
         out.println("Vahvuus: " + vahvuus);
@@ -70,8 +84,8 @@ public class Pokemon {
 
     
     /**
-     * Rekisteroi pokemonin
-     * @return ID
+     * Rekisteroi pokemonin (Antaa seuraavan vapaan ID-luvun)
+     * @return ID, joka asetettiin pokemonille
      * @example
      * <pre name="test">
      *      Pokemon pikachu = new Pokemon();
@@ -91,7 +105,7 @@ public class Pokemon {
     
     
     /**
-     * @return ID
+     * @return pokemonin ID
      */
     public int getID() {
         return ID;
@@ -99,9 +113,10 @@ public class Pokemon {
     
     
     /**
+     * Tarkistaa pokemonille annetun nimen oikeellisuuden.
+     * Oikean muotoinen nimi alkaa isolla kirjaimella ja sisältää pelkkiä kirjaimia.
      * @param nimi jota tarkistetaan
-     * @return true, jos nimi on oikein
-     * muuten false
+     * @return true, jos nimi on oikein. false, jos nimi on vääränlainen
      * @example
      * <pre name="test">
      *      tarkistaNimi("Pikachu") === true;
@@ -120,10 +135,9 @@ public class Pokemon {
     
     
     /**
-     * Tarkistaa vahvuuden
+     * Tarkistaa, että vahvuus on suurempi kuin 0.
      * @param vahvuus vahvuus
-     * @return true jos suurempi kuin 0
-     * muuten false
+     * @return true, jos suurempi kuin 0. false, jos 0 tai pienempi
      * @example
      * <pre name="test">
      *      tarkistaVahvuus(0) === false;
@@ -137,6 +151,7 @@ public class Pokemon {
     
    
     /**
+     * Tarkistaa, että evoluution arvo on välillä [1,3]
      * @param evoluutio evoluutio väliltä 1-3
      * @return true jos välillä [1,3]
      * muuten false
@@ -153,6 +168,8 @@ public class Pokemon {
     
     
     /**
+     * Tarkistaa, että seuraavan evoluution ID on oikean muotoinen.
+     * Seuraavan evoluution ID:n täytyy olla käytössä oleva ID.
      * @param seuraava seuraavan evoluution ID
      * @return true jos hyväksyttävä ID
      * muuten false
@@ -180,6 +197,7 @@ public class Pokemon {
     
     
     /**
+     * Testipääohjelma Pokemon-luokalle
      * @param args ei kayt.
      */
     public static void main(String[] args) {

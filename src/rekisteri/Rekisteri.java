@@ -4,6 +4,10 @@
 package rekisteri;
 
 /**
+ * TODO: Yhdistää iät ja elementit pokemoneihin.
+ * Välittää alempien luokkien välillä tietoa.
+ * Ohjaa muita luokkia.
+ * TODO: Lukee ja kirjoittaa rekisterin sisällön tiedostoihin muiden luokkien avulla.
  * @author Juuso Piippo & Elias Lehtinen
  * @version 2.3.2023
  *
@@ -22,7 +26,7 @@ public class Rekisteri {
 
 
     /**
-     * Kutsuu pokemonit luokan metodia
+     * Kutsuu pokemonit luokan metodia, joka lisää pokemonin taulukkoon
      * @param pokemon pokemon joka lisataan
      * @throws SailoException heittää jos liikaa alkioita
      * @example
@@ -54,9 +58,9 @@ public class Rekisteri {
     
     
     /**
-     * Kutsuu pokemonit luokan metodia
+     * Kutsuu pokemonit luokan metodia, joka hakee pokemonin taulukon indeksistä i
      * @param i indeksi
-     * @return pokemonit taulukon indeksissa i olevan pokemonin
+     * @return pokemonit taulukon indeksissa i oleva pokemon
      */
     public Pokemon getPokemon(int i) {
         return pokemonit.getPokemon(i);
@@ -64,6 +68,7 @@ public class Rekisteri {
     
     
     /**
+     * TODO: Tallentaa rekisterin sisällön tiedostoihin
      * @throws SailoException heittää
      */
     public void tallenna() throws SailoException{
@@ -72,6 +77,7 @@ public class Rekisteri {
     
     
     /**
+     * TODO: Lukee tiedostosta rekisterin sisällön
      * @throws SailoException heittää
      */
     public void lueTiedostosta() throws SailoException {
@@ -80,6 +86,7 @@ public class Rekisteri {
 
 
     /**
+     * Testipääohjelma Rekisteri-luokalle
      * @param args ei kayt.
      */
     public static void main(String[] args) {
