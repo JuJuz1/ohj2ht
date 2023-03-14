@@ -9,7 +9,7 @@ package rekisteri;
  * Ohjaa muita luokkia.
  * TODO: Lukee ja kirjoittaa rekisterin sisällön tiedostoihin muiden luokkien avulla.
  * @author Juuso Piippo & Elias Lehtinen
- * @version 2.3.2023
+ * @version 14.3.2023
  *
  */
 public class Rekisteri {

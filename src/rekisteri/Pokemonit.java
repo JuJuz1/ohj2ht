@@ -12,7 +12,7 @@ package rekisteri;
  * TODO: Lukee ja kirjoittaa pokemonit tiedostoon
  * TODO: Osaa vertailla kahta pokemonia kaksintaistelussa
  * @author Juuso Piippo & Elias Lehtinen
- * @version 2.3.2023
+ * @version 14.3.2023
  *
  */
 public class Pokemonit {
