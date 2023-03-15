@@ -19,6 +19,7 @@ public class Iat {
     
     // private int lkm;
     // private int maxLkm;
+    private String tiedostoNimi;
     Collection<Ika> iat = new HashSet<Ika>(); // HashSet ikäalkioille
     
     

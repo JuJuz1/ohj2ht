@@ -19,6 +19,7 @@ public class Elementit {
     
     // private int lkm;
     // private int maxLkm;
+    private String tiedostoNimi;
     private final Collection<Elementti> alkiot = new ArrayList<Elementti>();  // Lista elementeille
     
     
