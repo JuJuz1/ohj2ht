@@ -116,6 +116,8 @@ public class Rekisteri {
         pikachu.vastaa_pikachu();
         charizard.rekisteroi();
         charizard.vastaa_pikachu();
+        rekisteri.getElementit().alustaElementeilla();
+        rekisteri.getIat().alustaIkaLuokilla();
 
         try {
             rekisteri.lisaa(pikachu);
@@ -125,9 +127,11 @@ public class Rekisteri {
                     .println("============= Pokemonit testi =================");
 
             for (int i = 0; i < rekisteri.getLkm(); i++) {
-                Pokemon Pokemon = rekisteri.getPokemon(i);
+                Pokemon pokemon = rekisteri.getPokemon(i);
                 System.out.println("Pokemonin nro: " + i);
-                Pokemon.tulosta(System.out);
+                pokemon.tulosta(System.out);
+                rekisteri.tulostaElementit(pokemon, System.out);
+                rekisteri.tulostaIka(pokemon, System.out);
                 System.out.println();
             }
 
