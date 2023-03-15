@@ -12,8 +12,8 @@ package rekisteri;
  */
 public class Ika {
     
-    private int ID;
-    private String ika;
+    private int ID;         // Iän ID
+    private String ika;     // Ikäalue
     
     
     /**

@@ -19,7 +19,7 @@ public class Elementit {
     
     // private int lkm;
     // private int maxLkm;
-    private final Collection<Elementti> alkiot = new ArrayList<Elementti>();
+    private final Collection<Elementti> alkiot = new ArrayList<Elementti>();  // Lista elementeille
     
     
     /**
