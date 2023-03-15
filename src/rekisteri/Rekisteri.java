@@ -17,6 +17,7 @@ public class Rekisteri {
     // TODO: Elementit
     // TODO: Iat
 
+    
     /**
      * @return pokemonit taulukon alkioiden lkm
      */
