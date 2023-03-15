@@ -143,6 +143,14 @@ public class Pokemon {
     
     
     /**
+     * @return ikaID
+     */
+    public int getIkaID() {
+        return ikaID;
+    }
+    
+    
+    /**
      * Tarkistaa pokemonille annetun nimen oikeellisuuden.
      * Oikean muotoinen nimi alkaa isolla kirjaimella ja sisältää pelkkiä kirjaimia.
      * @param nimi jota tarkistetaan

@@ -17,7 +17,7 @@ import java.io.PrintStream;
 public class Rekisteri {
     private Pokemonit pokemonit = new Pokemonit();
     private Elementit elementit = new Elementit();
-    // TODO: Iat
+    private Iat iat = new Iat();
 
     
     /**
@@ -33,6 +33,14 @@ public class Rekisteri {
      */
     public Elementit getElementit() {
         return elementit;
+    }
+    
+    
+    /**
+     * @return Iat-olio
+     */
+    public Iat getIat() {
+        return iat;
     }
 
 
@@ -145,7 +153,7 @@ public class Rekisteri {
      * @param os Tietovirta johon tulostetaan
      */
     public void tulostaElementit(Pokemon pokemon, PrintStream os) {
-        os.print(elementitJonona(pokemon));
+        os.println(elementitJonona(pokemon));
     }
     
 
@@ -175,5 +183,17 @@ public class Rekisteri {
         if (e2 != null) e2Jono = e2.getNimi();
         String jono = "Elementit: " + e1Jono + e2Jono;
         return jono;
+    }
+    
+    
+    /**
+     * Tulostaa pokemonin iän.
+     * Käytetään Ika-olion ja pokemonin linkittämisen testaamiseen.
+     * @param pokemon Pokemon, jonka ikä tulostetaan
+     * @param ps Tietovirta, johon tulostetaan
+     */
+    public void tulostaIka(Pokemon pokemon, PrintStream ps) {
+        int ikaID = pokemon.getIkaID();
+        ps.println("Ikä: " + iat.etsiIka(ikaID));
     }
 }

@@ -128,6 +128,15 @@ public class PokemonRekisteriGUIController implements Initializable{
     public void alustaElementit() {
         rekisteri.getElementit().alustaElementeilla();
     }
+    
+    
+    /**
+     * Alustaa Iat-olion muutamalla ikäluokalla kokeilua varten
+     * TODO: poista kun ei enää tarvita
+     */
+    public void alustaIat() {
+        rekisteri.getIat().alustaIkaLuokilla();
+    }
 
 
     /**
@@ -144,6 +153,7 @@ public class PokemonRekisteriGUIController implements Initializable{
                 .getTextPrintStream(areaLisa)) {
             pokemonKohdalla.tulosta(os);
             rekisteri.tulostaElementit(pokemonKohdalla, os);
+            rekisteri.tulostaIka(pokemonKohdalla, os);
         }
     }
 
