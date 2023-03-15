@@ -19,6 +19,7 @@ public class Rekisteri {
     private Elementit elementit = new Elementit();
     // TODO: Iat
 
+    
     /**
      * @return pokemonit taulukon alkioiden lkm
      */
