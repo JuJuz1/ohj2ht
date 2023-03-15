@@ -15,7 +15,7 @@ import java.io.PrintStream;
  * TODO: Osaa antaa i:nnen kentän tiedon.
  * TODO: Osaa asettaa merkkijonon kentän sisällöksi.
  * @author Juuso Piippo & Elias Lehtinen
- * @version 14.3.2023
+ * @version 15.3.2023
  *
  */
 public class Pokemon {

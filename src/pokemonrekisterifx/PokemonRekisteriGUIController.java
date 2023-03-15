@@ -21,7 +21,7 @@ import rekisteri.SailoException;
 
 /**
  * @author Juuso Piippo & Elias Lehtinen
- * @version 2.3.2023
+ * @version 15.3.2023
  *
  */
 public class PokemonRekisteriGUIController implements Initializable{
