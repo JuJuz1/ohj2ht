@@ -47,10 +47,8 @@ public class Rekisteri {
     /**
      * Kutsuu pokemonit luokan metodia, joka lisää pokemonin taulukkoon
      * @param pokemon pokemon joka lisataan
-     * @throws SailoException heittää jos liikaa alkioita
      * @example
      * <pre name="test">
-     *      #THROWS SailoException 
      *      Rekisteri rekisteri = new Rekisteri();
      *      Pokemon pikachu = new Pokemon(), charizard = new Pokemon();
      *      rekisteri.getLkm() === 0;
@@ -62,15 +60,15 @@ public class Rekisteri {
      *      rekisteri.getPokemon(2) === pikachu;
      *      rekisteri.getPokemon(1) == pikachu === false;
      *      rekisteri.getPokemon(1) == charizard === true;
-     *      rekisteri.getPokemon(3) === pikachu; #THROWS IndexOutOfBoundsException 
+     *      rekisteri.getPokemon(3) === pikachu;
      *      rekisteri.lisaa(pikachu); rekisteri.getLkm() === 4;
      *      rekisteri.lisaa(pikachu); rekisteri.getLkm() === 5;
      *      rekisteri.lisaa(pikachu); rekisteri.lisaa(pikachu);
      *      rekisteri.lisaa(pikachu); 
-     *      rekisteri.lisaa(pikachu); #THROWS SailoException
+     *      rekisteri.lisaa(pikachu);
      * </pre>
      */
-    public void lisaa(Pokemon pokemon) throws SailoException {
+    public void lisaa(Pokemon pokemon) {
         pokemonit.lisaa(pokemon);
 
     }

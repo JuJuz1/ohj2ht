@@ -165,13 +165,7 @@ public class PokemonRekisteriGUIController implements Initializable{
         Pokemon uusi = new Pokemon();
         uusi.rekisteroi();
         uusi.vastaa_pikachu();
-        try {
-            rekisteri.lisaa(uusi);
-        } catch (SailoException e) {
-            Dialogs.showMessageDialog(
-                    "Ongelmia uuden luomisessa " + e.getMessage());
-            return;
-        }
+        rekisteri.lisaa(uusi);
         hae(uusi.getID());
     }
 

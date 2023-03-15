@@ -5,10 +5,10 @@ package rekisteri;
 
 /**
  * Sisältää taulukon pokemoneja (ja pokemonien lukumäärän sekä taulukon pituuden).
- * TODO: Taulukon koko kasvaa automaattisesti tarpeen mukaan.
+ * Taulukon koko kasvaa automaattisesti tarpeen mukaan.
  * Osaa lisätä ja TODO: poistaa pokemonin.
  * TODO: Osaa lajitella pokemonit järjestykseen nimen, iän tai vahvuuden mukaan.
- * TODO: Osaa etsiä pokemoneja listasta nimen perusteella.
+ * TODO: Osaa etsiä pokemoneja taulukosta nimen perusteella.
  * TODO: Lukee ja kirjoittaa pokemonit tiedostoon
  * TODO: Osaa vertailla kahta pokemonia kaksintaistelussa
  * @author Juuso Piippo & Elias Lehtinen
@@ -33,7 +33,6 @@ public class Pokemonit {
     /**
      * Lisaa pokemonin taulukkoon
      * @param pokemon pokemon joka lisataan
-     * @throws SailoException poikkeus, joka heitetään jos taulukko täynnä
      * @example
      * <pre name="test">
      *      #THROWS SailoException 
@@ -53,12 +52,21 @@ public class Pokemonit {
      *      pokemonit.lisaa(pikachu); pokemonit.getLkm() === 5;
      *      pokemonit.lisaa(pikachu); pokemonit.lisaa(pikachu);
      *      pokemonit.lisaa(pikachu); 
-     *      pokemonit.lisaa(pikachu); #THROWS SailoException
+     *      pokemonit.lisaa(pikachu);
      * </pre>
      */
-    public void lisaa(Pokemon pokemon) throws SailoException {
-        if (taulukko.length <= lkm)
-            throw new SailoException("Alkio ei mahdu taulukkoon");
+    public void lisaa(Pokemon pokemon) {
+        if (taulukko.length <= lkm) {
+            int uusikoko = maxLkm * 2;
+            Pokemon[] uusitaulukko = new Pokemon[uusikoko];
+            
+            for (int i = 0; i < taulukko.length; i++) {
+                uusitaulukko[i] = taulukko[i];
+            }
+            
+            taulukko = uusitaulukko;
+            
+        }
         taulukko[lkm] = pokemon;
         lkm++;
     }
