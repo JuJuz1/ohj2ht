@@ -81,6 +81,15 @@ public class Pokemon {
         evoluutioIDseuraava = 0;
         lisatiedot = "Suuri jannite";
     }
+    
+    
+    /**
+     * Apumetodi elementtien tulostamisen testaamista vartern
+     * TODO: poista kun ei tarvita
+     */
+    public void asetaTyhjaElementti() {
+        elementtiID2 = 0;
+    }
 
     
     /**
@@ -109,6 +118,27 @@ public class Pokemon {
      */
     public int getID() {
         return ID;
+    }
+    
+    
+    /**
+     * Palauttaa pokemonin elementin ID:n
+     * @param nro Kumpi elementti palautetaan (1 tai 2)
+     * @return Elementin ID:n
+     * @example
+     * <pre name="test">
+     *  Pokemon pikachu = new Pokemon();
+     *  pikachu.vastaa_pikachu();
+     *  pikachu.getElementtiID(1) === 2;
+     *  pikachu.getElementtiID(2) === 3;
+     *  pikachu.getElementtiID(3) === 0;
+     *  pikachu.getElementtiID(0) === 0;
+     * </pre>
+     */
+    public int getElementtiID(int nro) {
+        if (nro > 2 || nro < 1) return 0;
+        if (nro == 1) return elementtiID1;
+        return elementtiID2;
     }
     
     

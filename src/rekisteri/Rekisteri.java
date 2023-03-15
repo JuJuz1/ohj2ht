@@ -3,6 +3,8 @@
  */
 package rekisteri;
 
+import java.io.PrintStream;
+
 /**
  * TODO: Yhdistää iät ja elementit pokemoneihin.
  * Välittää alempien luokkien välillä tietoa.
@@ -14,7 +16,7 @@ package rekisteri;
  */
 public class Rekisteri {
     private Pokemonit pokemonit = new Pokemonit();
-    // TODO: Elementit
+    private Elementit elementit = new Elementit();
     // TODO: Iat
 
     /**
@@ -22,6 +24,14 @@ public class Rekisteri {
      */
     public int getLkm() {
         return pokemonit.getLkm();
+    }
+    
+    
+    /**
+     * @return Elementit-olio
+     */
+    public Elementit getElementit() {
+        return elementit;
     }
 
 
@@ -126,4 +136,43 @@ public class Rekisteri {
         }
     }
 
+
+    /**
+     * Tulostaa pokemonin elementtien nimet.
+     * Käytetään elementtien ja pokemonien linkittämisen testaamiseen.
+     * @param pokemon Pokemon, jonka elementit tulostetaan
+     * @param os Tietovirta johon tulostetaan
+     */
+    public void tulostaElementit(Pokemon pokemon, PrintStream os) {
+        os.print(elementitJonona(pokemon));
+    }
+    
+
+    /**
+     * Palauttaa pokemonin elementit merkkijonona
+     * @param pokemon Pokemon
+     * @return Elementit merkkijonona
+     * @example
+     * <pre name="test">
+     *  Rekisteri r = new Rekisteri();
+     *  r.getElementit().alustaElementeilla();
+     *  Pokemon p = new Pokemon();
+     *  p.vastaa_pikachu();
+     *  r.elementitJonona(p) === "Elementit: tuli maa";
+     *  p.asetaTyhjaElementti();
+     *  r.elementitJonona(p) === "Elementit: tuli ";
+     * </pre>
+     */
+    public String elementitJonona(Pokemon pokemon) {
+        int id1 = pokemon.getElementtiID(1);
+        int id2 = pokemon.getElementtiID(2);
+        Elementti e1 = elementit.etsiElementti(id1);
+        Elementti e2 = elementit.etsiElementti(id2);
+        String e1Jono = "";
+        String e2Jono = "";
+        if (e1 != null) e1Jono = e1.getNimi() + ' ';
+        if (e2 != null) e2Jono = e2.getNimi();
+        String jono = "Elementit: " + e1Jono + e2Jono;
+        return jono;
+    }
 }

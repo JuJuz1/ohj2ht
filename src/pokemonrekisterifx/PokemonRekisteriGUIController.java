@@ -119,6 +119,15 @@ public class PokemonRekisteriGUIController implements Initializable{
         this.rekisteri = rekisteri;
         naytaPokemon();
     }
+    
+    
+    /**
+     * Alustaa Elementit-olion muutamalla elementillä kokeilua varten
+     * TODO: poista kun ei enää tarvita
+     */
+    public void alustaElementit() {
+        rekisteri.getElementit().alustaElementeilla();
+    }
 
 
     /**
@@ -134,6 +143,7 @@ public class PokemonRekisteriGUIController implements Initializable{
         try (PrintStream os = TextAreaOutputStream
                 .getTextPrintStream(areaLisa)) {
             pokemonKohdalla.tulosta(os);
+            rekisteri.tulostaElementit(pokemonKohdalla, os);
         }
     }
 

@@ -27,6 +27,7 @@ public class PokemonRekisteriMain extends Application {
             
             Rekisteri rekisteri = new Rekisteri();
             rekisteriCtrl.setRekisteri(rekisteri);
+            rekisteriCtrl.alustaElementit(); // TODO: poista kun ei enää tarvita
             
             primaryStage.show();
         } catch(Exception e) {

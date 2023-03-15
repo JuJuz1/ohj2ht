@@ -74,6 +74,17 @@ public class Elementit {
     
     
     /**
+     * Alustaa Elementit-olion kolmella elementillä kokeilua varten
+     */
+    public void alustaElementeilla() {
+        this.alkiot.clear();
+        this.lisaa(new Elementti(1, "vesi", 2, 6));
+        this.lisaa(new Elementti(2, "tuli", 4, 1));
+        this.lisaa(new Elementti(3, "maa", 5, 4));
+    }
+    
+    
+    /**
      * @param args ei kayt.
      */
     public static void main(String[] args) {
