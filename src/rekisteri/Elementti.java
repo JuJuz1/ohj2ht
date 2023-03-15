@@ -9,10 +9,10 @@ package rekisteri;
  *
  */
 public class Elementti {
-    int ID;             // Elementin yksilöivä ID
-    String nimi;        // Elementin nimi
-    int vahvuusID;      // Sen elementin ID, jota vastaan tämä elementti on erityisen vahva
-    int heikkousID;     // Sen elementin ID, jota vastaan tämä elementti on erityisen heikko
+    private int ID;             // Elementin yksilöivä ID
+    private String nimi;        // Elementin nimi
+    private int vahvuusID;      // Sen elementin ID, jota vastaan tämä elementti on erityisen vahva
+    private int heikkousID;     // Sen elementin ID, jota vastaan tämä elementti on erityisen heikko
     
     
     /**
