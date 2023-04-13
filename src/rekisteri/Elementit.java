@@ -99,9 +99,10 @@ public class Elementit {
     /**
      * Lukee elementit tiedostosta ja lisää ne alkiot-listaan.
      * Jos tiedosto ei aukea tulostaa System.err-tietovirtaan "Tiedosto ei aukea." + virheen message.
+     * @throws SailoException Heittää, jos tiedostoa ei löydy
      * @example
      * <pre name="test">
-     *   #THROWS IOException
+     *   #THROWS IOException, SailoException
      *   #import java.io.IOException;
      *   #import fi.jyu.mit.ohj2.VertaaTiedosto;
      *   #import java.util.ArrayList;
@@ -117,14 +118,14 @@ public class Elementit {
      *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
      * </pre>
      */
-    public void lueTiedostosta() {
+    public void lueTiedostosta() throws SailoException {
         try (Scanner fi = new Scanner(new FileInputStream(new File(this.getTiedostoNimi())))){
             while (fi.hasNext()) {
                 String rivi = fi.nextLine();
                 if (!rivi.startsWith(";")) alkiot.add(new Elementti(rivi));
             }
         } catch (FileNotFoundException e) {
-            System.err.println("Tiedosto ei aukea." + e.getMessage());
+            throw new SailoException("Tiedostoa ei löydy: " + e.getMessage());
         }
     }
     
