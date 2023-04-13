@@ -17,7 +17,7 @@ import fi.jyu.mit.ohj2.Mjonot;
  * TODO: Osaa antaa i:nnen kentän tiedon.
  * Osaa asettaa merkkijonon kentän sisällöksi.
  * @author Juuso Piippo & Elias Lehtinen
- * @version 15.3.2023
+ * @version 13.4.2023
  *
  */
 public class Pokemon {
