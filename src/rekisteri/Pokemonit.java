@@ -121,7 +121,7 @@ public class Pokemonit {
 
             while ((rivi = fi.readLine()) != null) {
                 rivi = rivi.trim();
-                if ("".equals(rivi) || rivi.charAt(0) == ';') continue;
+                if ("".equals(rivi) || rivi.startsWith(";")) continue;
                 Pokemon pokemon = new Pokemon(rivi);
                 lisaa(pokemon);
             }
@@ -215,5 +215,6 @@ public class Pokemonit {
         } catch (SailoException ex) {
             System.out.println(ex.getMessage());
         }
+        
     }
 }
