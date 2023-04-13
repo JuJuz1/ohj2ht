@@ -127,8 +127,8 @@ public class Pokemonit {
      *   String tiedosto = "pokemonitTest.dat";
      *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
      *   VertaaTiedosto.kirjoitaTiedosto(tiedosto, ";ID|Pokemonin nimi|vahvuus |ikä ID|elementti1 |elementti2 |evoluutio |seuraavan evoluution ID|lisatiedot |\n"
-     *   + "1 |Pikachu       |1337    |1     |6          |0          |2         |5                      |           |\n"
-     *   + "2 |Charizard     |20      |4     |1          |4          |3         |0                      |           |");
+     *   + "1 |Pikachu       |1337    |1     |6          |0          |2         |5                      |    lisätiedot      |\n"
+     *   + "2 |Charizard     |20      |4     |1          |4          |3         |0                      |    lisätiedot2     |");
      *   Pokemonit p = new Pokemonit(tiedosto);
      *   p.lueTiedostosta();
      *   p.getLkm() === 2;
@@ -139,8 +139,7 @@ public class Pokemonit {
      * </pre>
     */
     public void lueTiedostosta() throws SailoException {
-        try (BufferedReader fi = new BufferedReader(
-                new FileReader(getTiedostonNimi()))) {
+        try (BufferedReader fi = new BufferedReader(new FileReader(getTiedostonNimi()))) {
             String rivi;
             // int maxKoko = Mjonot.erotaInt(rivi,10); // tehdään jotakin
 
@@ -175,8 +174,8 @@ public class Pokemonit {
      *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
      *   VertaaTiedosto.tuhoaTiedosto(tiedostobak);
      *   VertaaTiedosto.kirjoitaTiedosto(tiedosto, ";ID|Pokemonin nimi|vahvuus |ikä ID|elementti1 |elementti2 |evoluutio |seuraavan evoluution ID|lisatiedot |\n"
-     *   + "1 |Pikachu       |1337    |1     |6          |0          |2         |5                      |           |\n"
-     *   + "2 |Charizard     |20      |4     |1          |4          |3         |0                      |           |");
+     *   + "1 |Pikachu       |1337    |1     |6          |0          |2         |5                      |   testi        |\n"
+     *   + "2 |Charizard     |20      |4     |1          |4          |3         |0                      |     tesi60     |");
      *   Pokemonit pThrows = new Pokemonit("eiOle");
      *   pThrows.lueTiedostosta(); #THROWS SailoException
      *   Pokemonit p = new Pokemonit(tiedosto);
@@ -199,7 +198,7 @@ public class Pokemonit {
      */
     public void tallenna() throws SailoException {
             if ( !muutettu ) return; 
-     
+            // TODO: mitä jos ei lisätietoja
             File fbak = new File(getTiedostonNimi().replace(".dat", ".bak")); 
             File ftied = new File(getTiedostonNimi()); 
             fbak.delete(); // if .. System.err.println("Ei voi tuhota"); 

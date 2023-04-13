@@ -48,7 +48,7 @@ public class Pokemon {
      * @param rivi rivi
      * @example
      * <pre name="test">
-     *      Pokemon uusi = new Pokemon("3|Uusi|69|2|3|1|8|Olen uusi");
+     *      Pokemon uusi = new Pokemon("3|Uusi|69|2|3|1|8|0|Olen uusi");
      *      uusi.getNimi() === "Uusi"; uusi.getElementtiID(2) === 1;
      *      uusi.getIkaID() === 2;
      * </pre>
