@@ -6,6 +6,9 @@ package rekisteri;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -13,8 +16,9 @@ import java.util.Scanner;
 /**
  * Sisältää ikäoliot
  * Osaa lisätä iän
- * TODO: Osaa lukea iät tieodstosta
+ * Osaa lukea iät tieodstosta
  * Osaa etsiä iän ID:n perusteella
+ * Osaa tallentaa iät tiedostoon
  * @author Juuso Piippo & Elias Lehtinen
  * @version 15.3.2023
  *
@@ -24,7 +28,8 @@ public class Iat {
     // private int lkm;
     // private int maxLkm;
     private String tiedostoNimi = "iat.dat";
-    Collection<Ika> iat = new HashSet<Ika>(); // HashSet ikäalkioille
+    private Collection<Ika> iat = new HashSet<Ika>(); // HashSet ikäalkioille
+    private boolean muutettu = false;
     
     
     /**
@@ -49,6 +54,7 @@ public class Iat {
      * @param ika ikä
      */
     public void lisaa(Ika ika) {
+        this.muutettu = true;
         iat.add(ika);
     }
     
@@ -129,6 +135,65 @@ public class Iat {
         }
     }
 
+    
+    /**
+     * Tallentaa iat tiedostoon (parametrin tiedostoNimi mukaan)
+     * @throws SailoException Heittää, jos tallennus ei onnistu (tiedosto ei aukea tai ei onnistuta kirjoittamaan)
+     * @example
+     * <pre name="test">
+     *   #THROWS IOException, SailoException
+     *   #import java.io.IOException;
+     *   #import fi.jyu.mit.ohj2.VertaaTiedosto;
+     *   #import java.util.ArrayList;
+     *   String tiedosto = "iatTest.dat";
+     *   String tiedostobak = tiedosto.replace(".dat", ".bak");
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     *   VertaaTiedosto.tuhoaTiedosto(tiedostobak);
+     *   VertaaTiedosto.kirjoitaTiedosto(tiedosto, ";id|ika\n 1 |0-10\n 2 |10-20\n 3 |20-30\n 4 |30-40");
+     *   Iat iThrows = new Iat("eiOle");
+     *   iThrows.lueTiedostosta(); #THROWS SailoException
+     *   Iat i = new Iat(tiedosto);
+     *   i.lueTiedostosta();
+     *   i.getLkm() === 4;
+     *   i.etsiIka(1).getIka() === "0-10";
+     *   i.etsiIka(2).getIka() === "10-20";
+     *   i.etsiIka(4).getIka() === "30-40";
+     *   i.etsiIka(5) === null;
+     *   i.lisaa(new Ika(5, "testi"));
+     *   i.tallenna();
+     *   
+     *   Iat iDat = new Iat(tiedosto);      iDat.lueTiedostosta();
+     *   Iat iBak = new Iat(tiedostobak);   iBak.lueTiedostosta();
+     *   iDat.etsiIka(4).getIka() === "30-40";  iBak.etsiIka(4).getIka() === "30-40";
+     *   iDat.etsiIka(5).getIka() === "testi";  iBak.etsiIka(5) === null;
+     *   
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     *   VertaaTiedosto.tuhoaTiedosto(tiedostobak);
+     * </pre>
+     */
+    public void tallenna() throws SailoException {
+            if ( !muutettu ) return; 
+     
+            File fBak = new File(getTiedostoNimi().replace(".dat", ".bak")); 
+            File fDat = new File(getTiedostoNimi()); 
+            fBak.delete();
+            fDat.renameTo(fBak); 
+     
+            try ( PrintWriter fo = new PrintWriter(new FileWriter(fDat.getCanonicalPath())) ) { 
+                fo.println(";id|ika");
+                for (int i = 1; i <= this.getLkm(); i++) { 
+                    Ika ika = etsiIka(i);
+                    fo.println(String.format("% 3d|%s", ika.getID(), ika.getIka())); 
+                }
+            } catch ( FileNotFoundException ex ) { 
+                throw new SailoException("Tiedosto " + fDat.getName() + " ei aukea"); 
+            } catch ( IOException ex ) { 
+                throw new SailoException("Tiedoston " + fDat.getName() + " kirjoittamisessa ongelmia"); 
+            } 
+     
+            muutettu = false; 
+    }
+    
 
     /**
      * Alustaa Iat-olion kolmella iällä kokeilua varten
