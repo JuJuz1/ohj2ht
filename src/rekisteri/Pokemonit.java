@@ -128,7 +128,7 @@ public class Pokemonit {
      *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
      *   VertaaTiedosto.kirjoitaTiedosto(tiedosto, ";ID|Pokemonin nimi|vahvuus |ikä ID|elementti1 |elementti2 |evoluutio |seuraavan evoluution ID|lisatiedot |\n"
      *   + "1 |Pikachu       |1337    |1     |6          |0          |2         |5                      |    lisätiedot      |\n"
-     *   + "2 |Charizard     |20      |4     |1          |4          |3         |0                      |    lisätiedot2     |");
+     *   + "2 |Charizard     |20      |4     |1          |4          |3         |0                      | |");
      *   Pokemonit p = new Pokemonit(tiedosto);
      *   p.lueTiedostosta();
      *   p.getLkm() === 2;

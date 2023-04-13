@@ -65,7 +65,8 @@ public class Pokemon {
         elementtiID2 = Mjonot.erotaInt(tiedot[5], -1);
         evoluutio = Mjonot.erotaInt(tiedot[6], -1);
         evoluutioIDseuraava = Mjonot.erotaInt(tiedot[7], -1);
-        lisatiedot = tiedot[8];
+        if (tiedot.length < 9) lisatiedot = "";
+        else lisatiedot = tiedot[8];
     }
     
     
