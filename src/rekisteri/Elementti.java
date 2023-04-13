@@ -1,5 +1,7 @@
 package rekisteri;
 
+import fi.jyu.mit.ohj2.Mjonot;
+
 /**
  * Sisältää elementin tiedot (parametrit).
  * Osaa kertoa nimen ja ID:n
@@ -26,12 +28,10 @@ public class Elementti {
      * <pre name="test">
      * Elementti e1 = new Elementti(1, "testi", 2, 3);
      * Elementti e2 = new Elementti(2, "testi2", 5, 1);
-     * e1.getNimi() === "testi";
-     * e1.getID() === 1;
-     * e1.getVahvuusID() === 2;
-     * e1.getHeikkousID() === 3;
-     * e2.getNimi() === "testi2";
-     * e2.getID() === 2;
+     * e1.getNimi() === "testi";   e1.getID() === 1;   e1.getVahvuusID() === 2;   e1.getHeikkousID() === 3;
+     * e2.getNimi() === "testi2";   e2.getID() === 2;
+     * e1.setNimi("testitesti");   e1.setID(4);        e1.setVahvuusID(1);        e1.setHeikkousID(6);
+     * e1.getNimi() === "testitesti";  e1.getID() === 4;   e1.getVahvuusID() === 1;   e1.getHeikkousID() === 6;
      * </pre>
      */
     public Elementti(int id, String nimi, int vahvuus, int heikkous) {
@@ -43,11 +43,61 @@ public class Elementti {
     
     
     /**
+     * TODO: tee parempi käsittely jos jono väärän muotoinen
+     * Muodostaja.
+     * Luo uuden elementin merkkijonosta kutsumalla parse-metodia.
+     * Jos jono on väärän muotoinen (liikaa tai liian vähän kenttiä) alustetaan oletusarvoilla (tyhjillä)
+     * @param jono Merkkijono, joka sisältää elementin tiedot muodossa  "id |elementti |vahvuusid |heikkousid"
+     * @example
+     * <pre name="test">
+     *   Elementti vesi = new Elementti(" 1 |vesi         |2          |6");
+     *   vesi.getNimi() === "vesi";   vesi.getID() === 1;   vesi.getVahvuusID() === 2;   vesi.getHeikkousID() === 6;
+     *   Elementti tuli = new Elementti(" 2 | tuli|    32|testitesti");
+     *   tuli.getNimi() === "tuli";   tuli.getID() === 2;   tuli.getVahvuusID() === 32;  tuli.getHeikkousID() === -1;
+     *   Elementti maa = new Elementti("maa| 2|3");
+     *   maa.getNimi() === null;        maa.getID() === 0;    maa.getVahvuusID() === 0;    maa.getHeikkousID() === 0;
+     * </pre>
+     */
+    public Elementti(String jono) {
+        this.parse(jono); // Palauttaa false ja ei tee muutoksia attribuuttien arvoihin, jos jono väärän muotoinen
+    }
+    
+    
+    /**
+     * Alustaa elementin attribuutit merkkijonosta luetuilla arvoilla.
+     * Jos kokonaislukua ei voida lukea, oletusarvo on -1.
+     * 
+     * @param jono Merkkijono, josta attribuuttien arvot luetaan.
+     * @return true, jos onnistui, false jos merkkijono on väärän muotoinen (liian lyhyt tai pitkä)
+     */
+    public boolean parse(String jono) {
+        String[] tiedot = jono.split(" *\\| *");
+        if (tiedot.length != 4) return false;
+        this.setID(Mjonot.erotaInt(tiedot[0], -1));
+        this.setNimi(tiedot[1]);
+        this.setVahvuusID(Mjonot.erotaInt(tiedot[2], -1));
+        this.setHeikkousID(Mjonot.erotaInt(tiedot[3], -1));
+        return true;
+    }
+    
+    
+    
+    
+    /**
      * Palauttaa elementin nimen. Testit muodostajan yhteydessä.
      * @return Elementin nimi
      */
     public String getNimi() {
         return nimi;
+    }
+    
+    
+    /**
+     * Asettaa elementin nimi-attribuutin arvon
+     * @param nimi Elementin uusi nimi
+     */
+    public void setNimi(String nimi) {
+        this.nimi = nimi;
     }
     
     
@@ -61,6 +111,15 @@ public class Elementti {
     
     
     /**
+     * Asettaa elementin ID-attribuutin arvon
+     * @param id ID:n uusi arvo
+     */
+    public void setID(int id) {
+        this.ID = id;
+    }
+    
+    
+    /**
      * Palauttaa vahvuusID:n. Testit muodostajan yhteydessä.
      * @return Sen elementin ID, jota vastaan tämä elementti on vahva
      */
@@ -70,11 +129,29 @@ public class Elementti {
     
     
     /**
+     * Asettaa elementin vahvuusID-attribuutin uuden arvon
+     * @param vid VahvuusID:n uusi arvo
+     */
+    public void setVahvuusID(int vid) {
+        this.vahvuusID = vid;
+    }
+    
+    
+    /**
      * Palauttaa heikkousID:n. Testit muodostajan yhteydessä.
      * @return Sen elementin ID, jota vastaan tämä elementti on heikko
      */
     public int getHeikkousID() {
         return heikkousID;
+    }
+    
+    
+    /**
+     * Asettaa elementin heikkousID-attribuutin uuden arvon
+     * @param hid heikkousID:n uusi arvo
+     */
+    public void setHeikkousID(int hid) {
+        this.heikkousID = hid;
     }
     
     
