@@ -1,0 +1,7 @@
+;id|elementti    |vahvuusID  |heikkousID
+ 1 |vesi         |2          |6
+ 2 |tuli         |4          |1
+ 3 |maa          |5          |4
+ 4 |ruoho        |3          |2
+ 5 |myrkky       |6          |3
+ 6 |sähkö        |1          |5
