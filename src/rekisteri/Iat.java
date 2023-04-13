@@ -3,8 +3,12 @@
  */
 package rekisteri;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Scanner;
 
 /**
  * Sisältää ikäoliot
@@ -19,15 +23,25 @@ public class Iat {
     
     // private int lkm;
     // private int maxLkm;
-    private String tiedostoNimi;
+    private String tiedostoNimi = "iat.dat";
     Collection<Ika> iat = new HashSet<Ika>(); // HashSet ikäalkioille
     
     
     /**
-     * Iät luetaan tiedostosta
+     * Oletusmuodostaja
      */
     public Iat() {
-        // Ei tarvita
+        // Oletuksena tiedostoNimi = iat.dat
+    }
+    
+    
+    /**
+     * Alustaa iat-olion tiedostonimellä.
+     * Testaamista varten.
+     * @param tiedNimi Tiedoston nimi
+     */
+    public Iat(String tiedNimi) {
+        this.tiedostoNimi = tiedNimi;
     }
 
     
@@ -44,6 +58,13 @@ public class Iat {
      */
     public int getLkm() {
         return iat.size();
+    }
+    
+    /**
+     * @return tiedostoNimi
+     */
+    private String getTiedostoNimi() {
+        return this.tiedostoNimi;
     }
     
     
@@ -73,6 +94,38 @@ public class Iat {
     }
     
     
+    /**
+     * Lukee iät tiedostosta ja lisää ne iät-collectioniin.
+     * Jos tiedosto ei aukea tulostaa System.err-tietovirtaan "Tiedosto ei aukea." + virheen message.
+     * @example
+     * <pre name="test">
+     *   #THROWS IOException
+     *   #import java.io.IOException;
+     *   #import fi.jyu.mit.ohj2.VertaaTiedosto;
+     *   #import java.util.ArrayList;
+     *   String tiedosto = "iatTest.dat";
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     *   VertaaTiedosto.kirjoitaTiedosto(tiedosto, ";id|ika\n 1 |0-10\n 2 |10-20\n 3 |20-30\n 4 |30-40");
+     *   Iat i = new Iat(tiedosto);
+     *   i.lueTiedostosta();
+     *   i.getLkm() === 4;
+     *   i.etsiIka(1).getIka() === "0-10";
+     *   i.etsiIka(2).getIka() === "10-20";
+     *   i.etsiIka(4).getIka() === "30-40";
+     * </pre>
+     */
+    public void lueTiedostosta() {
+        try (Scanner fi = new Scanner(new FileInputStream(new File(this.getTiedostoNimi())))){
+            while (fi.hasNext()) {
+                String rivi = fi.nextLine();
+                if (!rivi.startsWith(";")) iat.add(new Ika(rivi));
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Tiedosto ei aukea." + e.getMessage());
+        }
+    }
+
+
     /**
      * Alustaa Iat-olion kolmella iällä kokeilua varten
      */

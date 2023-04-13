@@ -120,7 +120,7 @@ public class Elementit {
         try (Scanner fi = new Scanner(new FileInputStream(new File(this.getTiedostoNimi())))){
             while (fi.hasNext()) {
                 String rivi = fi.nextLine();
-                if (rivi.charAt(0) != ';') alkiot.add(new Elementti(rivi));
+                if (!rivi.startsWith(";")) alkiot.add(new Elementti(rivi));
             }
         } catch (FileNotFoundException e) {
             System.err.println("Tiedosto ei aukea." + e.getMessage());
