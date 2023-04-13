@@ -6,12 +6,12 @@ package rekisteri;
 import java.io.PrintStream;
 
 /**
- * TODO: Yhdistää iät ja elementit pokemoneihin.
+ * Yhdistää iät ja elementit pokemoneihin.
  * Välittää alempien luokkien välillä tietoa.
  * Ohjaa muita luokkia.
  * TODO: Lukee ja kirjoittaa rekisterin sisällön tiedostoihin muiden luokkien avulla.
  * @author Juuso Piippo & Elias Lehtinen
- * @version 15.3.2023
+ * @version 13.4.2023
  *
  */
 public class Rekisteri {
@@ -60,7 +60,7 @@ public class Rekisteri {
      *      rekisteri.getPokemon(2) === pikachu;
      *      rekisteri.getPokemon(1) == pikachu === false;
      *      rekisteri.getPokemon(1) == charizard === true;
-     *      rekisteri.getPokemon(3) === pikachu;
+     *      rekisteri.getPokemon(2) === pikachu;
      *      rekisteri.lisaa(pikachu); rekisteri.getLkm() === 4;
      *      rekisteri.lisaa(pikachu); rekisteri.getLkm() === 5;
      *      rekisteri.lisaa(pikachu); rekisteri.lisaa(pikachu);
@@ -70,7 +70,6 @@ public class Rekisteri {
      */
     public void lisaa(Pokemon pokemon) {
         pokemonit.lisaa(pokemon);
-
     }
     
     

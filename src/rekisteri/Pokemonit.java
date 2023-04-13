@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  * Osaa lisätä ja TODO: poistaa pokemonin.
  * TODO: Osaa lajitella pokemonit järjestykseen nimen, iän tai vahvuuden mukaan.
  * TODO: Osaa etsiä pokemoneja taulukosta nimen perusteella.
- * TODO: Lukee ja kirjoittaa pokemonit tiedostoon
+ * Lukee ja kirjoittaa pokemonit tiedostoon
  * TODO: Osaa vertailla kahta pokemonia kaksintaistelussa
  * @author Juuso Piippo & Elias Lehtinen
  * @version 14.3.2023
@@ -39,7 +39,10 @@ public class Pokemonit {
         //
     }
     
-    
+    /**
+     * Melkeinpä vain luetiedostosta() testaamista varten
+     * @param tiednimi tiedostonimi
+     */
     public Pokemonit(String tiednimi) {
         tiedostoNimi = tiednimi;
     }
@@ -195,6 +198,31 @@ public class Pokemonit {
     
     public String getBakNimi() {
         return baknimi;
+    }
+    
+    
+    /**
+     * Etsitään pokemoni taulukosta (suuret ja pienet kirjaimet samoja)
+     * @param nimi jolla etsitään
+     * @return pokemon, jolla kyseinen nimi
+     * muuten null
+     * @example
+     * <pre name="test">
+     *      Pokemonit p = new Pokemonit();
+     *      Pokemon t = new Pokemon();
+     *      t.rekisteroi();
+     *      t.vastaa_pikachu(); p.lisaa(t);
+     *      p.etsiTaulukosta("pikachu") === t;
+     *      p.etsiTaulukosta("pokemon") === null;
+     * </pre>
+     */
+    public Pokemon etsiTaulukosta(String nimi) {
+        for (int i = 0; i < lkm; i++) {
+            Pokemon temp = this.getPokemon(i);
+            if (nimi.toLowerCase().equals(
+                    temp.getNimi().toLowerCase())) return temp;
+        }
+        return null;
     }
 
 
