@@ -9,7 +9,7 @@ import fi.jyu.mit.ohj2.Mjonot;
  * Sisältää ID:n ja ikäalueen
  * Osaa kertoa ID:n ja ikäalueen
  * @author Juuso Piippo & Elias Lehtinen
- * @version 15.3.2023
+ * @version 14.3.2023
  *
  */
 public class Ika {

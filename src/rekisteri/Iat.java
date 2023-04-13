@@ -20,7 +20,7 @@ import java.util.Scanner;
  * Osaa etsiä iän ID:n perusteella
  * Osaa tallentaa iät tiedostoon
  * @author Juuso Piippo & Elias Lehtinen
- * @version 15.3.2023
+ * @version 13.4.2023
  *
  */
 public class Iat {

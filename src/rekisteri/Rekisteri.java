@@ -95,7 +95,7 @@ public class Rekisteri {
     
     
     /**
-     * TODO: Lukee tiedostosta rekisterin sisällön
+     * Lukee tiedostosta rekisterin sisällön
      * @throws SailoException heittää
      */
     public void lueTiedostosta() throws SailoException {

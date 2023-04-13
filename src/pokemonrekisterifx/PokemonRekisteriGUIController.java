@@ -40,7 +40,7 @@ public class PokemonRekisteriGUIController implements Initializable{
     @FXML
     private void handleTallenna(/*
                                  * ActionEvent event (ehkä tarvitaan jatkossa)
-                                 */) {
+                                 */) throws SailoException {
         tallenna();
     }
 
@@ -198,8 +198,9 @@ public class PokemonRekisteriGUIController implements Initializable{
 
 
     // Tallennetaan tiedot
-    private void tallenna() {
+    private void tallenna() throws SailoException {
         Dialogs.showMessageDialog("Ei osata vielä tallentaa");
+        rekisteri.tallenna();
     }
 
 

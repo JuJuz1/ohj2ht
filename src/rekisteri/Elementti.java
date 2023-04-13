@@ -7,7 +7,7 @@ import fi.jyu.mit.ohj2.Mjonot;
  * Osaa kertoa nimen ja ID:n
  * Osaa vertailla itseä toiseen elementtiin
  * @author Juuso Piippo & Elias Lehtinen
- * @version 14.3.2023
+ * @version 13.4.2023
  *
  */
 public class Elementti {

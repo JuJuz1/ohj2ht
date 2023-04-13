@@ -20,7 +20,7 @@ import java.io.PrintWriter;
  * Lukee ja kirjoittaa pokemonit tiedostoon
  * TODO: Osaa vertailla kahta pokemonia kaksintaistelussa
  * @author Juuso Piippo & Elias Lehtinen
- * @version 14.3.2023
+ * @version 13.4.2023
  *
  */
 public class Pokemonit {
