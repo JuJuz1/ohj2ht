@@ -84,11 +84,13 @@ public class Rekisteri {
     
     
     /**
-     * TODO: Tallentaa rekisterin sisällön tiedostoihin
+     * Tallentaa rekisterin sisällön tiedostoihin
      * @throws SailoException heittää
      */
     public void tallenna() throws SailoException{
         pokemonit.tallenna();
+        elementit.tallenna();
+        iat.tallenna();
     }
     
     
@@ -98,6 +100,8 @@ public class Rekisteri {
      */
     public void lueTiedostosta() throws SailoException {
         pokemonit.lueTiedostosta();
+        elementit.lueTiedostosta();
+        iat.lueTiedostosta();
     }
 
 
