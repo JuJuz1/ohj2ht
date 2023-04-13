@@ -30,7 +30,6 @@ public class Pokemonit {
     private int maxLkm = 8;
     private Pokemon[] taulukko = new Pokemon[maxLkm];
     private boolean muutettu = false;
-    private final String baknimi = "pokemonit.bak";
 
     /**
      * Oletusmuodostaja
@@ -162,20 +161,52 @@ public class Pokemonit {
 
 
     /**
-     * Tallentaa jäsenistön tiedostoon.  Kesken. TODO: Tiedostoon tallennus
+     * Tallentaa pokemonit tiedostoon.
      * @throws SailoException jos talletus epäonnistuu
+     * @example
+     * <pre name="test">
+     *   #THROWS IOException, SailoException
+     *   #import java.io.IOException;
+     *   #import fi.jyu.mit.ohj2.VertaaTiedosto;
+     *   #import java.util.ArrayList;
+     *   String tiedosto = "pokemonitTest.dat";
+     *   String tiedostobak = "pokemonitTest.bak";
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     *   VertaaTiedosto.tuhoaTiedosto(tiedostobak);
+     *   VertaaTiedosto.kirjoitaTiedosto(tiedosto, ";ID|Pokemonin nimi|vahvuus |ikä ID|elementti1 |elementti2 |evoluutio |seuraavan evoluution ID|lisatiedot |\n"
+     *   + "1 |Pikachu       |1337    |1     |6          |0          |2         |5                      |           |\n"
+     *   + "2 |Charizard     |20      |4     |1          |4          |3         |0                      |           |");
+     *   Pokemonit pThrows = new Pokemonit("eiOle");
+     *   pThrows.lueTiedostosta(); #THROWS SailoException
+     *   Pokemonit p = new Pokemonit(tiedosto);
+     *   p.lueTiedostosta();
+     *   p.getLkm() === 2;
+     *   p.getPokemon(0).getNimi() === "Pikachu";
+     *   p.getPokemon(1).getNimi() === "Charizard";
+     *   Pokemon t = new Pokemon();
+     *   t.rekisteroi(); t.vastaa_pikachu();
+     *   p.lisaa(t);
+     *   p.tallenna();
+     *   
+     *   Pokemonit pDat = new Pokemonit(tiedosto);      pDat.lueTiedostosta();
+     *   Pokemonit pBak = new Pokemonit(tiedostobak);   pBak.lueTiedostosta();
+     *   pDat.getPokemon(0).getNimi() === "Pikachu";  pBak.getPokemon(0).getNimi() === "Pikachu";
+     *   
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     *   VertaaTiedosto.tuhoaTiedosto(tiedostobak);
+     * </pre>
      */
     public void tallenna() throws SailoException {
             if ( !muutettu ) return; 
      
-            File fbak = new File(getBakNimi()); 
+            File fbak = new File(getTiedostonNimi().replace(".dat", ".bak")); 
             File ftied = new File(getTiedostonNimi()); 
             fbak.delete(); // if .. System.err.println("Ei voi tuhota"); 
             ftied.renameTo(fbak); // if .. System.err.println("Ei voi nimetä"); 
      
             try ( PrintWriter fo = new PrintWriter(new FileWriter(ftied.getCanonicalPath())) ) { 
-               // fo.println(getKokoNimi()); 
-               // fo.println(pokemonit.length); 
+                fo.println(";ID|Pokemonin nimi|vahvuus |ikä ID|elementti1 |elementti2"
+                +" |evoluutio |seuraavan evoluution ID|lisatiedot |"); 
                 for (int i = 0; i < lkm; i++) { 
                     fo.println(this.getPokemon(i).toString()); 
                 } 
@@ -195,10 +226,6 @@ public class Pokemonit {
         return tiedostoNimi;
     }
     
-    
-    public String getBakNimi() {
-        return baknimi;
-    }
     
     
     /**
