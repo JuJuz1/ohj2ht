@@ -25,7 +25,7 @@ import java.io.PrintWriter;
  */
 public class Pokemonit {
 
-    private final String tiedostoNimi = "pokemonit.dat";
+    private String tiedostoNimi = "pokemonit.dat";
     private int lkm;
     private int maxLkm = 8;
     private Pokemon[] taulukko = new Pokemon[maxLkm];
@@ -37,6 +37,11 @@ public class Pokemonit {
      */
     public Pokemonit() {
         //
+    }
+    
+    
+    public Pokemonit(String tiednimi) {
+        tiedostoNimi = tiednimi;
     }
 
 
@@ -110,13 +115,30 @@ public class Pokemonit {
     /**
      * Lukee jäsenistön tiedostosta.  Kesken. TODO: Tiedostosta luku
      * @throws SailoException jos lukeminen epäonnistuu
+     * @example
+     * <pre name="test">
+     *   #THROWS IOException, SailoException
+     *   #import java.io.IOException;
+     *   #import fi.jyu.mit.ohj2.VertaaTiedosto;
+     *   #import java.util.ArrayList;
+     *   String tiedosto = "pokemonitTest.dat";
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     *   VertaaTiedosto.kirjoitaTiedosto(tiedosto, ";ID|Pokemonin nimi|vahvuus |ikä ID|elementti1 |elementti2 |evoluutio |seuraavan evoluution ID|lisatiedot |\n"
+     *   + "1 |Pikachu       |1337    |1     |6          |0          |2         |5                      |           |\n"
+     *   + "2 |Charizard     |20      |4     |1          |4          |3         |0                      |           |");
+     *   Pokemonit p = new Pokemonit(tiedosto);
+     *   p.lueTiedostosta();
+     *   p.getLkm() === 2;
+     *   p.getPokemon(0).getNimi() === "Pikachu";
+     *   p.getPokemon(1).getNimi() === "Charizard";
+     *   p.getPokemon(0).getElementtiID(1) === 6;
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     * </pre>
     */
     public void lueTiedostosta() throws SailoException {
         try (BufferedReader fi = new BufferedReader(
                 new FileReader(getTiedostonNimi()))) {
-            String rivi = fi.readLine();
-            if (rivi == null)
-                throw new SailoException("Riviä ei saatu luettua");
+            String rivi;
             // int maxKoko = Mjonot.erotaInt(rivi,10); // tehdään jotakin
 
             while ((rivi = fi.readLine()) != null) {

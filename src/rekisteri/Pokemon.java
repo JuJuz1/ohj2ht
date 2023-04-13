@@ -269,7 +269,7 @@ public class Pokemon {
      * Testit pääohjelmassa
      */
     public static String[] parse(String jono) {
-        String[] tiedot = jono.split("\\|");
+        String[] tiedot = jono.split(" *\\| *");
         return tiedot;
     }
     
