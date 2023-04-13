@@ -114,6 +114,7 @@ public class Elementit {
      *   el.etsiElementti(1).getNimi() === "vesi";
      *   el.etsiElementti(2).getVahvuusID() === 4;
      *   el.etsiElementti(3).getHeikkousID() === 4;
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
      * </pre>
      */
     public void lueTiedostosta() {

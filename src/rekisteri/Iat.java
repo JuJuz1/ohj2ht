@@ -112,6 +112,7 @@ public class Iat {
      *   i.etsiIka(1).getIka() === "0-10";
      *   i.etsiIka(2).getIka() === "10-20";
      *   i.etsiIka(4).getIka() === "30-40";
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
      * </pre>
      */
     public void lueTiedostosta() {
