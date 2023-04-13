@@ -8,6 +8,7 @@ import fi.jyu.mit.fxgui.Dialogs;
 import fi.jyu.mit.fxgui.ListChooser;
 import fi.jyu.mit.fxgui.ModalController;
 import fi.jyu.mit.fxgui.TextAreaOutputStream;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
@@ -26,10 +27,8 @@ import rekisteri.SailoException;
  */
 public class PokemonRekisteriGUIController implements Initializable{
 
-    @FXML
-    private TextArea areaLisa;
-    @FXML
-    private ListChooser<Pokemon> chooserPokemonit;
+    @FXML private TextArea areaLisa;
+    @FXML private ListChooser<Pokemon> chooserPokemonit;
     
     
     @Override
@@ -37,72 +36,56 @@ public class PokemonRekisteriGUIController implements Initializable{
         alusta();
     }
 
-    @FXML
-    private void handleTallenna(/*
-                                 * ActionEvent event (ehkä tarvitaan jatkossa)
-                                 */) throws SailoException {
+    @FXML private void handleTallenna(/* ActionEvent event (ehkä tarvitaan jatkossa) */) {
         tallenna();
     }
 
 
-    @FXML
-    private void handleTulosta() {
+    @FXML private void handleTulosta() {
         tulosta();
     }
 
 
-    @FXML
-    private void handleLopeta() {
-        lopeta();
+    @FXML private void handleLopeta() {
+        tallenna();
+        Platform.exit();
     }
 
 
-    @FXML
-    private void handleLisaaPokemon() {
+    @FXML private void handleLisaaPokemon() {
         uusiPokemon();
-        /*ModalController.showModal(
-                PokemonRekisteriGUIController.class
-                        .getResource("PokemonRekisteriLisaaUusi.fxml"),
-                "Pokemonin lisäys", null, "");
-                */
+        /* ModalController.showModal(PokemonRekisteriGUIController.class.getResource
+            ("PokemonRekisteriLisaaUusi.fxml"),"Pokemonin lisäys", null, ""); */
     }
 
 
-    @FXML
-    private void handlePoistaPokemon() {
+    @FXML private void handlePoistaPokemon() {
         Dialogs.showMessageDialog("Ei osata vielä poistaa pokemoneja");
     }
 
 
-    @FXML
-    private void handleApua() {
+    @FXML private void handleApua() {
         Dialogs.showMessageDialog("Ei osata vielä antaa apua");
     }
 
 
-    @FXML
-    private void handleTietoja() {
+    @FXML private void handleTietoja() {
         Dialogs.showMessageDialog("Ei osata vielä antaa tietoja");
     }
 
 
-    @FXML
-    private void handleMuokkaa() {
-        ModalController.showModal(
-                PokemonRekisteriGUIController.class
-                        .getResource("PokemonRekisteriMuokkaaTietoja.fxml"),
-                "Pokemonin muokkaus", null, "");
+    @FXML private void handleMuokkaa() {
+        ModalController.showModal(PokemonRekisteriGUIController.class
+            .getResource("PokemonRekisteriMuokkaaTietoja.fxml"),"Pokemonin muokkaus", null, "");
     }
 
 
-    @FXML
-    private void handleHae() {
+    @FXML private void handleHae() {
         hae();
     }
 
 
-    @FXML
-    private void handlePeruuta() {
+    @FXML private void handlePeruuta() {
         Dialogs.showMessageDialog("Ei osata vielä peruuttaa");
     }
 
@@ -197,22 +180,26 @@ public class PokemonRekisteriGUIController implements Initializable{
     }
 
 
-    // Tallennetaan tiedot
-    private void tallenna() throws SailoException {
-        Dialogs.showMessageDialog("Ei osata vielä tallentaa");
-        rekisteri.tallenna();
+    /**
+     * Tallentaa tiedot (pokemonit, elementit ja iät) jos niihin on tehty muutoksia.
+     * Jos ei muutoksia, tietoja ei tallenneta.
+     * @return null, jos tallentaminen onnistuu, jos on ongelmia, palauttaa virheen tekstinä
+     */
+    private String tallenna() {
+        try {
+            rekisteri.tallenna();
+            return null;
+        } catch (SailoException ex) {
+            Dialogs.showMessageDialog("Tallennuksessa ongelmia: " + ex.getMessage());
+            return ex.getMessage();
+        }
+        
     }
 
 
     // Tulostetaan näkymä
     private void tulosta() {
         Dialogs.showMessageDialog("Ei osata vielä tulostaa");
-    }
-
-
-    // Lopetetaan kyseinen ohjelma
-    private void lopeta() {
-        Dialogs.showMessageDialog("Ei osata vielä lopettaa");
     }
 
 
