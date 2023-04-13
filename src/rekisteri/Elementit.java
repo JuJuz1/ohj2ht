@@ -6,6 +6,9 @@ package rekisteri;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
@@ -25,6 +28,7 @@ public class Elementit {
     // private int maxLkm;
     private String tiedostoNimi = "elementit.dat";
     private final Collection<Elementti> alkiot = new ArrayList<Elementti>();  // Lista elementeille
+    private boolean muutettu = false;
     
     
     /**
@@ -51,6 +55,7 @@ public class Elementit {
      */
     public void lisaa(Elementti elementti) {
         alkiot.add(elementti);
+        muutettu = true;
     }
     
     
@@ -127,6 +132,62 @@ public class Elementit {
         } catch (FileNotFoundException e) {
             throw new SailoException("Tiedostoa ei löydy: " + e.getMessage());
         }
+    }
+    
+    
+    /**
+     * Tallentaa elementit tiedostoon (parametrin tiedostoNimi mukaan)
+     * @throws SailoException Heittää, jos tallennus ei onnistu (tiedosto ei aukea tai ei onnistuta kirjoittamaan)
+     * @example
+     * <pre name="test">
+     *   #THROWS IOException, SailoException
+     *   #import java.io.IOException;
+     *   #import fi.jyu.mit.ohj2.VertaaTiedosto;
+     *   #import java.util.ArrayList;
+     *   String tiedosto = "elementitTest.dat";
+     *   String tiedostobak = tiedosto.replace(".dat", ".bak");
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     *   VertaaTiedosto.tuhoaTiedosto(tiedostobak);
+     *   VertaaTiedosto.kirjoitaTiedosto(tiedosto, ";id|elementti    |vahvuusID  |heikkousID\n 1 |vesi         |2          |6\n 2 |tuli         |4          |1\n 3 |maa          |5          |4");
+     *   Elementit el = new Elementit(tiedosto);
+     *   el.lueTiedostosta();
+     *   el.getLkm() === 3;
+     *   el.etsiElementti(1).getNimi() === "vesi";
+     *   el.etsiElementti(2).getVahvuusID() === 4;
+     *   el.etsiElementti(3).getHeikkousID() === 4;
+     *   el.lisaa(new Elementti(4, "testi", 2, 3));
+     *   el.tallenna();
+     *   
+     *   Elementit eDat = new Elementit(tiedosto);      eDat.lueTiedostosta();
+     *   Elementit eBak = new Elementit(tiedostobak);   eBak.lueTiedostosta();
+     *   eDat.etsiElementti(3).getNimi() === "maa";     eBak.etsiElementti(3).getNimi() === "maa";
+     *   eDat.etsiElementti(4).getNimi() === "testi";   eBak.etsiElementti(4) === null;
+     *   
+     *   VertaaTiedosto.tuhoaTiedosto(tiedosto);
+     *   VertaaTiedosto.tuhoaTiedosto(tiedostobak);
+     * </pre>
+     */
+    public void tallenna() throws SailoException {
+            if ( !muutettu ) return; 
+     
+            File fBak = new File(getTiedostoNimi().replace(".dat", ".bak")); 
+            File fDat = new File(getTiedostoNimi()); 
+            fBak.delete();
+            fDat.renameTo(fBak); 
+     
+            try ( PrintWriter fo = new PrintWriter(new FileWriter(fDat.getCanonicalPath())) ) { 
+                fo.println(";id|ika");
+                for (int i = 1; i <= this.getLkm(); i++) { 
+                    Elementti e = etsiElementti(i);
+                    fo.println(String.format("% 3d|%s|%d            |%d", e.getID(), e.getNimi(), e.getVahvuusID(), e.getHeikkousID())); 
+                }
+            } catch ( FileNotFoundException ex ) { 
+                throw new SailoException("Tiedosto " + fDat.getName() + " ei aukea"); 
+            } catch ( IOException ex ) { 
+                throw new SailoException("Tiedoston " + fDat.getName() + " kirjoittamisessa ongelmia"); 
+            } 
+     
+            muutettu = false; 
     }
     
     
