@@ -82,6 +82,7 @@ public class Pokemonit {
             }
 
             taulukko = uusitaulukko;
+            maxLkm = uusikoko;
 
         }
         taulukko[lkm] = pokemon;

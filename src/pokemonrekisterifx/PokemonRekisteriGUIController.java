@@ -195,6 +195,33 @@ public class PokemonRekisteriGUIController implements Initializable{
         }
         
     }
+    
+    
+    /**
+     * Tarkistaa onko tiedot tallennettu (ennen ohjelman sulkemista)
+     * @return true, jos on tallennettu ja sovelluksen voi sulkea
+     */
+    public boolean voikoSulkea() {
+        this.tallenna();
+        return true;
+    }
+    
+    
+    /**
+     * Lukee tiedot (pokemonit, elementit ja iät) tiedostosta.
+     * @return null, jos onnistuu, jos on ongelmia, palauttaa virheen tekstinä
+     */
+    protected String lueTiedostosta() {
+        try {
+            rekisteri.lueTiedostosta();
+            hae(0);
+            return null;
+        } catch (SailoException ex) {
+            hae(0);
+            Dialogs.showMessageDialog("Tiedostosta lukemisessa ongelmia: " + ex.getMessage());
+            return ex.getMessage();
+        }
+    }
 
 
     // Tulostetaan näkymä

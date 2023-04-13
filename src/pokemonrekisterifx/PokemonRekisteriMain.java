@@ -25,13 +25,19 @@ public class PokemonRekisteriMain extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("PokemonRekisteri");
             
+            primaryStage.setOnCloseRequest((event) -> {
+                if ( !rekisteriCtrl.voikoSulkea() ) event.consume();
+            });
+            
             Rekisteri rekisteri = new Rekisteri();
             rekisteriCtrl.setRekisteri(rekisteri);
             // alustuksia käytetään, kun tulostetaan pokemonin tiedot HT5
-            rekisteriCtrl.alustaElementit(); // TODO: poista kun ei enää tarvita
-            rekisteriCtrl.alustaIat(); // TODO: poista kun ei enää tarvita
+            // rekisteriCtrl.alustaElementit(); // TODO: poista kun ei enää tarvita
+            // rekisteriCtrl.alustaIat(); // TODO: poista kun ei enää tarvita
             
             primaryStage.show();
+            
+            rekisteriCtrl.lueTiedostosta();
         } catch(Exception e) {
             e.printStackTrace();
         }
