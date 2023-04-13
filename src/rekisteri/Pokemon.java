@@ -6,14 +6,16 @@ package rekisteri;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import fi.jyu.mit.ohj2.Mjonot;
+
 /**
  * Sisältää pokemonin tiedot (attribuutit). 
  * Osaa antaa pokemonille uniikin ID:n (rekisteroi). 
  * Osaa tarkistaa kenttään syötettävän tiedon oikeellisuuden. 
- * TODO: Osaa muuttaa merkkijonon pokemonin tiedoiksi. 
+ * Osaa muuttaa merkkijonon pokemonin tiedoiksi. 
  * Osaa antaa pokemonin tiedot merkkijonona.
  * TODO: Osaa antaa i:nnen kentän tiedon.
- * TODO: Osaa asettaa merkkijonon kentän sisällöksi.
+ * Osaa asettaa merkkijonon kentän sisällöksi.
  * @author Juuso Piippo & Elias Lehtinen
  * @version 15.3.2023
  *
@@ -25,7 +27,7 @@ public class Pokemon {
     private int vahvuus;                // Lukuarvo, joka kuvaa pokemonin vahvuutta taistelussa
     private int ikaID;                  // Liittää pokemoniin yhden ikaryhmän erillisestä tiedostosta
     private int elementtiID1;           // Liittää pokemoniin elementin toisesta tiedostosta
-    private int elementtiID2;           // -//-
+    private int elementtiID2;           // -||-
     private int evoluutio;              // Kuinka mones evoluutio (1-3)
     private int evoluutioIDseuraava;    // Pokemonin seuraavan evoluution ID (0 jos ei ole)
     private String lisatiedot;          // Mitä tahansa lisätietoa pokemonista
@@ -38,6 +40,32 @@ public class Pokemon {
      */
     public Pokemon() {
         // Attribuuttien arvot asetetaan vastaa_pikachu()-metodilla ja myöhemmin käyttäjän syötteestä
+    }
+    
+    
+    /**
+     * Muodostaja tiedostosta
+     * @param rivi rivi
+     * @example
+     * <pre name="test">
+     *      Pokemon uusi = new Pokemon("3|Uusi|69|2|3|1|8|Olen uusi");
+     *      uusi.getNimi() === "Uusi"; uusi.getElementtiID(2) === 1;
+     *      uusi.getIkaID() === 2;
+     * </pre>
+     */
+    public Pokemon(String rivi) {
+        String[] tiedot = parse(rivi);
+        
+        this.rekisteroi();
+        // Ei käytetä ID (eli indeksiä 0)
+        nimi = tiedot[1];
+        vahvuus = Mjonot.erotaInt(tiedot[2], -1);
+        ikaID = Mjonot.erotaInt(tiedot[3], -1);
+        elementtiID1 = Mjonot.erotaInt(tiedot[4], -1);
+        elementtiID2 = Mjonot.erotaInt(tiedot[5], -1);
+        evoluutio = Mjonot.erotaInt(tiedot[6], -1);
+        evoluutioIDseuraava = Mjonot.erotaInt(tiedot[7], -1);
+        lisatiedot = tiedot[7];
     }
     
     
@@ -235,6 +263,42 @@ public class Pokemon {
     
     
     /**
+     * Pilkkoo pokemonin tiedot taulukkoon
+     * @param jono annettu merkkijono
+     * @return tiedot merkkijonossa
+     * Testit pääohjelmassa
+     */
+    public static String[] parse(String jono) {
+        String[] tiedot = jono.split("\\|");
+        return tiedot;
+    }
+    
+    
+    /**
+     * Muutetaan pokemonin tiedot tiedostoon tallennettavaksi
+     * @example
+     * <pre name="test">
+     *      Pokemon uusi = new Pokemon("2|Pika|12|3|1|2|3|0|valiaikainen");
+     *      uusi.rekisteroi();
+     *      uusi.toString().startsWith("2|Pika|12|") === true;
+     *      uusi.toString().startsWith("2|Aku|12|") === false;
+     * </pre>
+     */
+    @Override
+    public String toString() {
+        return getID() + "|"
+                + getNimi() + "|"
+                + vahvuus + "|"
+                + getIkaID() + "|"
+                + getElementtiID(1) + "|"
+                + getElementtiID(2) + "|"
+                + evoluutio + "|"
+                + evoluutioIDseuraava + "|"
+                + lisatiedot;
+    }
+    
+    
+    /**
      * Testipääohjelma Pokemon-luokalle
      * @param args ei kayt.
      */
@@ -250,7 +314,14 @@ public class Pokemon {
         charizard.vastaa_pikachu();
         pikachu.tulosta(System.out);
         charizard.tulosta(System.out);
-    
+        
+        String rivi = "1 |Pikachu       |1337    |1     |6          "
+                + "|0          |2         |5                      |           |";
+        String[] tiedot = parse(rivi);
+        
+        for (String tieto : tiedot) {
+            System.out.println(tieto);
+        }
     }
 
 }
