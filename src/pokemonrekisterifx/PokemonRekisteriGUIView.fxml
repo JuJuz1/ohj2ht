@@ -309,18 +309,18 @@
                                        </rowConstraints>
                                        <children>
                                           <Label text="Nimi: " GridPane.rowIndex="1" />
-                                          <TextField text="Pikachu --&gt; Raichu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                          <TextField fx:id="editNimiEv1" text="Pikachu --&gt; Raichu" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
                                           <Label text="Elementi(t):" GridPane.rowIndex="2" />
-                                          <TextField text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="editElementti1Ev1" text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="editElementti2Ev1" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
@@ -328,22 +328,22 @@
                                           <Label text="Vahvuus:" GridPane.rowIndex="4" />
                                           <Label text="Ikä:" GridPane.rowIndex="5" />
                                           <Label text="Lisätiedot:" GridPane.rowIndex="7" />
-                                          <TextField text="1234 --&gt; 2312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <TextField fx:id="editVahvuusEv1" text="1234 --&gt; 2312" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                          <TextField fx:id="editIkaEv1" text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextArea minHeight="-Infinity" prefHeight="81.0" prefWidth="200.0" text="Suurempi&#10;jännite" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                          <TextArea fx:id="areaLisaEv1" minHeight="-Infinity" prefHeight="81.0" prefWidth="200.0" text="Suurempi&#10;jännite" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextArea>
-                                          <TextField text="2 --&gt; 3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                          <TextField fx:id="editEvoluutioEv1" text="2 --&gt; 3" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
@@ -372,18 +372,18 @@
                                        </rowConstraints>
                                        <children>
                                           <Label text="Nimi: " GridPane.rowIndex="1" />
-                                          <TextField text="Raichu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                          <TextField fx:id="editNimiEv2" text="Raichu" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
                                           <Label text="Elementi(t):" GridPane.rowIndex="2" />
-                                          <TextField text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="editElementti1Ev2" text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="editElementti2Ev2" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
@@ -391,22 +391,22 @@
                                           <Label text="Vahvuus:" GridPane.rowIndex="4" />
                                           <Label text="Ikä:" GridPane.rowIndex="5" />
                                           <Label text="Lisätiedot:" GridPane.rowIndex="7" />
-                                          <TextField text="2312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <TextField fx:id="editVahvuusEv2" text="2312" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                          <TextField fx:id="editIkaEv2" text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextArea prefHeight="200.0" prefWidth="200.0" text="Suurempi&#10;jännite" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                          <TextArea fx:id="areaLisaEv2" prefHeight="200.0" prefWidth="200.0" text="Suurempi&#10;jännite" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextArea>
-                                          <TextField text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                          <TextField fx:id="editEvoluutioEv2" text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
@@ -445,18 +445,18 @@
                                       </rowConstraints>
                                        <children>
                                           <Label text="Nimi: " />
-                                          <TextField text="Pikachu" GridPane.columnIndex="1">
+                                          <TextField fx:id="editNimi" text="Pikachu" GridPane.columnIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
                                           <Label text="Elementi(t):" GridPane.rowIndex="1" />
-                                          <TextField text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                          <TextField fx:id="editElementti1" text="Sähkö" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="editElementti2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
@@ -464,12 +464,12 @@
                                           <Label text="Vahvuus:" GridPane.rowIndex="3" />
                                           <Label text="Ikä:" GridPane.rowIndex="4" />
                                           <Label text="Lisätiedot:" GridPane.rowIndex="6" />
-                                          <TextField text="1234" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="editVahvuus" text="1234" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <TextField fx:id="editIka" text="31" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
@@ -499,7 +499,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </Button>
-                                          <TextField text="2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                          <TextField fx:id="editEvoluutio" text="2" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
