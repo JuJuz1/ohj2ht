@@ -14,13 +14,13 @@ import java.io.PrintWriter;
 /**
  * Sisältää taulukon pokemoneja (ja pokemonien lukumäärän sekä taulukon pituuden).
  * Taulukon koko kasvaa automaattisesti tarpeen mukaan.
- * Osaa lisätä ja TODO: poistaa pokemonin.
+ * Osaa lisätä ja poistaa pokemonin.
  * TODO: Osaa lajitella pokemonit järjestykseen nimen, iän tai vahvuuden mukaan.
  * TODO: Osaa etsiä pokemoneja taulukosta nimen perusteella.
  * Lukee ja kirjoittaa pokemonit tiedostoon
  * TODO: Osaa vertailla kahta pokemonia kaksintaistelussa
  * @author Juuso Piippo & Elias Lehtinen
- * @version 13.4.2023
+ * @version 26.4.2023
  *
  */
 public class Pokemonit {
@@ -129,6 +129,7 @@ public class Pokemonit {
             }
         }
         if (i2 > -1) lkm--;
+        muutettu = true;
     }
     
 

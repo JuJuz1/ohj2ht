@@ -296,6 +296,70 @@ public class Pokemon implements Cloneable{
     
     
     /**
+     * Asetetaan pokemonin nimi
+     * @param nimi Uusi nimi
+     * @return null, jos onnistui. Muuten virhe merkkijonona
+     */
+    public String setNimi(String nimi) {
+        if (tarkistaNimi(nimi)) {
+            this.nimi = nimi;
+            return null;
+        }
+        return "Nimi ei ole oikean muotoinen";
+    }
+    
+    
+    // TODO: setElementti(String elementti, int nro)
+    
+    
+    /**
+     * Asettaa pokemonin vahvuuden
+     * @param vahvuusS Uusi vahvuus
+     * @return null, jos onnistuu, muuten virhe merkkijonona
+     */
+    public String setVahvuus(String vahvuusS) {
+        int vahvuusI = Mjonot.erotaInt(vahvuusS, -1);
+        if (tarkistaVahvuus(vahvuusI)) {
+            this.vahvuus = vahvuusI;
+            return null;
+        }
+        return "Vahvuus ei ole oikean muotoinen";
+    }
+    
+    
+    // TODO: setIka(String ika)
+    
+    
+    /**
+     * Asettaa pokemonin evoluution
+     * @param evoluutioS Evoluution numero
+     * @return null, jos onnistuu. Muuten virhe merkkijonona
+     */
+    public String setEvoluutio(String evoluutioS) {
+        int evoluutioI = Mjonot.erotaInt(evoluutioS, -1);
+        if (tarkistaEvoluutio(evoluutioI)) {
+            this.evoluutio = evoluutioI;
+            return null;
+        }
+        return "Anna luku 1, 2 tai 3";
+    }
+    
+    
+    // TODO: setEvoluutioIDSeuraava(String evID)
+    
+    
+    /**
+     * Asettaa pokemonin lisätiedot
+     * @param tiedot Lisätiedot merkkijonona
+     * @return null, jos onnistuu
+     */
+    public String setLisatiedot(String tiedot) {
+        this.lisatiedot = tiedot;
+        return null;
+    }
+    
+    
+    /**
      * Pilkkoo pokemonin tiedot taulukkoon
      * @param jono annettu merkkijono
      * @return tiedot merkkijonossa
