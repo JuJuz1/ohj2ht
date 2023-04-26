@@ -31,9 +31,6 @@ public class PokemonRekisteriMain extends Application {
             
             Rekisteri rekisteri = new Rekisteri();
             rekisteriCtrl.setRekisteri(rekisteri);
-            // alustuksia käytetään, kun tulostetaan pokemonin tiedot HT5
-            // rekisteriCtrl.alustaElementit(); // TODO: poista kun ei enää tarvita
-            // rekisteriCtrl.alustaIat(); // TODO: poista kun ei enää tarvita
             
             primaryStage.show();
             

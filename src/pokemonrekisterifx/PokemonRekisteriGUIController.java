@@ -102,24 +102,6 @@ public class PokemonRekisteriGUIController implements Initializable{
         this.rekisteri = rekisteri;
         naytaPokemon();
     }
-    
-    
-    /**
-     * Alustaa Elementit-olion muutamalla elementillä kokeilua varten
-     * TODO: poista kun ei enää tarvita
-     */
-    public void alustaElementit() {
-        rekisteri.getElementit().alustaElementeilla();
-    }
-    
-    
-    /**
-     * Alustaa Iat-olion muutamalla ikäluokalla kokeilua varten
-     * TODO: poista kun ei enää tarvita
-     */
-    public void alustaIat() {
-        rekisteri.getIat().alustaIkaLuokilla();
-    }
 
 
     /**
