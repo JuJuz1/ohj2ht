@@ -135,17 +135,44 @@ public class PokemonRekisteriGUIController implements Initializable{
      */
     protected void naytaPokemon() {
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
-        
         if (pokemon == null) return;
+        int evoluutio = pokemon.getEvoluutio();
+        Pokemon ev1 = pokemon;
+        Pokemon ev2 = pokemon;
+        if (evoluutio < 3) ev1 = rekisteri.etsiPokemon(pokemon.getEvoluutioIDSeuraava());
+        if (evoluutio < 2) ev2 = rekisteri.etsiPokemon(ev1.getEvoluutioIDSeuraava());
+        
         editNimi.setText(pokemon.getNimi());
         editElementti1.setText(rekisteri.annaElementti(pokemon, 1));
         editElementti2.setText(rekisteri.annaElementti(pokemon, 2));
         editVahvuus.setText(""+pokemon.getVahvuus());
         editIka.setText(rekisteri.annaIka(pokemon));
-        editEvoluutio.setText(""+pokemon.getEvoluutio());
+        editEvoluutio.setText(""+evoluutio);
         areaLisa.setText(pokemon.getLisatiedot());
         
-        // TODO: seuraavat evoluutiot
+        if (ev1 != null && ev1 != pokemon) {
+            editNimiEv1.setText(ev1.getNimi());
+            editElementti1Ev1.setText(rekisteri.annaElementti(ev1, 1));
+            editElementti2Ev1.setText(rekisteri.annaElementti(ev1, 2));
+            editVahvuusEv1.setText(""+ev1.getVahvuus());
+            editIkaEv1.setText(rekisteri.annaIka(ev1));
+            editEvoluutioEv1.setText(""+ev1.getEvoluutio());
+            areaLisaEv1.setText(ev1.getLisatiedot());
+        } else {
+            tyhjennaEvol1();
+        }
+        
+        if (ev2 != null && ev2 != pokemon) {
+            editNimiEv2.setText(ev2.getNimi());
+            editElementti1Ev2.setText(rekisteri.annaElementti(ev2, 1));
+            editElementti2Ev2.setText(rekisteri.annaElementti(ev2, 2));
+            editVahvuusEv2.setText(""+ev2.getVahvuus());
+            editIkaEv2.setText(rekisteri.annaIka(ev2));
+            editEvoluutioEv2.setText(""+ev2.getEvoluutio());
+            areaLisaEv2.setText(ev2.getLisatiedot());
+        } else {
+            tyhjennaEvol2();
+        }
         /*
         if (pokemonKohdalla == null)
             return;
@@ -157,6 +184,48 @@ public class PokemonRekisteriGUIController implements Initializable{
             rekisteri.tulostaIka(pokemonKohdalla, os);
         }
         */
+    }
+    
+    
+    /**
+     * Tyhjentää kentät jotka näyttävät valitun pokemonin tiedot
+     */
+    protected void tyhjennaPokemon() {
+        editNimi.setText("");
+        editElementti1.setText("");
+        editElementti2.setText("");
+        editVahvuus.setText("");
+        editIka.setText("");
+        editEvoluutio.setText("");
+        areaLisa.setText("");
+    }
+    
+    
+    /**
+     * Tyhjentää kentät jotka näyttävät seuraavan evoluution tiedot
+     */
+    protected void tyhjennaEvol1() {
+        editNimiEv1.setText("");
+        editElementti1Ev1.setText("");
+        editElementti2Ev1.setText("");
+        editVahvuusEv1.setText("");
+        editIkaEv1.setText("");
+        editEvoluutioEv1.setText("");
+        areaLisaEv1.setText("");
+    }
+    
+    
+    /**
+     * Tyhjentää kentät jotka näyttävät viimeisen evoluution tiedot
+     */
+    protected void tyhjennaEvol2() {
+        editNimiEv2.setText("");
+        editElementti1Ev2.setText("");
+        editElementti2Ev2.setText("");
+        editVahvuusEv2.setText("");
+        editIkaEv2.setText("");
+        editEvoluutioEv2.setText("");
+        areaLisaEv2.setText("");
     }
 
 

@@ -288,6 +288,14 @@ public class Pokemon {
     
     
     /**
+     * @return seuraavan evoluution id
+     */
+    public int getEvoluutioIDSeuraava() {
+        return evoluutioIDseuraava;
+    }
+    
+    
+    /**
      * Pilkkoo pokemonin tiedot taulukkoon
      * @param jono annettu merkkijono
      * @return tiedot merkkijonossa
