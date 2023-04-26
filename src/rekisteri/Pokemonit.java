@@ -48,7 +48,7 @@ public class Pokemonit {
 
 
     /**
-     * Lisaa pokemonin taulukkoon
+     * Lisaa pokemonin taulukkoon. Jos samalla ID:llä löytyy pokemon, se korvataan
      * @param pokemon pokemon joka lisataan
      * @example
      * <pre name="test">
@@ -91,6 +91,46 @@ public class Pokemonit {
         muutettu = true;
     }
 
+    
+    /**
+     * Poistaa pokemonin taulukosta id:n perusteella
+     * @param id Poistettavan ID
+     * @example
+     * <pre name="test">
+     *      #THROWS SailoException 
+     *      Pokemonit pokemonit = new Pokemonit();
+     *      Pokemon pikachu = new Pokemon();
+     *      Pokemon charizard = new Pokemon();
+     *      Pokemon pikachu2 = new Pokemon();
+     *      charizard.vastaa_pikachu();
+     *      pokemonit.getLkm() === 0;
+     *      pokemonit.lisaa(pikachu); 
+     *      pokemonit.getLkm() === 1;
+     *      pokemonit.lisaa(charizard);
+     *      pokemonit.getLkm() === 2;
+     *      pokemonit.lisaa(pikachu2);
+     *      pokemonit.getLkm() === 3;
+     *      pokemonit.getPokemon(0) === pikachu;
+     *      pokemonit.getPokemon(1) === charizard;
+     *      pokemonit.getPokemon(2) === pikachu2;
+     *      pokemonit.poista(charizard.getID());
+     *      pokemonit.getLkm() === 2;
+     *      pokemonit.getPokemon(1) === pikachu2;
+     * </pre>
+     */
+    public void poista(int id) {
+        int i, i2 = -1;
+        for (i = 0; i < lkm; i++) {
+            if (taulukko[i].getID() == id && i2 == -1) {
+                i2 = i;
+            } else if (i2 > -1) {
+                taulukko[i2] = taulukko[i];
+                i2++;
+            }
+        }
+        if (i2 > -1) lkm--;
+    }
+    
 
     /**
      * @return Olion sisältämien pokemonien lkm
