@@ -20,7 +20,7 @@ import fi.jyu.mit.ohj2.Mjonot;
  * @version 13.4.2023
  *
  */
-public class Pokemon {
+public class Pokemon implements Cloneable{
     
     private int ID;                     // ID-luku, jolla voidaan erottaa pokemon muista. (ID = 0 on oletus ja tarkoittaa virheellistä)
     private String nimi;                // Pokemonin nimi
@@ -328,6 +328,15 @@ public class Pokemon {
                 + evoluutio + "|"
                 + evoluutioIDseuraava + "|"
                 + lisatiedot;
+    }
+    
+    
+    
+    @Override
+    public Pokemon clone() throws CloneNotSupportedException {
+        Pokemon uusi;
+        uusi = (Pokemon) super.clone();
+        return uusi;
     }
     
     

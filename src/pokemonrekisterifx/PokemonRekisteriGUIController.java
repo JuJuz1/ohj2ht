@@ -101,8 +101,7 @@ public class PokemonRekisteriGUIController implements Initializable{
 
 
     @FXML private void handleMuokkaa() {
-        ModalController.showModal(PokemonRekisteriGUIController.class
-            .getResource("PokemonRekisteriMuokkaaTietoja.fxml"),"Pokemonin muokkaus", null, "");
+        muokkaa();
     }
 
 
@@ -128,10 +127,34 @@ public class PokemonRekisteriGUIController implements Initializable{
         this.rekisteri = rekisteri;
         naytaPokemon();
     }
+    
+    
+    /**
+     * Pokemonin tietojen muokkaus
+     */
+    public void muokkaa() {
+        /*
+        Pokemon pokemon = chooserPokemonit.getSelectedObject();
+        if ( pokemon == null ) return; 
+        try { 
+            pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon); 
+            if ( pokemon == null ) return; 
+            rekisteri.korvaaTaiLisaa(pokemon); 
+            hae(pokemon.getID()); 
+        } catch (CloneNotSupportedException e) { 
+            // 
+        } catch (SailoException e) { 
+            Dialogs.showMessageDialog(e.getMessage()); 
+        } 
+        // ModalController.showModal(PokemonRekisteriGUIController.class
+        //        .getResource("PokemonRekisteriMuokkaaTietoja.fxml"),"Pokemonin muokkaus", null, "");
+        
+        */
+    }
 
 
     /**
-     * Nayttaa valitun pokemonin textareassa lisatiedot
+     * Nayttaa valitun pokemonin tiedot ja seuraavat evoluutiot
      */
     protected void naytaPokemon() {
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
