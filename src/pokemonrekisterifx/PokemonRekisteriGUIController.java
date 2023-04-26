@@ -133,23 +133,20 @@ public class PokemonRekisteriGUIController implements Initializable{
      * Pokemonin tietojen muokkaus
      */
     public void muokkaa() {
-        /*
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
-        if ( pokemon == null ) return; 
+        if ( pokemon == null ) return;
         try { 
-            pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon); 
-            if ( pokemon == null ) return; 
-            rekisteri.korvaaTaiLisaa(pokemon); 
-            hae(pokemon.getID()); 
-        } catch (CloneNotSupportedException e) { 
+            pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon);
+            if ( pokemon == null ) return;
+            rekisteri.korvaaTaiLisaa(pokemon);
+            hae(pokemon.getID());
+        } catch (CloneNotSupportedException e) {
             // 
         } catch (SailoException e) { 
             Dialogs.showMessageDialog(e.getMessage()); 
         } 
         // ModalController.showModal(PokemonRekisteriGUIController.class
         //        .getResource("PokemonRekisteriMuokkaaTietoja.fxml"),"Pokemonin muokkaus", null, "");
-        
-        */
     }
 
 

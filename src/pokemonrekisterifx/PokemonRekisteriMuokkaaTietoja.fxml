@@ -59,32 +59,32 @@
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
             </TextArea>
-            <CheckBox mnemonicParsing="false" text="Maa" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <CheckBox fx:id="cbElementti3" mnemonicParsing="false" text="Maa" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Vesi" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <CheckBox fx:id="cbElementti1" mnemonicParsing="false" text="Vesi" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Ruoho" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <CheckBox fx:id="cbElementti5" mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Tuli" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <CheckBox fx:id="cbElementti2" mnemonicParsing="false" text="Tuli" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <CheckBox fx:id="cbElementti6" mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <CheckBox fx:id="cbElementti4" mnemonicParsing="false" text="Ruoho" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

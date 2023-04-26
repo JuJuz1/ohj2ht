@@ -12,6 +12,7 @@ import fi.jyu.mit.fxgui.TextAreaOutputStream;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -39,21 +40,12 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     @FXML private TextField editEvoluutio;
     @FXML private TextArea  areaLisa;
     
-    @FXML private TextField editNimiEv1;
-    @FXML private TextField editElementti1Ev1;
-    @FXML private TextField editElementti2Ev1;
-    @FXML private TextField editVahvuusEv1;
-    @FXML private TextField editIkaEv1;
-    @FXML private TextField editEvoluutioEv1;
-    @FXML private TextArea  areaLisaEv1;
-    
-    @FXML private TextField editNimiEv2;
-    @FXML private TextField editElementti1Ev2;
-    @FXML private TextField editElementti2Ev2;
-    @FXML private TextField editVahvuusEv2;
-    @FXML private TextField editIkaEv2;
-    @FXML private TextField editEvoluutioEv2;
-    @FXML private TextArea  areaLisaEv2;
+    @FXML private CheckBox cbElementti1;
+    @FXML private CheckBox cbElementti2;
+    @FXML private CheckBox cbElementti3;
+    @FXML private CheckBox cbElementti4;
+    @FXML private CheckBox cbElementti5;
+    @FXML private CheckBox cbElementti6;
     
     @FXML private static Label labelVirhe;
     
@@ -83,6 +75,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     private Pokemon pokemonKohdalla;
     private Rekisteri rekisteri;
     private TextField[] edits;
+    private CheckBox[] elementit;
     
 
     /**
@@ -93,12 +86,32 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     protected void alusta() {
         edits = new TextField[]{editNimi, editElementti1, editElementti2, editVahvuus,
                 editIka, editEvoluutio};
+        elementit = new CheckBox[]{cbElementti1, cbElementti2, cbElementti3, cbElementti4, 
+                cbElementti5, cbElementti6};
         int i = 0;
         for (TextField edit : edits) {
             final int k = ++i;
             edit.setOnKeyReleased(e -> kasitteleMuutosPokemoniin(k, (TextField)(e.getSource())));
         }
         
+        i = 0;
+        for (CheckBox ele : elementit) {
+            final int k = ++i;
+            ele.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                kasitteleMuutosPokemoniinCB(k, newValue);
+            });}
+    }
+    
+    /**
+     * @param k elementin kentän id
+     * @param arvo uusi arvo
+     */
+    public void kasitteleMuutosPokemoniinCB(int k, boolean arvo) {
+        if (pokemonKohdalla == null) return;
+        if (arvo) {
+            //pokemonKohdalla.setElementtiID1(k);
+            // jne.
+        }
     }
     
     /**
@@ -107,17 +120,16 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      * @param edit se textfield jota muokataan
      */
     public void kasitteleMuutosPokemoniin(int k, TextField edit) {
-        /*
         if (pokemonKohdalla == null) return;
         String s = edit.getText();
         String virhe = null;
         switch (k) {
             case 1 : virhe = pokemonKohdalla.setNimi(s); break;
-            case 2 : virhe = pokemonKohdalla.setElementti1(s); break;
-            case 3 : virhe = pokemonKohdalla.setElementti2(s); break;
+            //case 2 : virhe = pokemonKohdalla.setElementti1(s); break;
+            //case 3 : virhe = pokemonKohdalla.setElementti2(s); break;
             case 4 : virhe = pokemonKohdalla.setVahvuus(s); break;
         default:
-     }
+        }
         if (virhe == null) {
             Dialogs.setToolTipText(edit,"");
             edit.getStyleClass().removeAll("virhe");
@@ -127,8 +139,6 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             edit.getStyleClass().add("virhe");
             naytaVirhe(virhe);
         }
-        */
-
     }
 
 
