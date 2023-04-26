@@ -16,7 +16,8 @@ import java.util.Scanner;
 /**
  * Sisältää listan elementeistä
  * Osaa lisätä elementin
- * TODO: Lukee elementit tiedostosta
+ * Lukee elementit tiedostosta
+ * Tallentaa elementin tiedostoon
  * Osaa etsiä elementin ID:n perusteella
  * @author Juuso Piippo & Elias Lehtinen
  * @version 13.4.2023
@@ -193,6 +194,7 @@ public class Elementit {
     
     /**
      * Alustaa Elementit-olion kolmella elementillä kokeilua varten
+     * TODO: poista
      */
     public void alustaElementeilla() {
         this.alkiot.clear();

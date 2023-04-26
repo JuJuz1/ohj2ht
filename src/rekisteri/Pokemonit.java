@@ -222,6 +222,9 @@ public class Pokemonit {
     }
 
 
+    /**
+     * @return tiedoston nimi
+     */
     public String getTiedostonNimi() {
         return tiedostoNimi;
     }
@@ -248,6 +251,20 @@ public class Pokemonit {
             Pokemon temp = this.getPokemon(i);
             if (nimi.toLowerCase().equals(
                     temp.getNimi().toLowerCase())) return temp;
+        }
+        return null;
+    }
+    
+    
+    /**
+     * Etsii pokemonin id:n perusteella
+     * @param id Etsittävän pokemonin id
+     * @return Pokemon, null jos ei löydy
+     */
+    public Pokemon etsiPokemon(int id) {
+        for (int i = 0; i < lkm; i++) {
+            Pokemon p = taulukko[i];
+            if (p.getID() == id) return p;
         }
         return null;
     }

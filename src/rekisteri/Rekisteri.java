@@ -29,6 +29,16 @@ public class Rekisteri {
     
     
     /**
+     * Etsii pokemonin id:n perusteella
+     * @param id Pokemonin id
+     * @return Pokemon, null jos ei löydy
+     */
+    public Pokemon etsiPokemon(int id) {
+        return pokemonit.etsiPokemon(id);
+    }
+    
+    
+    /**
      * @return Elementit-olio
      */
     public Elementit getElementit() {
@@ -164,6 +174,7 @@ public class Rekisteri {
 
     /**
      * Palauttaa pokemonin elementit merkkijonona
+     * TODO: poista kun ei tarvita
      * @param pokemon Pokemon
      * @return Elementit merkkijonona
      * @example
@@ -192,8 +203,46 @@ public class Rekisteri {
     
     
     /**
+     * Palauttaa pokemonin halutun elementin merkkijonona
+     * @param pokemon Pokemon
+     * @param elementtiNro 1 jos halutaan 1. elementti ja 2 jos halutaan 2.
+     * @return Elementti merkkijonona. Jos elementtiNro ei ole 1 tai 2 tai jos elementtiä ei ole, palautetaan "".
+     * @example
+     * <pre name="test">
+     *  Rekisteri r = new Rekisteri();
+     *  r.getElementit().alustaElementeilla();
+     *  Pokemon p = new Pokemon();
+     *  p.vastaa_pikachu();
+     *  r.annaElementti(p, 1) === "tuli";
+     *  r.annaElementti(p, 2) === "maa";
+     *  r.annaElementti(p, 5) === "";
+     * </pre>
+     */
+    public String annaElementti(Pokemon pokemon, int elementtiNro) {
+        int id = pokemon.getElementtiID(elementtiNro);
+        Elementti e = elementit.etsiElementti(id);
+        String eJono = "";
+        if (e != null) eJono = e.getNimi();
+        return eJono;
+    }
+    
+    
+    /**
+     * Palauttaa pokemonin ikäryhmän
+     * @param pokemon Pokemon, jonka ika palautetaan
+     * @return Pokemonin ikaryhmä merkkijonona
+     */
+    public String annaIka(Pokemon pokemon) {
+        Ika ika = iat.etsiIka(pokemon.getIkaID());
+        if (ika == null) return "";
+        return ika.getIka();
+    }
+    
+    
+    /**
      * Tulostaa pokemonin iän.
      * Käytetään Ika-olion ja pokemonin linkittämisen testaamiseen.
+     * TODO: poista kun ei tarvita
      * @param pokemon Pokemon, jonka ikä tulostetaan
      * @param ps Tietovirta, johon tulostetaan
      */

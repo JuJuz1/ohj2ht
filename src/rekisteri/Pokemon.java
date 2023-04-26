@@ -262,6 +262,30 @@ public class Pokemon {
         return nimi;
     }
     
+
+    /**
+     * @return Vahvuus
+     */
+    public int getVahvuus() {
+        return vahvuus;
+    }
+    
+    
+    /**
+     * @return evoluutio
+     */
+    public int getEvoluutio() {
+        return evoluutio;
+    }
+    
+    
+    /**
+     * @return lisatiedot
+     */
+    public String getLisatiedot() {
+        return lisatiedot;
+    }
+    
     
     /**
      * Pilkkoo pokemonin tiedot taulukkoon
@@ -324,5 +348,4 @@ public class Pokemon {
             System.out.println(tieto);
         }
     }
-
 }

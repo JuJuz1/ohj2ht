@@ -11,8 +11,10 @@ import fi.jyu.mit.fxgui.TextAreaOutputStream;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import rekisteri.Pokemon;
 import rekisteri.Rekisteri;
@@ -22,14 +24,38 @@ import rekisteri.SailoException;
 
 /**
  * @author Juuso Piippo & Elias Lehtinen
- * @version 15.3.2023
+ * @version 26.4.2023
  *
  */
 public class PokemonRekisteriGUIController implements Initializable{
 
-    @FXML private TextArea areaLisa;
     @FXML private ListChooser<Pokemon> chooserPokemonit;
     
+    @FXML private TextField editNimi;
+    @FXML private TextField editElementti1;
+    @FXML private TextField editElementti2;
+    @FXML private TextField editVahvuus;
+    @FXML private TextField editIka;
+    @FXML private TextField editEvoluutio;
+    @FXML private TextArea areaLisa;
+    
+    @FXML private TextField editNimiEv1;
+    @FXML private TextField editElementti1Ev1;
+    @FXML private TextField editElementti2Ev1;
+    @FXML private TextField editVahvuusEv1;
+    @FXML private TextField editIkaEv1;
+    @FXML private TextField editEvoluutioEv1;
+    @FXML private TextArea areaLisaEv1;
+    
+    @FXML private TextField editNimiEv2;
+    @FXML private TextField editElementti1Ev2;
+    @FXML private TextField editElementti2Ev2;
+    @FXML private TextField editVahvuusEv2;
+    @FXML private TextField editIkaEv2;
+    @FXML private TextField editEvoluutioEv2;
+    @FXML private TextArea areaLisaEv2;
+    
+    @FXML private Label labelVirhe;
     
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
@@ -108,18 +134,29 @@ public class PokemonRekisteriGUIController implements Initializable{
      * Nayttaa valitun pokemonin textareassa lisatiedot
      */
     protected void naytaPokemon() {
-        Pokemon pokemonKohdalla = chooserPokemonit.getSelectedObject();
-
+        Pokemon pokemon = chooserPokemonit.getSelectedObject();
+        
+        if (pokemon == null) return;
+        editNimi.setText(pokemon.getNimi());
+        editElementti1.setText(rekisteri.annaElementti(pokemon, 1));
+        editElementti2.setText(rekisteri.annaElementti(pokemon, 2));
+        editVahvuus.setText(""+pokemon.getVahvuus());
+        editIka.setText(rekisteri.annaIka(pokemon));
+        editEvoluutio.setText(""+pokemon.getEvoluutio());
+        areaLisa.setText(pokemon.getLisatiedot());
+        
+        // TODO: seuraavat evoluutiot
+        /*
         if (pokemonKohdalla == null)
             return;
 
         areaLisa.setText("");
-        try (PrintStream os = TextAreaOutputStream
-                .getTextPrintStream(areaLisa)) {
+        try (PrintStream os = TextAreaOutputStream.getTextPrintStream(areaLisa)) {
             pokemonKohdalla.tulosta(os);
             rekisteri.tulostaElementit(pokemonKohdalla, os);
             rekisteri.tulostaIka(pokemonKohdalla, os);
         }
+        */
     }
 
 
