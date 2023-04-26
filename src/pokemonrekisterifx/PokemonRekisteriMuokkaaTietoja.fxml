@@ -29,8 +29,9 @@
             <RowConstraints minHeight="10.0" vgrow="NEVER" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
             <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="85.0" vgrow="NEVER" />
-            <RowConstraints minHeight="0.0" vgrow="NEVER" />
-            <RowConstraints minHeight="0.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
             <Label text="Nimi: " />
@@ -94,6 +95,7 @@
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
             </TextField>
+            <Label fx:id="labelVirhe" prefHeight="51.0" prefWidth="126.0" text="VIRHE:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="5.0" />
@@ -106,8 +108,8 @@
    <bottom>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button defaultButton="true" onAction="#handleDefaultOK" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Tallenna" />
-            <Button cancelButton="true" onAction="#handleDefaultCancel" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Peruuta" />
+            <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#handleDefaultOK" prefHeight="35.0" prefWidth="200.0" text="Tallenna" />
+            <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleDefaultCancel" prefHeight="35.0" prefWidth="200.0" text="Peruuta" />
          </children>
       </VBox>
    </bottom>
