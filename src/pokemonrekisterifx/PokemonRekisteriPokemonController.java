@@ -11,6 +11,7 @@ import fi.jyu.mit.fxgui.ListChooser;
 import fi.jyu.mit.fxgui.ModalController;
 import fi.jyu.mit.fxgui.ModalControllerInterface;
 import fi.jyu.mit.fxgui.TextAreaOutputStream;
+import fi.jyu.mit.ohj2.Mjonot;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -170,12 +171,17 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             //case 2 : virhe = pokemonKohdalla.setElementti1(s); break;
             //case 3 : virhe = pokemonKohdalla.setElementti2(s); break;
             case 2 : virhe = pokemonKohdalla.setVahvuus(s); break;
-            //case 3 : virhe = pokemonKohdalla.setIka(s); break;
+            case 3 : virhe = pokemonKohdalla.setIka(s);
+            if (virhe == null) {
+                int ika = Mjonot.erotaInt(s, -1); 
+                asetaIkaText(ika, edit); // Toimii huonosti
+                // TODO: Pitää parannella, jos edes voi
+            }
+            break;
             case 4 : virhe = pokemonKohdalla.setEvoluutio(s); break;
             //case 5 : virhe = pokemonKohdalla.setLisaTiedot(s); break;
         default:
         }
-        // TODO: css toimimaan
         if (virhe == null) {
             Dialogs.setToolTipText(edit,"");
             edit.getStyleClass().removeAll("virhe");
@@ -185,6 +191,22 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             edit.getStyleClass().add("virhe");
             naytaVirhe(virhe);
         }
+    }
+    
+    
+    /**
+     * Tehdään ikäaluetarkistus ja asetetaan ikä
+     * @param ika ika kokonaislukuna
+     * @param ikakentta ikäkenttä
+     */
+    public void asetaIkaText(int ika, TextField ikakentta) {
+        for (int i = 10; i <= 40; i+=10) {
+            if (0 < ika && ika <= i) {
+                ikakentta.setText(String.format("%s-%s", i-10, i));
+                return;
+            }
+        }
+        ikakentta.setText("40+");
     }
 
 

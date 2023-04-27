@@ -207,12 +207,12 @@ public class Pokemon implements Cloneable {
      * @return true, jos suurempi kuin 0. false, jos 0 tai pienempi
      * @example
      * <pre name="test">
-     *      tarkistaVahvuus(0) === false;
-     *      tarkistaVahvuus(1) === true;
-     *      tarkistaVahvuus(-1) === false;
+     *      tarkistaVahvuusTaiIka(0) === false;
+     *      tarkistaVahvuusTaiIka(1) === true;
+     *      tarkistaVahvuusTaiIka(-1) === false;
      * </pre>
      */
-    public static boolean tarkistaVahvuus(int vahvuus) {
+    public static boolean tarkistaVahvuusTaiIka(int vahvuus) {
         return vahvuus > 0;
     }
     
@@ -356,7 +356,7 @@ public class Pokemon implements Cloneable {
      */
     public String setVahvuus(String vahvuusS) {
         int vahvuusI = Mjonot.erotaInt(vahvuusS, -1);
-        if (tarkistaVahvuus(vahvuusI)) {
+        if (tarkistaVahvuusTaiIka(vahvuusI)) {
             this.vahvuus = vahvuusI;
             return null;
         }
@@ -364,7 +364,26 @@ public class Pokemon implements Cloneable {
     }
     
     
-    // TODO: setIka(String ika)
+    /**
+     * Asetetaan ikä tietylle ikäalueelle
+     * @param ikaS ika merkkijonona
+     * @return null, jos onnistuu, muuten virhe merkkijonona
+     */
+    public String setIka(String ikaS) {
+        int ikaI = Mjonot.erotaInt(ikaS, -1);
+        if (tarkistaVahvuusTaiIka(ikaI)) {
+            for (int i = 10; i <= 40; i+=10) {
+                int id = i / 10;
+                if (ikaI <= i) {
+                    this.ikaID = id;
+                    return null;
+                }
+            }
+            if (40 < ikaI) this.ikaID = 5;
+            return null;
+        }
+        return "Ikä ei ole oikeaa muotoa";
+    }
     
     
     /**
