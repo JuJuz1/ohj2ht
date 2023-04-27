@@ -109,6 +109,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             edit.setOnKeyReleased(e -> kasitteleMuutosPokemoniin(k, (TextField)(e.getSource())));
             }
         }
+        areaLisa.setOnKeyReleased(e -> kasitteleMuutosPokemoniinArea((TextArea)(e.getSource())));
         
         i = 0;
         for (CheckBox ele : elementit) {
@@ -120,7 +121,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             }
         }
         
-        labelVirhe.setVisible(false);
+        //abelVirhe.setVisible(false);
         
         
         // TODO: CHECKBOXIT TOIMIMAAN
@@ -179,7 +180,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             }
             break;
             case 4 : virhe = pokemonKohdalla.setEvoluutio(s); break;
-            //case 5 : virhe = pokemonKohdalla.setLisaTiedot(s); break;
+            case 5 : virhe = pokemonKohdalla.setLisatiedot(s); break;
         default:
         }
         if (virhe == null) {
@@ -189,6 +190,28 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
         } else {
             Dialogs.setToolTipText(edit,virhe);
             edit.getStyleClass().add("virhe");
+            naytaVirhe(virhe);
+        }
+    }
+    
+    
+    /**
+     * Sijoitetaan textareaan lisätiedot
+     * @param area area
+     */
+    public void kasitteleMuutosPokemoniinArea(TextArea area) {
+        if (pokemonKohdalla == null) return;
+        String s = area.getText();
+        String virhe = pokemonKohdalla.setLisatiedot(s);
+        
+        // Ei ehkä tarpeellista nämä
+        if (virhe == null) {
+            Dialogs.setToolTipText(area,"");
+            area.getStyleClass().removeAll("virhe");
+            naytaVirhe(virhe);
+        } else {
+            Dialogs.setToolTipText(area,virhe);
+            area.getStyleClass().add("virhe");
             naytaVirhe(virhe);
         }
     }
@@ -216,11 +239,11 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      */
     private void naytaVirhe(String virhe) {
         if ( virhe == null || virhe.isEmpty() ) {
-            labelVirhe.getText();
+            labelVirhe.setText("");
             labelVirhe.getStyleClass().removeAll("virhe");
             return;
         }
-        labelVirhe.setVisible(true);
+        //labelVirhe.setVisible(true);
         labelVirhe.setText(virhe);
         labelVirhe.getStyleClass().add("virhe");
     }

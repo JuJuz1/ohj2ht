@@ -144,16 +144,13 @@ public class PokemonRekisteriGUIController implements Initializable {
             rekisteri.lisaa(pokemon);
             hae(pokemon.getID());
             
-            /*
+        /*    
         } catch (CloneNotSupportedException e) {
-            // 
+            //
         } catch (SailoException e) { 
             Dialogs.showMessageDialog(e.getMessage()); 
         } 
         */
-            
-        // ModalController.showModal(PokemonRekisteriGUIController.class
-        //        .getResource("PokemonRekisteriMuokkaaTietoja.fxml"),"Pokemonin muokkaus", null, "");
     }
 
 
