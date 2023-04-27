@@ -17,10 +17,10 @@ import fi.jyu.mit.ohj2.Mjonot;
  * TODO: Osaa antaa i:nnen kentän tiedon.
  * Osaa asettaa merkkijonon kentän sisällöksi.
  * @author Juuso Piippo & Elias Lehtinen
- * @version 13.4.2023
+ * @version 27.4.2023
  *
  */
-public class Pokemon implements Cloneable{
+public class Pokemon implements Cloneable {
     
     private int ID;                     // ID-luku, jolla voidaan erottaa pokemon muista. (ID = 0 on oletus ja tarkoittaa virheellistä)
     private String nimi;                // Pokemonin nimi
@@ -294,6 +294,25 @@ public class Pokemon implements Cloneable{
         return evoluutioIDseuraava;
     }
     
+    /**
+     * Laskee pokemonin elementtien lkm
+     * @return elementtien lkm
+     * @example
+     * <pre name="test">
+     *      Pokemon p = new Pokemon();
+     *      p.rekisteroi(); p.vastaa_pikachu();
+     *      p.getElementtienLkm() === 2;
+     *      p.setElementtiID(1, 0);
+     *      p.getElementtienLkm() === 1;
+     * </pre>
+     */
+    public int getElementtienLkm() {
+        int e = 0;
+        if (this.getElementtiID(1) != 0) e++;
+        if (this.getElementtiID(2) != 0) e++;
+        return e;
+    }
+    
     
     /**
      * Asetetaan pokemonin nimi
@@ -309,7 +328,25 @@ public class Pokemon implements Cloneable{
     }
     
     
-    // TODO: setElementti(String elementti, int nro)
+    /**
+     * Asetetaan elementin ID pokemonille
+     * @param monesko eka vai toka elementti
+     * @param elementinID mikä elementin ID on
+     * elementinID on 0, jos halutaan poistaa elementti pokemonilta
+     * @return null jos onnistuu, muuten tyhjä
+     */
+    public String setElementtiID(int monesko, int elementinID) {
+        if (0 <= elementinID && elementinID < 7) {
+            if (monesko == 1) {
+                this.elementtiID1 = elementinID;
+            }
+            if (monesko == 2) {
+                this.elementtiID2 = elementinID;
+            }
+            return null;
+        }
+        return ""; // Virhe ehkä
+    }
     
     
     /**

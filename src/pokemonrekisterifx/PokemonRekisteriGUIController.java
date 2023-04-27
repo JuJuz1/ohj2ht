@@ -24,10 +24,10 @@ import rekisteri.SailoException;
 
 /**
  * @author Juuso Piippo & Elias Lehtinen
- * @version 26.4.2023
+ * @version 27.4.2023
  *
  */
-public class PokemonRekisteriGUIController implements Initializable{
+public class PokemonRekisteriGUIController implements Initializable {
 
     @FXML private ListChooser<Pokemon> chooserPokemonit;
     
@@ -54,8 +54,6 @@ public class PokemonRekisteriGUIController implements Initializable{
     @FXML private TextField editIkaEv2;
     @FXML private TextField editEvoluutioEv2;
     @FXML private TextArea areaLisaEv2;
-    
-    @FXML private Label labelVirhe;
     
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
@@ -119,6 +117,11 @@ public class PokemonRekisteriGUIController implements Initializable{
     // Muu koodi
 
     private Rekisteri rekisteri;
+    
+    
+    public Rekisteri getRekisteri() {
+        return rekisteri;
+    }
 
     /**
      * @param rekisteri rekisteri
@@ -135,16 +138,20 @@ public class PokemonRekisteriGUIController implements Initializable{
     public void muokkaa() {
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
         if ( pokemon == null ) return;
-        try { 
-            pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon);
+        //try { 
+            pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon, rekisteri);
             if ( pokemon == null ) return;
-            rekisteri.korvaaTaiLisaa(pokemon);
+            rekisteri.lisaa(pokemon);
             hae(pokemon.getID());
+            
+            /*
         } catch (CloneNotSupportedException e) {
             // 
         } catch (SailoException e) { 
             Dialogs.showMessageDialog(e.getMessage()); 
         } 
+        */
+            
         // ModalController.showModal(PokemonRekisteriGUIController.class
         //        .getResource("PokemonRekisteriMuokkaaTietoja.fxml"),"Pokemonin muokkaus", null, "");
     }

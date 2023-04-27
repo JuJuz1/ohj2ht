@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.jyu.mit.fxgui.ModalController">
+<BorderPane stylesheets="@pokemonrekisteri.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pokemonrekisterifx.PokemonRekisteriPokemonController">
    <center>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -35,7 +35,7 @@
         </rowConstraints>
          <children>
             <Label text="Nimi: " />
-            <TextField prefWidth="160.0" text="Pikachu" GridPane.columnIndex="1" GridPane.columnSpan="2">
+            <TextField fx:id="editNimi" prefWidth="160.0" text="Pikac" GridPane.columnIndex="1" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
@@ -44,17 +44,17 @@
             <Label text="Vahvuus:" GridPane.rowIndex="4" />
             <Label text="Ikä:" GridPane.rowIndex="5" />
             <Label text="Lisätiedot:" GridPane.rowIndex="7" />
-            <TextField text="1234" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="editVahvuus" text="123" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
             </TextField>
-            <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="editIka" text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
             </TextField>
-            <TextArea prefHeight="200.0" prefWidth="160.0" text="Osaa uida sekä&#10;hoidella viholliset" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+            <TextArea fx:id="areaLisa" prefHeight="200.0" prefWidth="160.0" text="Osaa uida sekä&#10;hoidella viholliset" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
@@ -90,12 +90,12 @@
                </padding>
             </CheckBox>
             <Label text="Evoluutio:" GridPane.rowIndex="6" />
-            <TextField text="2" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextField fx:id="editEvoluutio" text="2" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
             </TextField>
-            <Label fx:id="labelVirhe" prefHeight="51.0" prefWidth="126.0" text="VIRHE:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label fx:id="labelVirhe" prefHeight="20.0" prefWidth="312.0" text="VIRHE:" underline="true" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" top="5.0" />
