@@ -90,6 +90,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     private CheckBox[] elementit;
     // Tarvitaan koska showmodal palauttaa AINA null jostain syystä...
     private static boolean muokattu = false;
+    private int elementtiLkm;
     
     
     /**
@@ -164,12 +165,34 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      */
     public void kasitteleMuutosPokemoniinCB(int k, boolean arvo) {
         if (pokemonKohdalla == null) return;
-        int ele_lkm = pokemonKohdalla.getElementtienLkm();
-        if (ele_lkm == 0 || ele_lkm == 1) {
-            pokemonKohdalla.setElementtiID(ele_lkm + 1, k);
+        if (arvo && elementtiLkm == 0) {
+            pokemonKohdalla.setElementtiID(1, k);
+            elementtiLkm = 1;
+            return;
         }
-        // Jos painetaan pois
-        else if (!arvo) pokemonKohdalla.setElementtiID(ele_lkm, 0);
+        if (arvo && elementtiLkm == 1) {
+            pokemonKohdalla.setElementtiID(2, k);
+            elementtiLkm = 2;
+            return;
+        }
+        if (arvo && elementtiLkm == 2) {
+            //elementit[k-1].setSelected(false);
+            naytaVirhe("Voit valita korkeintaan 2 elementtiä!");
+            return;
+        }
+        if (!arvo && elementtiLkm == 2) {
+            if (pokemonKohdalla.getElementtiID(1) == k) {
+                pokemonKohdalla.setElementtiID(1, pokemonKohdalla.getElementtiID(2));
+                pokemonKohdalla.setElementtiID(2, 0);
+                elementtiLkm = 1;
+            } else {
+                pokemonKohdalla.setElementtiID(2, 0);
+                elementtiLkm = 0;
+            }
+        }
+        if (!arvo && elementtiLkm == 1) {
+            pokemonKohdalla.setElementtiID(1, 0);
+        }
     }
     
     
@@ -272,11 +295,21 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     
     
     /**
-     * Asetetaan rekisteri-attribuutti elementtien ja ikäryhmien käsittelyä varten
+     * Asetetaan rekisteri-attribuutti elementtien ja ikäryhmien käsittelyä varten.
+     * Samalla valitaan halutut checkboxit.
      * @param r Rekisteri
      */
     public void setRekisteri(Rekisteri r) {
         rekisteri = r;
+        int eka = pokemonKohdalla.getElementtiID(1);
+        int toka = pokemonKohdalla.getElementtiID(2);
+        
+        for (int n = 1; n <= 6; n++) {
+            if (eka == n || toka == n) {
+                elementit[n-1].setSelected(true);
+            }
+        }
+        elementtiLkm = pokemonKohdalla.getElementtienLkm();
     }
     
     

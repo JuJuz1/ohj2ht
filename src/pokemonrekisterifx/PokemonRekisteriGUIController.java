@@ -1,7 +1,9 @@
 package pokemonrekisterifx;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import fi.jyu.mit.fxgui.ComboBoxChooser;
@@ -10,6 +12,7 @@ import fi.jyu.mit.fxgui.ListChooser;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -62,6 +65,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     @FXML private TextField editEvoluutioEv2;
     @FXML private TextArea areaLisaEv2;
     
+    
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
         alusta();
@@ -111,7 +115,7 @@ public class PokemonRekisteriGUIController implements Initializable {
 
     
     @FXML private void handleHakuehto() {
-        //
+        hae(0);
     }
     
 
@@ -149,7 +153,6 @@ public class PokemonRekisteriGUIController implements Initializable {
         try { 
             Pokemon muokattu;
             muokattu = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon.clone(), rekisteri);
-            pokemonKohdalla.getID();
             if ( muokattu == null ) return;
             rekisteri.korvaaTaiLisaa(muokattu);
             hae(muokattu.getID());
@@ -322,11 +325,11 @@ public class PokemonRekisteriGUIController implements Initializable {
         int index = 0;
         boolean takaperin;
         takaperin = (k % 2 == 0);
-        Collection<Pokemon> sopivat;
-        sopivat = rekisteri.etsiHakuehdolla(ehto, k, takaperin);
-        for (Pokemon p : sopivat) {
-            if (p.getID() == id)
-                index = p.getID() - 1;
+        List<Pokemon> sopivat;
+        sopivat =  (List<Pokemon>) rekisteri.etsiHakuehdolla(ehto, k, takaperin);
+        for (int i = 0; i < sopivat.size(); i++) {
+            Pokemon p = sopivat.get(i);
+            if (p.getID() == id) index = i;
             chooserPokemonit.add(p.getNimi(), p);
         }
         chooserPokemonit.setSelectedIndex(index);
