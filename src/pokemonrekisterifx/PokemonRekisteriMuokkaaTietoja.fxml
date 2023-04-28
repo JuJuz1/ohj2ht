@@ -54,6 +54,11 @@
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                </GridPane.margin>
             </TextField>
+            <TextField fx:id="editEvoluutio" text="2" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
+               </GridPane.margin>
+            </TextField>
             <TextArea fx:id="areaLisa" prefHeight="200.0" prefWidth="160.0" text="Osaa uida sekä&#10;hoidella viholliset" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
@@ -90,11 +95,6 @@
                </padding>
             </CheckBox>
             <Label text="Evoluutio:" GridPane.rowIndex="6" />
-            <TextField fx:id="editEvoluutio" text="2" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
-               </GridPane.margin>
-            </TextField>
             <Label fx:id="labelVirhe" prefHeight="20.0" prefWidth="312.0" text="VIRHE:" underline="true" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" />
          </children>
          <BorderPane.margin>
