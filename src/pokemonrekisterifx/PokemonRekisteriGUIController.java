@@ -87,7 +87,7 @@ public class PokemonRekisteriGUIController implements Initializable {
 
 
     @FXML private void handlePoistaPokemon() {
-        Dialogs.showMessageDialog("Ei osata vielä poistaa pokemoneja");
+        poistaPokemon();
     }
 
 
@@ -175,6 +175,23 @@ public class PokemonRekisteriGUIController implements Initializable {
         rekisteri.lisaa(uusi);
         hae(uusi.getID());
     }
+    
+    
+    /**
+     * Poistetaan pokemon taulukosta
+     */
+    protected void poistaPokemon() {
+        Pokemon poistettava = pokemonKohdalla;
+        if (poistettava == null) return;
+        if ( !Dialogs.showQuestionDialog("Poisto", "Poistetaanko jäsen: " + 
+        poistettava.getNimi(), "Kyllä", "Ei") )
+            return;
+        rekisteri.poista(poistettava);
+        int index = chooserPokemonit.getSelectedIndex();
+        hae(0);
+        chooserPokemonit.setSelectedIndex(index);
+    }
+    
 
 
     /**
