@@ -58,13 +58,14 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             // naytaVirhe("Nimi ei saa olla tyhjä");
             //return;
         //}
-        
+        muokattu = true;
         ModalController.closeStage(labelVirhe);
     }
     
     
     @FXML private void handleCancel() {
         pokemonKohdalla = null;
+        muokattu = false;
         ModalController.closeStage(labelVirhe);
     }
 
@@ -87,6 +88,8 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     private Rekisteri rekisteri;
     private TextField[] edits;
     private CheckBox[] elementit;
+    // Tarvitaan koska showmodal palauttaa AINA null jostain syystä...
+    private static boolean muokattu = false;
     
     
     /**
@@ -321,15 +324,19 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      * TODO: korjattava toimimaan
      * @param modalityStage mille ollaan modaalisia, null = sovellukselle
      * @param klooni mitä dataan näytetään oletuksena
-     * @param rek guicontroller rekisteri
      * @return null jos painetaan Cancel, muuten täytetty tietue
      */
-    public static Pokemon kysyPokemon(Stage modalityStage, Pokemon klooni, Rekisteri rek) {
+    public static Pokemon kysyPokemon(Stage modalityStage, Pokemon klooni) {
+        // debuggausta varten
         Pokemon p = ModalController.<Pokemon, PokemonRekisteriPokemonController>showModal(
-                PokemonRekisteriPokemonController.class.getResource
-                ("PokemonRekisteriMuokkaaTietoja.fxml"),
-                "Muokkaaminen",
-                modalityStage, klooni, ctrl -> {ctrl.setRekisteri(rek);});
+                 PokemonRekisteriPokemonController.class.getResource
+                 ("PokemonRekisteriMuokkaaTietoja.fxml"),
+                 "Muokkaaminen",
+                 modalityStage, klooni, null);
+        //     * @param rek guicontroller rekisteri
+        //Rekisteri rek
+        //ctrl -> {ctrl.setRekisteri(rek);});
+        if (muokattu) return klooni;
         return p;
     }
 }

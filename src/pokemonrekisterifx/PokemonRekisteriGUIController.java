@@ -146,7 +146,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         if ( pokemonKohdalla == null ) return;
         try { 
             Pokemon muokattu;
-            muokattu = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon.clone(), rekisteri);
+            muokattu = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon.clone());
             pokemonKohdalla.getID();
             if ( muokattu == null ) return;
             rekisteri.korvaaTaiLisaa(muokattu);
@@ -170,7 +170,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     protected void uusiPokemon() {
         Pokemon uusi = new Pokemon();
         uusi.vastaa_pikachu();
-        uusi = PokemonRekisteriPokemonController.kysyPokemon(null, uusi, rekisteri);
+        uusi = PokemonRekisteriPokemonController.kysyPokemon(null, uusi);
         if ( uusi == null ) return;
         uusi.rekisteroi();
         rekisteri.lisaa(uusi);

@@ -207,7 +207,7 @@ public class Pokemon implements Cloneable {
     
     /**
      * Tarkistaa, että vahvuus on suurempi kuin 0.
-     * @param vahvuus vahvuus
+     * @param luku vahvuus tai ika
      * @return true, jos suurempi kuin 0. false, jos 0 tai pienempi
      * @example
      * <pre name="test">
@@ -216,8 +216,8 @@ public class Pokemon implements Cloneable {
      *      tarkistaVahvuusTaiIka(-1) === false;
      * </pre>
      */
-    public static boolean tarkistaVahvuusTaiIka(int vahvuus) {
-        return vahvuus > 0;
+    public static boolean tarkistaVahvuusTaiIka(int luku) {
+        return luku > 0;
     }
     
    
