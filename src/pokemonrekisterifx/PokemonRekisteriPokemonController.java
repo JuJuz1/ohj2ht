@@ -52,6 +52,20 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     }
 
     @FXML private void handleOK() {
+        int m = 0;
+        for (int i = 0; i <= 5; i++) {
+            if (elementit[i].isSelected()) m++;
+        }
+        if (2 <= m) {
+            int eka = pokemonKohdalla.getElementtiID(1);
+            int toka = pokemonKohdalla.getElementtiID(2);
+            for (int n = 1; n <= 6; n++) {
+                if (eka == n || toka == n) {
+                    elementit[n-1].setSelected(true);
+                }
+                else elementit[n-1].setSelected(false);
+            }
+        }
         if (pokemonKohdalla != null)
         //&& rekisteri.tarkistaNimi(pokemonKohdalla.getNimi())
                // ) {
@@ -164,7 +178,9 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      * @param arvo uusi arvo
      */
     public void kasitteleMuutosPokemoniinCB(int k, boolean arvo) {
+        if (elementtiLkm == -1) return;
         if (pokemonKohdalla == null) return;
+
         if (arvo && elementtiLkm == 0) {
             pokemonKohdalla.setElementtiID(1, k);
             elementtiLkm = 1;
@@ -176,8 +192,10 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             return;
         }
         if (arvo && elementtiLkm == 2) {
-            //elementit[k-1].setSelected(false);
+            elementtiLkm = -1;
+            elementit[k-1].setSelected(false);
             naytaVirhe("Voit valita korkeintaan 2 elementtiä!");
+            elementtiLkm = 2;
             return;
         }
         if (!arvo && elementtiLkm == 2) {
@@ -187,11 +205,13 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
                 elementtiLkm = 1;
             } else {
                 pokemonKohdalla.setElementtiID(2, 0);
-                elementtiLkm = 0;
+                elementtiLkm = 1;
             }
+            return;
         }
         if (!arvo && elementtiLkm == 1) {
             pokemonKohdalla.setElementtiID(1, 0);
+            elementtiLkm = 0;
         }
     }
     
@@ -301,6 +321,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      */
     public void setRekisteri(Rekisteri r) {
         rekisteri = r;
+        elementtiLkm = -1;
         int eka = pokemonKohdalla.getElementtiID(1);
         int toka = pokemonKohdalla.getElementtiID(2);
         
