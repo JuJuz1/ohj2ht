@@ -4,11 +4,13 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import fi.jyu.mit.fxgui.ComboBoxChooser;
 import fi.jyu.mit.fxgui.Dialogs;
 import fi.jyu.mit.fxgui.ListChooser;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import rekisteri.Pokemon;
@@ -34,6 +36,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     @FXML private ListChooser<Pokemon> chooserPokemonit;
     
     @FXML private TextField hakuEhto;
+    @FXML private ComboBoxChooser<String> cbKentat;
     
     @FXML private TextField editNimi;
     @FXML private TextField editElementti1;
@@ -137,15 +140,6 @@ public class PokemonRekisteriGUIController implements Initializable {
     }
 
     /**
-     * @param rekisteri rekisteri
-     */
-    public void setRekisteri(Rekisteri rekisteri) {
-        this.rekisteri = rekisteri;
-        naytaPokemon();
-    }
-    
-    
-    /**
      * Pokemonin tietojen muokkaus
      */
     public void muokkaa() {
@@ -169,6 +163,14 @@ public class PokemonRekisteriGUIController implements Initializable {
             Dialogs.showMessageDialog(e.getMessage()); 
         } 
         */
+    }
+
+    /**
+     * @param rekisteri rekisteri
+     */
+    public void setRekisteri(Rekisteri rekisteri) {
+        this.rekisteri = rekisteri;
+        naytaPokemon();
     }
     
     
@@ -313,15 +315,18 @@ public class PokemonRekisteriGUIController implements Initializable {
         if (ehto.indexOf('*') < 0 && 0 < ehto.length()) ehto = "*" + ehto + "*";
         else ehto = "";
         
+        int k = cbKentat.getSelectionModel().getSelectedIndex() + 1;
+        
         chooserPokemonit.clear();
 
         int index = 0;
-        int i = 0;
+        boolean takaperin;
+        takaperin = (k % 2 == 0);
         Collection<Pokemon> sopivat;
-        sopivat = rekisteri.etsiHakuehdolla(ehto, 1, false);
+        sopivat = rekisteri.etsiHakuehdolla(ehto, k, takaperin);
         for (Pokemon p : sopivat) {
             if (p.getID() == id)
-                index = i;
+                index = p.getID() - 1;
             chooserPokemonit.add(p.getNimi(), p);
         }
         chooserPokemonit.setSelectedIndex(index);
@@ -332,6 +337,14 @@ public class PokemonRekisteriGUIController implements Initializable {
      * Alustaa listan
      */
     protected void alusta() {
+        cbKentat.clear(); 
+        cbKentat.add("Nimi: A -> Ö", null);
+        cbKentat.add("Nimi: Ö -> A", null);
+        cbKentat.add("Vahvuus: Pienin -> Suurin", null);
+        cbKentat.add("Vahvuus: Suurin -> Pienin", null);
+        cbKentat.add("Ikä: Nuorin -> Vanhin", null);
+        cbKentat.add("Ikä: Vanhin -> Nuorin", null);
+        cbKentat.getSelectionModel().select(0); 
         chooserPokemonit.clear();
         chooserPokemonit.addSelectionListener(e -> naytaPokemon());
     }
@@ -385,11 +398,4 @@ public class PokemonRekisteriGUIController implements Initializable {
     private void tulosta() {
         Dialogs.showMessageDialog("Ei osata vielä tulostaa");
     }
-
-
-    // Haetaan hakukentän perusteella
-    private void hae() {
-        Dialogs.showMessageDialog("Ei osata vielä hakea");
-    }
-
 }

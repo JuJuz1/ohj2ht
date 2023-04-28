@@ -116,7 +116,8 @@ public class Rekisteri {
         return pokemonit.etsiHakuehdolla(hakuehto, kentta, takaperin);
     }
     
-    /**
+    
+     /**
      * Kutsuu pokemonit luokan metodia, joka hakee pokemonin taulukon indeksistä i
      * @param i indeksi
      * @return pokemonit taulukon indeksissa i oleva pokemon

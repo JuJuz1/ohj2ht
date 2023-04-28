@@ -357,7 +357,7 @@ public class Pokemonit {
     /**
      * Etsii pokemonia nimen perusteella ja tietyllä ehdolla lajiteltuna.
      * @param hakuEhto Maski merkkijono
-     * @param n 1 jos nimi, 2 jos vahvuus, 3 jos ikä
+     * @param n 1, 2 jos nimi, 3, 4 jos vahvuus, 5, 6 jos ikä
      * @param kaanteinen Halutaanko lista käänteisenä
      * @return Ehtoihin sopivat pokemonit listassa
      */

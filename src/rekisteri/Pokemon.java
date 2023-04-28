@@ -465,17 +465,15 @@ public class Pokemon implements Cloneable {
     
     /**
      * Antaa vertailukelpoisena tietyn kentän tiedot
-     * @param n jos 1 nimi, jos 2 vahvuus, jos 3 ikaID
+     * @param n jos 1 tai 2 nimi, jos 3 tai 4 vahvuus, jos 5 6 ikaID
      * @return Kenttä merkkijonona
      */
     public String getAvain(int n) {
-        switch (n) {
-        case 1: return nimi;
-        case 2: return ""+vahvuus;
-        case 3: return ""+ikaID;
-        default: return "";
+        if (n == 1 || n == 2) return nimi;
+        if (n == 3 || n == 4) return String.format("%05d", vahvuus);
+        if (n == 5 || n == 6) return String.format("%05d", ikaID);
+        return "";
         }
-    }
     
     
     /**
@@ -497,9 +495,8 @@ public class Pokemon implements Cloneable {
         
         @Override
         public int compare(Pokemon p1, Pokemon p2) {
-            return p1.getAvain(n).compareToIgnoreCase(p2.getAvain(n));
+            return p1.getAvain(n).compareTo(p2.getAvain(n));
         }
-    }
     
     
     /**
@@ -526,5 +523,6 @@ public class Pokemon implements Cloneable {
         for (String tieto : tiedot) {
             System.out.println(tieto);
         }
+    }
     }
 }
