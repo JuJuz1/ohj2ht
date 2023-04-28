@@ -138,19 +138,21 @@ public class PokemonRekisteriGUIController implements Initializable {
     public void muokkaa() {
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
         if ( pokemon == null ) return;
-        //try { 
-            pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon, rekisteri);
+        try { 
+            pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon.clone(), rekisteri);
             if ( pokemon == null ) return;
             rekisteri.korvaaTaiLisaa(pokemon);
             hae(pokemon.getID());
-        /* 
-        } catch (CloneNotSupportedException e) {
+         
+        } catch (CloneNotSupportedException e) 
+        {
             //
-        } catch (SailoException e) { 
+        } 
+        /*
+        catch (SailoException e) { 
             Dialogs.showMessageDialog(e.getMessage()); 
         } 
         */
-        
     }
 
 

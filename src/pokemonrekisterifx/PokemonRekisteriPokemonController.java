@@ -58,7 +58,8 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     }
 
     @FXML private void handleOK() {
-        if ( pokemonKohdalla != null) //&& rekisteri.tarkistaNimi(pokemonKohdalla.getNimi()) 
+        if (pokemonKohdalla != null)
+        //&& rekisteri.tarkistaNimi(pokemonKohdalla.getNimi())
                // ) {
             // naytaVirhe("Nimi ei saa olla tyhjä");
             //return;
@@ -133,7 +134,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             }
         }
         
-        //abelVirhe.setVisible(false);
+        //labelVirhe.setVisible(false);
         
         
         // TODO: CHECKBOXIT TOIMIMAAN
@@ -290,7 +291,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
         
         //editIka.setText(rekisteri.annaIka(pokemon)); 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        // :TODO EI TOIMI VIELÄ, EI VOI KUTSUA REKISTERIÄ ENNEN SETKERHOA
+        // :TODO EI TOIMI VIELÄ, EI VOI KUTSUA REKISTERIÄ ENNEN SETREKISTERIÄ
         // KYSYPOKEMON SUORITUSJÄRJESTYS MEILLÄ:
         /*
             controller-luokan mahdollinen muodostaja

@@ -451,7 +451,6 @@ public class Pokemon implements Cloneable {
     }
     
     
-    
     @Override
     public Pokemon clone() throws CloneNotSupportedException {
         Pokemon uusi;
