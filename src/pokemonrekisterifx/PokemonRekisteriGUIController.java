@@ -1,6 +1,7 @@
 package pokemonrekisterifx;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import fi.jyu.mit.fxgui.Dialogs;
@@ -31,6 +32,8 @@ import rekisteri.SailoException;
 public class PokemonRekisteriGUIController implements Initializable {
 
     @FXML private ListChooser<Pokemon> chooserPokemonit;
+    
+    @FXML private TextField hakuEhto;
     
     @FXML private TextField editNimi;
     @FXML private TextField editElementti1;
@@ -103,9 +106,14 @@ public class PokemonRekisteriGUIController implements Initializable {
         muokkaa();
     }
 
+    
+    @FXML private void handleHakuehto() {
+        //
+    }
+    
 
     @FXML private void handleHae() {
-        hae();
+        hae(0);
     }
 
 
@@ -300,14 +308,21 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param id pokemonin ID
      */
     protected void hae(int id) {
+        // Jos on hakuehtoa
+        String ehto = hakuEhto.getText();
+        if (ehto.indexOf('*') < 0 && 0 < ehto.length()) ehto = "*" + ehto + "*";
+        else ehto = "";
+        
         chooserPokemonit.clear();
 
         int index = 0;
-        for (int i = 0; i < rekisteri.getLkm(); i++) {
-            Pokemon pokemon = rekisteri.getPokemon(i);
-            if (pokemon.getID() == id)
+        int i = 0;
+        Collection<Pokemon> sopivat;
+        sopivat = rekisteri.etsiHakuehdolla(ehto, 1, false);
+        for (Pokemon p : sopivat) {
+            if (p.getID() == id)
                 index = i;
-            chooserPokemonit.add(pokemon.getNimi(), pokemon);
+            chooserPokemonit.add(p.getNimi(), p);
         }
         chooserPokemonit.setSelectedIndex(index);
     }

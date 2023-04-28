@@ -75,8 +75,8 @@
                                              <GridPane.margin>
                                                 <Insets right="10.0" />
                                              </GridPane.margin></Label>
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <ComboBoxChooser prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
+                                          <TextField fx:id="hakuEhto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ComboBoxChooser fx:id="cbHakuEhdot" onAction="#handleHakuehto" prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
                                           <Button mnemonicParsing="false" onAction="#handleHae" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>

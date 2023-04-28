@@ -365,7 +365,8 @@ public class Pokemonit {
         String ehto = "*";
         if (hakuEhto != null && hakuEhto.length() > 0) ehto = hakuEhto;
         List<Pokemon> sopivat = new ArrayList<Pokemon>();
-        for (Pokemon p : this.taulukko) {
+        for (int i = 0; i < lkm; i++) {
+            Pokemon p = taulukko[i];
             if (WildChars.onkoSamat(p.getNimi(), ehto)) sopivat.add(p);
         }
         Collections.sort(sopivat, new Pokemon.Vertailija(n));

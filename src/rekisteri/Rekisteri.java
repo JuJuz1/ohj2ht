@@ -4,6 +4,7 @@
 package rekisteri;
 
 import java.io.PrintStream;
+import java.util.Collection;
 
 /**
  * Yhdistää iät ja elementit pokemoneihin.
@@ -106,6 +107,16 @@ public class Rekisteri {
     
     
     /**
+     * @param hakuehto hakuehto
+     * @param kentta nimi, vahvuus vai ikä
+     * @param takaperin jos true
+     * @return pokemonit, jotka käyvät hakuehtoon
+     */
+    public Collection<Pokemon> etsiHakuehdolla(String hakuehto, int kentta, boolean takaperin) {
+        return pokemonit.etsiHakuehdolla(hakuehto, kentta, takaperin);
+    }
+    
+    /**
      * Kutsuu pokemonit luokan metodia, joka hakee pokemonin taulukon indeksistä i
      * @param i indeksi
      * @return pokemonit taulukon indeksissa i oleva pokemon
@@ -134,52 +145,6 @@ public class Rekisteri {
         pokemonit.lueTiedostosta();
         elementit.lueTiedostosta();
         iat.lueTiedostosta();
-    }
-
-
-    /**
-     * Testipääohjelma Rekisteri-luokalle
-     * @param args ei kayt.
-     */
-    public static void main(String[] args) {
-        Rekisteri rekisteri = new Rekisteri();
-
-        Pokemon pikachu = new Pokemon(), charizard = new Pokemon();
-        pikachu.rekisteroi();
-        pikachu.vastaa_pikachu();
-        charizard.rekisteroi();
-        charizard.vastaa_pikachu();
-        rekisteri.getElementit().alustaElementeilla();
-        rekisteri.getIat().alustaIkaLuokilla();
-
-        try {
-            rekisteri.lisaa(pikachu);
-            rekisteri.lisaa(charizard);
-
-            System.out
-                    .println("============= Pokemonit testi =================");
-
-            for (int i = 0; i < rekisteri.getLkm(); i++) {
-                Pokemon pokemon = rekisteri.getPokemon(i);
-                System.out.println("Pokemonin nro: " + i);
-                pokemon.tulosta(System.out);
-                rekisteri.tulostaElementit(pokemon, System.out);
-                rekisteri.tulostaIka(pokemon, System.out);
-                System.out.println();
-            }
-
-            rekisteri.tallenna();
-
-        } catch (SailoException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        try {
-            rekisteri.lueTiedostosta();
-
-        } catch (SailoException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 
 
@@ -271,5 +236,50 @@ public class Rekisteri {
     public void tulostaIka(Pokemon pokemon, PrintStream ps) {
         int ikaID = pokemon.getIkaID();
         ps.println("Ikä: " + iat.etsiIka(ikaID));
+    }
+    
+    /**
+     * Testipääohjelma Rekisteri-luokalle
+     * @param args ei kayt.
+     */
+    public static void main(String[] args) {
+        Rekisteri rekisteri = new Rekisteri();
+
+        Pokemon pikachu = new Pokemon(), charizard = new Pokemon();
+        pikachu.rekisteroi();
+        pikachu.vastaa_pikachu();
+        charizard.rekisteroi();
+        charizard.vastaa_pikachu();
+        rekisteri.getElementit().alustaElementeilla();
+        rekisteri.getIat().alustaIkaLuokilla();
+
+        try {
+            rekisteri.lisaa(pikachu);
+            rekisteri.lisaa(charizard);
+
+            System.out
+                    .println("============= Pokemonit testi =================");
+
+            for (int i = 0; i < rekisteri.getLkm(); i++) {
+                Pokemon pokemon = rekisteri.getPokemon(i);
+                System.out.println("Pokemonin nro: " + i);
+                pokemon.tulosta(System.out);
+                rekisteri.tulostaElementit(pokemon, System.out);
+                rekisteri.tulostaIka(pokemon, System.out);
+                System.out.println();
+            }
+
+            rekisteri.tallenna();
+
+        } catch (SailoException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        try {
+            rekisteri.lueTiedostosta();
+
+        } catch (SailoException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

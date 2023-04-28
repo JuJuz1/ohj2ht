@@ -111,7 +111,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     protected void alusta() {
         
         // editElementti1, editElementti2
-        edits = new TextField[]{editNimi, editVahvuus, editEvoluutio};
+        edits = new TextField[]{editNimi, editVahvuus};
         elementit = new CheckBox[]{cbElementti1, cbElementti2, cbElementti3, cbElementti4, 
                 cbElementti5, cbElementti6};
         int i = 0;
@@ -122,6 +122,8 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             }
         }
         editIka.setOnMouseExited(e -> kasitteleMuutosPokemoniin(3, (TextField)e.getSource()));
+        editEvoluutio.setOnKeyReleased(e -> kasitteleMuutosPokemoniin(4, (TextField)(e.getSource())));
+        
         areaLisa.setOnKeyReleased(e -> kasitteleMuutosPokemoniinArea((TextArea)(e.getSource())));
         //editIka.setOnInputMethodTextChanged(e -> kasitteleMuutosPokemoniin(3, (TextField)e.getSource()));
         i = 0;
