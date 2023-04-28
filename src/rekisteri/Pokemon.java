@@ -18,6 +18,9 @@ import fi.jyu.mit.ohj2.Mjonot;
  * TODO: Osaa antaa i:nnen kentän tiedon.
  * Osaa asettaa merkkijonon kentän sisällöksi.
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 27.4.2023
  *
  */

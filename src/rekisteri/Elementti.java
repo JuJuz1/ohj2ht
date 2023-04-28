@@ -7,6 +7,9 @@ import fi.jyu.mit.ohj2.Mjonot;
  * Osaa kertoa nimen ja ID:n
  * Osaa vertailla itseä toiseen elementtiin
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 13.4.2023
  *
  */

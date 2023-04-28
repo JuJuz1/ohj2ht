@@ -1,21 +1,15 @@
 package pokemonrekisterifx;
 
-import java.io.PrintStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import fi.jyu.mit.fxgui.Dialogs;
 import fi.jyu.mit.fxgui.ListChooser;
-import fi.jyu.mit.fxgui.ModalController;
-import fi.jyu.mit.fxgui.TextAreaOutputStream;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
 import rekisteri.Pokemon;
 import rekisteri.Rekisteri;
 import rekisteri.SailoException;
@@ -25,6 +19,10 @@ import rekisteri.SailoException;
 /**
  * @author Juuso Piippo & Elias Lehtinen
  * @version 27.4.2023
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
+ * 
  * Pokemonin muokkaaminen ja lisääminen eivät toimi.
  * Luultavimmin liittyy Controllerin closestage-metodiin,
  * joka ei osaa palauttaa oikeaa viitettä muokattuun / lisättyyn
@@ -123,6 +121,9 @@ public class PokemonRekisteriGUIController implements Initializable {
     private Pokemon pokemonKohdalla;
     
     
+    /**
+     * @return rekisteri
+     */
     public Rekisteri getRekisteri() {
         return rekisteri;
     }

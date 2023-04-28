@@ -1,35 +1,29 @@
 package pokemonrekisterifx;
 
-import java.io.PrintStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.swing.text.LabelView;
-
 import fi.jyu.mit.fxgui.Dialogs;
-import fi.jyu.mit.fxgui.ListChooser;
 import fi.jyu.mit.fxgui.ModalController;
 import fi.jyu.mit.fxgui.ModalControllerInterface;
-import fi.jyu.mit.fxgui.TextAreaOutputStream;
 import fi.jyu.mit.ohj2.Mjonot;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import rekisteri.Pokemon;
 import rekisteri.Rekisteri;
-import rekisteri.SailoException;
 
 
 /**
  * Pokemonin tietojen näyttämistä ja muokkaamista ohjaava kontrolleri
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 26.4.2023
  *
  */
@@ -88,6 +82,8 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     // Muu koodi
     
     private Pokemon pokemonKohdalla;
+    @SuppressWarnings("unused")
+    // Tullaan käyttämään jatkossa
     private Rekisteri rekisteri;
     private TextField[] edits;
     private CheckBox[] elementit;
@@ -112,7 +108,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     protected void alusta() {
         
         // editElementti1, editElementti2
-        edits = new TextField[]{editNimi, editVahvuus, editIka, editEvoluutio};
+        edits = new TextField[]{editNimi, editVahvuus, editEvoluutio};
         elementit = new CheckBox[]{cbElementti1, cbElementti2, cbElementti3, cbElementti4, 
                 cbElementti5, cbElementti6};
         int i = 0;
@@ -122,8 +118,9 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             edit.setOnKeyReleased(e -> kasitteleMuutosPokemoniin(k, (TextField)(e.getSource())));
             }
         }
+        editIka.setOnMouseExited(e -> kasitteleMuutosPokemoniin(3, (TextField)e.getSource()));
         areaLisa.setOnKeyReleased(e -> kasitteleMuutosPokemoniinArea((TextArea)(e.getSource())));
-        
+        //editIka.setOnInputMethodTextChanged(e -> kasitteleMuutosPokemoniin(3, (TextField)e.getSource()));
         i = 0;
         for (CheckBox ele : elementit) {
             if (ele != null) {
@@ -328,11 +325,11 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      * @return null jos painetaan Cancel, muuten täytetty tietue
      */
     public static Pokemon kysyPokemon(Stage modalityStage, Pokemon klooni, Rekisteri rek) {
-        return ModalController.<Pokemon, PokemonRekisteriPokemonController>showModal(
-                    PokemonRekisteriPokemonController.class.getResource
-                    ("PokemonRekisteriMuokkaaTietoja.fxml"),
-                    "Muokkaaminen",
-                    modalityStage, klooni, ctrl -> {ctrl.setRekisteri(rek);});
-                                                   // Tässä vasta alustetaan
+        Pokemon p = ModalController.<Pokemon, PokemonRekisteriPokemonController>showModal(
+                PokemonRekisteriPokemonController.class.getResource
+                ("PokemonRekisteriMuokkaaTietoja.fxml"),
+                "Muokkaaminen",
+                modalityStage, klooni, ctrl -> {ctrl.setRekisteri(rek);});
+        return p;
     }
 }

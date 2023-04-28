@@ -11,6 +11,9 @@ import java.io.PrintStream;
  * Ohjaa muita luokkia.
  * TODO: Lukee ja kirjoittaa rekisterin sisällön tiedostoihin muiden luokkien avulla.
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 13.4.2023
  *
  */

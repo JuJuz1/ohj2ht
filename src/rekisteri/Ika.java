@@ -9,6 +9,9 @@ import fi.jyu.mit.ohj2.Mjonot;
  * Sisältää ID:n ja ikäalueen
  * Osaa kertoa ID:n ja ikäalueen
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 14.3.2023
  *
  */

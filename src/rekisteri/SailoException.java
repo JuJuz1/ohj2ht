@@ -6,6 +6,9 @@ package rekisteri;
 /**
  * Oma säilöpoikkeus-luokka
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 14.3.2023
  *
  */

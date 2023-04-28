@@ -20,6 +20,9 @@ import java.util.Scanner;
  * Tallentaa elementin tiedostoon
  * Osaa etsiä elementin ID:n perusteella
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 13.4.2023
  *
  */

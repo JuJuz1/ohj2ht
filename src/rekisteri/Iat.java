@@ -20,6 +20,9 @@ import java.util.Scanner;
  * Osaa etsiä iän ID:n perusteella
  * Osaa tallentaa iät tiedostoon
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 13.4.2023
  *
  */

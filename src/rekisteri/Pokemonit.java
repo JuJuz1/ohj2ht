@@ -22,10 +22,13 @@ import fi.jyu.mit.ohj2.WildChars;
  * Taulukon koko kasvaa automaattisesti tarpeen mukaan.
  * Osaa lisätä ja poistaa pokemonin.
  * TODO: Osaa lajitella pokemonit järjestykseen nimen, iän tai vahvuuden mukaan.
- * TODO: Osaa etsiä pokemoneja taulukosta nimen perusteella.
+ * Osaa etsiä pokemoneja taulukosta nimen perusteella.
  * Lukee ja kirjoittaa pokemonit tiedostoon
  * TODO: Osaa vertailla kahta pokemonia kaksintaistelussa
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 26.4.2023
  *
  */

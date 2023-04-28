@@ -10,6 +10,9 @@ import javafx.fxml.FXMLLoader;
 
 /**
  * @author Juuso Piippo & Elias Lehtinen
+ * Emails:
+ * juuso.piippo1@gmail.com
+ * elias.a.lehtinen@gmail.com
  * @version 15.3.2023
  *
  */
