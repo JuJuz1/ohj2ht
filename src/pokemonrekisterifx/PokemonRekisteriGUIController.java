@@ -117,6 +117,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     // Muu koodi
 
     private Rekisteri rekisteri;
+    private Pokemon pokemonKohdalla;
     
     
     public Rekisteri getRekisteri() {
@@ -138,11 +139,14 @@ public class PokemonRekisteriGUIController implements Initializable {
     public void muokkaa() {
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
         if ( pokemon == null ) return;
+        if ( pokemonKohdalla == null ) return;
         try { 
-            pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon.clone(), rekisteri);
-            if ( pokemon == null ) return;
-            rekisteri.korvaaTaiLisaa(pokemon);
-            hae(pokemon.getID());
+            Pokemon muokattu;
+            muokattu = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon.clone(), rekisteri);
+            pokemonKohdalla.getID();
+            if ( muokattu == null ) return;
+            rekisteri.korvaaTaiLisaa(muokattu);
+            hae(muokattu.getID());
          
         } catch (CloneNotSupportedException e) 
         {
@@ -161,6 +165,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      */
     protected void naytaPokemon() {
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
+        pokemonKohdalla = chooserPokemonit.getSelectedObject();
         if (pokemon == null) return;
         int evoluutio = pokemon.getEvoluutio();
         Pokemon ev1 = pokemon;
