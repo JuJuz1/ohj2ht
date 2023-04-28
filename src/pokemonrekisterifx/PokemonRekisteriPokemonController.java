@@ -66,6 +66,14 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
                 else elementit[n-1].setSelected(false);
             }
         }
+        String ika = editIka.getText();
+        if (ika.matches("[1-9][0-9]*")) {
+            int i = Mjonot.erotaInt(ika, -1);
+            if (Pokemon.tarkistaVahvuusTaiIka(i)) {
+                asetaIkaText(i, editIka);
+            }
+        }
+        
         if (pokemonKohdalla != null)
         //&& rekisteri.tarkistaNimi(pokemonKohdalla.getNimi())
                // ) {
@@ -97,8 +105,6 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     // Muu koodi
     
     private Pokemon pokemonKohdalla;
-    @SuppressWarnings("unused")
-    // Tullaan käyttämään jatkossa
     private Rekisteri rekisteri;
     private TextField[] edits;
     private CheckBox[] elementit;
@@ -120,13 +126,12 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     /**
      * Tekee tarvittavat muut alustukset. Mm laittaa edit-kentistä tulevan
      * tapahtuman menemään kasitteleMuutosPokemoniin-metodiin ja vie sille
-     * kentännumeron parametrina. Laitetaan CheckBoxit oikeiksi arvoiksi.
-     * TODO: CHECKBOXIT TOIMIMAAN
+     * kentännumeron parametrina.
      */
     protected void alusta() {
         
         // editElementti1, editElementti2
-        edits = new TextField[]{editNimi, editVahvuus};
+        edits = new TextField[]{editNimi, editVahvuus, editIka, editEvoluutio};
         elementit = new CheckBox[]{cbElementti1, cbElementti2, cbElementti3, cbElementti4, 
                 cbElementti5, cbElementti6};
         int i = 0;
@@ -136,8 +141,8 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             edit.setOnKeyReleased(e -> kasitteleMuutosPokemoniin(k, (TextField)(e.getSource())));
             }
         }
-        editIka.setOnMouseExited(e -> kasitteleMuutosPokemoniin(3, (TextField)e.getSource()));
-        editEvoluutio.setOnKeyReleased(e -> kasitteleMuutosPokemoniin(4, (TextField)(e.getSource())));
+        //editIka.setOnMouseExited(e -> kasitteleMuutosPokemoniin(3, (TextField)e.getSource()));
+        //editEvoluutio.setOnKeyReleased(e -> kasitteleMuutosPokemoniin(4, (TextField)(e.getSource())));
         
         areaLisa.setOnKeyReleased(e -> kasitteleMuutosPokemoniinArea((TextArea)(e.getSource())));
         //editIka.setOnInputMethodTextChanged(e -> kasitteleMuutosPokemoniin(3, (TextField)e.getSource()));
@@ -151,24 +156,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             }
         }
         
-        //labelVirhe.setVisible(false);
-        
-        
-        // TODO: CHECKBOXIT TOIMIMAAN
-        // TÄLLÄ HETKELLÄ KAATUU
-        
-        /*
-        
-        int eka = pokemonKohdalla.getElementtiID(1);
-        TÄHÄN KAATUU KOSKA TARVITTAISIIN REKISTERIÄ
-        // int toka = pokemonKohdalla.getElementtiID(2);
-            if (eka == 1 && cbElementti1 != null) cbElementti1.setSelected(true);
-            if (eka == 2 && cbElementti2 != null) cbElementti2.setSelected(true);
-            if (eka == 3 && cbElementti3 != null) cbElementti3.setSelected(true);
-            if (eka == 4 && cbElementti4 != null) cbElementti4.setSelected(true);
-            if (eka == 5 && cbElementti5 != null) cbElementti5.setSelected(true);
-            if (eka == 6 && cbElementti6 != null) cbElementti6.setSelected(true);
-            */
+        labelVirhe.setVisible(false);
     }
     
     
@@ -230,13 +218,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             //case 2 : virhe = pokemonKohdalla.setElementti1(s); break;
             //case 3 : virhe = pokemonKohdalla.setElementti2(s); break;
             case 2 : virhe = pokemonKohdalla.setVahvuus(s); break;
-            case 3 : virhe = pokemonKohdalla.setIka(s);
-            if (virhe == null) {
-                int ika = Mjonot.erotaInt(s, -1); 
-                asetaIkaText(ika, edit); // Toimii huonosti
-                // TODO: Pitää parannella, jos edes voi
-            }
-            break;
+            case 3 : virhe = pokemonKohdalla.setIka(s); break;
             case 4 : virhe = pokemonKohdalla.setEvoluutio(s); break;
             case 5 : virhe = pokemonKohdalla.setLisatiedot(s); break;
         default:
@@ -296,6 +278,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      * @param virhe virheteksti
      */
     private void naytaVirhe(String virhe) {
+        labelVirhe.setVisible(true);
         if ( virhe == null || virhe.isEmpty() ) {
             labelVirhe.setText("");
             labelVirhe.getStyleClass().removeAll("virhe");
@@ -319,7 +302,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      * Samalla valitaan halutut checkboxit.
      * @param r Rekisteri
      */
-    public void setRekisteri(Rekisteri r) {
+    public void alusta2(Rekisteri r) {
         rekisteri = r;
         elementtiLkm = -1;
         int eka = pokemonKohdalla.getElementtiID(1);
@@ -331,6 +314,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             }
         }
         elementtiLkm = pokemonKohdalla.getElementtienLkm();
+        naytaPokemon(pokemonKohdalla);
     }
     
     
@@ -341,11 +325,9 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     public void naytaPokemon(Pokemon pokemon) {
         if (pokemon == null) return;
         editNimi.setText(pokemon.getNimi());
-        //editElementti1.setText(rekisteri.annaElementti(pokemon, 1));
-        //editElementti2.setText(rekisteri.annaElementti(pokemon, 2));
         editVahvuus.setText(""+pokemon.getVahvuus());
         
-        //editIka.setText(rekisteri.annaIka(pokemon)); 
+        editIka.setText(rekisteri.annaIka(pokemon)); 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         // :TODO EI TOIMI VIELÄ, EI VOI KUTSUA REKISTERIÄ ENNEN SETREKISTERIÄ
         // KYSYPOKEMON SUORITUSJÄRJESTYS MEILLÄ:
@@ -356,7 +338,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
         !!! setRekisteri - alustaa rekisteri-olion !!!
             handleShown - kutsutaan kun dialogi on tullut näyttöön
         */
-        editIka.setText("ika"); // VÄLIAIKAINEN
+        //editIka.setText(""+pokemon.getIkaID()); // VÄLIAIKAINEN
         editEvoluutio.setText(""+pokemon.getEvoluutio());
         areaLisa.setText(pokemon.getLisatiedot());
     }
@@ -371,7 +353,6 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     @Override
     public void setDefault(Pokemon oletus) {
         pokemonKohdalla = oletus;
-        naytaPokemon(pokemonKohdalla);
     }
     
     
@@ -389,7 +370,7 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
                  PokemonRekisteriPokemonController.class.getResource
                  ("PokemonRekisteriMuokkaaTietoja.fxml"),
                  "Muokkaaminen",
-                 modalityStage, klooni, ctrl -> {ctrl.setRekisteri(rek);});
+                 modalityStage, klooni, ctrl -> {ctrl.alusta2(rek);});
         if (muokattu) return klooni;
         return p;
     }
