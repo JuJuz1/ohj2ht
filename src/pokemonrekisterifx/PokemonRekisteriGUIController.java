@@ -25,7 +25,10 @@ import rekisteri.SailoException;
 /**
  * @author Juuso Piippo & Elias Lehtinen
  * @version 27.4.2023
- *
+ * Pokemonin muokkaaminen ja lisääminen eivät toimi.
+ * Luultavimmin liittyy Controllerin closestage-metodiin,
+ * joka ei osaa palauttaa oikeaa viitettä muokattuun / lisättyyn
+ * pokemoniin
  */
 public class PokemonRekisteriGUIController implements Initializable {
 
@@ -158,6 +161,20 @@ public class PokemonRekisteriGUIController implements Initializable {
         } 
         */
     }
+    
+    
+    /**
+     * Avataan dialogi pokemonin luonnille
+     */
+    protected void uusiPokemon() {
+        Pokemon uusi = new Pokemon();
+        uusi.vastaa_pikachu();
+        uusi = PokemonRekisteriPokemonController.kysyPokemon(null, uusi, rekisteri);
+        if ( uusi == null ) return;
+        uusi.rekisteroi();
+        rekisteri.lisaa(uusi);
+        hae(uusi.getID());
+    }
 
 
     /**
@@ -257,18 +274,6 @@ public class PokemonRekisteriGUIController implements Initializable {
         editIkaEv2.setText("");
         editEvoluutioEv2.setText("");
         areaLisaEv2.setText("");
-    }
-
-
-    /**
-     * Luo uuden pokemonin ja alustaa pikachulla
-     */
-    protected void uusiPokemon() {
-        Pokemon uusi = new Pokemon();
-        uusi.rekisteroi();
-        uusi.vastaa_pikachu();
-        rekisteri.lisaa(uusi);
-        hae(uusi.getID());
     }
 
 
