@@ -328,7 +328,7 @@
                                           <Label text="Vahvuus:" GridPane.rowIndex="4" />
                                           <Label text="Ikä:" GridPane.rowIndex="5" />
                                           <Label text="Lisätiedot:" GridPane.rowIndex="7" />
-                                          <TextField fx:id="editVahvuusEv1" text="1234 --&gt; 2312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <TextField fx:id="editVahvuusEv1" text="2312" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
@@ -343,7 +343,7 @@
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>
                                           </TextArea>
-                                          <TextField fx:id="editEvoluutioEv1" text="2 --&gt; 3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                          <TextField fx:id="editEvoluutioEv1" text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                              </GridPane.margin>

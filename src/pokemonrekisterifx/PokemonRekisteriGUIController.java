@@ -146,7 +146,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         if ( pokemonKohdalla == null ) return;
         try { 
             Pokemon muokattu;
-            muokattu = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon.clone());
+            muokattu = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon.clone(), rekisteri);
             pokemonKohdalla.getID();
             if ( muokattu == null ) return;
             rekisteri.korvaaTaiLisaa(muokattu);
@@ -170,7 +170,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     protected void uusiPokemon() {
         Pokemon uusi = new Pokemon();
         uusi.vastaa_pikachu();
-        uusi = PokemonRekisteriPokemonController.kysyPokemon(null, uusi);
+        uusi = PokemonRekisteriPokemonController.kysyPokemon(null, uusi, rekisteri);
         if ( uusi == null ) return;
         uusi.rekisteroi();
         rekisteri.lisaa(uusi);
@@ -184,7 +184,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     protected void poistaPokemon() {
         Pokemon poistettava = pokemonKohdalla;
         if (poistettava == null) return;
-        if ( !Dialogs.showQuestionDialog("Poisto", "Poistetaanko jäsen: " + 
+        if ( !Dialogs.showQuestionDialog("Poisto", "Poistetaanko pokemon: " + 
         poistettava.getNimi(), "Kyllä", "Ei") )
             return;
         rekisteri.poista(poistettava);

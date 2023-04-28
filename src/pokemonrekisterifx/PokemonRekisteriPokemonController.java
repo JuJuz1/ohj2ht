@@ -324,18 +324,16 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
      * TODO: korjattava toimimaan
      * @param modalityStage mille ollaan modaalisia, null = sovellukselle
      * @param klooni mitä dataan näytetään oletuksena
+     * @param rek guicontroller rekisteri
      * @return null jos painetaan Cancel, muuten täytetty tietue
      */
-    public static Pokemon kysyPokemon(Stage modalityStage, Pokemon klooni) {
+    public static Pokemon kysyPokemon(Stage modalityStage, Pokemon klooni, Rekisteri rek) {
         // debuggausta varten
         Pokemon p = ModalController.<Pokemon, PokemonRekisteriPokemonController>showModal(
                  PokemonRekisteriPokemonController.class.getResource
                  ("PokemonRekisteriMuokkaaTietoja.fxml"),
                  "Muokkaaminen",
-                 modalityStage, klooni, null);
-        //     * @param rek guicontroller rekisteri
-        //Rekisteri rek
-        //ctrl -> {ctrl.setRekisteri(rek);});
+                 modalityStage, klooni, ctrl -> {ctrl.setRekisteri(rek);});
         if (muokattu) return klooni;
         return p;
     }
