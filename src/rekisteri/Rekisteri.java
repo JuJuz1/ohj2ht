@@ -84,6 +84,15 @@ public class Rekisteri {
     
     
     /**
+     * Korvaa tai lisää pokemonin
+     * @param pokemon pokemon
+     */
+    public void korvaaTaiLisaa(Pokemon pokemon) {
+        pokemonit.korvaaTaiLisaa(pokemon);
+    }
+    
+    
+    /**
      * Kutsuu pokemonit luokan metodia, joka hakee pokemonin taulukon indeksistä i
      * @param i indeksi
      * @return pokemonit taulukon indeksissa i oleva pokemon

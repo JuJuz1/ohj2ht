@@ -141,16 +141,16 @@ public class PokemonRekisteriGUIController implements Initializable {
         //try { 
             pokemon = PokemonRekisteriPokemonController.kysyPokemon(null, pokemon, rekisteri);
             if ( pokemon == null ) return;
-            rekisteri.lisaa(pokemon);
+            rekisteri.korvaaTaiLisaa(pokemon);
             hae(pokemon.getID());
-            
-        /*    
+        /* 
         } catch (CloneNotSupportedException e) {
             //
         } catch (SailoException e) { 
             Dialogs.showMessageDialog(e.getMessage()); 
         } 
         */
+        
     }
 
 
@@ -164,7 +164,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         Pokemon ev1 = pokemon;
         Pokemon ev2 = pokemon;
         if (evoluutio < 3) ev1 = rekisteri.etsiPokemon(pokemon.getEvoluutioIDSeuraava());
-        if (evoluutio < 2) ev2 = rekisteri.etsiPokemon(ev1.getEvoluutioIDSeuraava());
+        if (evoluutio < 2 && ev1 != null) ev2 = rekisteri.etsiPokemon(ev1.getEvoluutioIDSeuraava());
         
         editNimi.setText(pokemon.getNimi());
         editElementti1.setText(rekisteri.annaElementti(pokemon, 1));

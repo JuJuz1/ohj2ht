@@ -58,26 +58,28 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     }
 
     @FXML private void handleOK() {
-        /*if ( pokemonKohdalla != null && tarkistaNimi(pokemonKohdalla.getNimi()) ) {
-            naytaVirhe("Nimi ei saa olla tyhjä");
-            return;
-        }
-        */
+        if ( pokemonKohdalla != null) //&& rekisteri.tarkistaNimi(pokemonKohdalla.getNimi()) 
+               // ) {
+            // naytaVirhe("Nimi ei saa olla tyhjä");
+            //return;
+        //}
+        
         ModalController.closeStage(labelVirhe);
     }
     
     
     @FXML private void handleCancel() {
+        pokemonKohdalla = null;
         ModalController.closeStage(labelVirhe);
     }
 
     // Tarvitaan ehkä
     @FXML private void handleDefaultOK() {
-        ModalController.closeStage(labelVirhe);
+        handleOK();
     }
     
     @FXML private void handleDefaultCancel() {
-        ModalController.closeStage(labelVirhe);
+        handleCancel();
     }
 
     // FXML
@@ -88,6 +90,16 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
     private Rekisteri rekisteri;
     private TextField[] edits;
     private CheckBox[] elementit;
+    
+    
+    /**
+     * Tyhjennetään tekstikentät 
+     * @param edits textfield taulukko
+     */
+    public static void tyhjenna(TextField[] edits) {
+        for (TextField edit : edits)
+            edit.setText("");
+    }
     
 
     /**

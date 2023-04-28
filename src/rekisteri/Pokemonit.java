@@ -90,6 +90,40 @@ public class Pokemonit {
         
         muutettu = true;
     }
+    
+    
+    /**
+     * Korvataan tai lisätään pokemon, riippuen löytyykö 
+     * samalla id:llä toista pokemonia. Jos ei, niin lisätään
+     * @param pokemon pokemon
+     * <pre name="test">
+     * #THROWS CloneNotSupportedException
+     * #PACKAGEIMPORT
+     * Pokemonit pokemonit = new Pokemonit();
+     * Pokemon p1 = new Pokemon(), p2 = new Pokemon();
+     * p1.rekisteroi(); p2.rekisteroi();
+     * pokemonit.getLkm() === 0;
+     * pokemonit.korvaaTaiLisaa(p1); pokemonit.getLkm() === 1;
+     * pokemonit.korvaaTaiLisaa(p2); pokemonit.getLkm() === 2;
+     * Pokemon p3 = p1.clone();
+     * p3.setNimi("Pika");
+     * pokemonit.korvaaTaiLisaa(p3); pokemonit.getLkm() === 2;
+     * pokemonit.korvaaTaiLisaa(new Pokemon(
+     * "2|Pikachu|50|3|2|3|2|0|Suuri jannite"
+     * ));
+     * pokemonit.getLkm() === 3;
+     */
+    public void korvaaTaiLisaa(Pokemon pokemon) {
+        int id = pokemon.getID();
+        for (int i = 0; i < lkm; i++) {
+            if ( taulukko[i].getID() == id ) {
+                taulukko[i] = pokemon;
+                muutettu = true;
+                return;
+            }
+        }
+        lisaa(pokemon);
+    }
 
     
     /**
