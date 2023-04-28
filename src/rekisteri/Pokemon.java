@@ -5,6 +5,7 @@ package rekisteri;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.Comparator;
 
 import fi.jyu.mit.ohj2.Mjonot;
 
@@ -456,6 +457,45 @@ public class Pokemon implements Cloneable {
         Pokemon uusi;
         uusi = (Pokemon) super.clone();
         return uusi;
+    }
+    
+    
+    /**
+     * Antaa vertailukelpoisena tietyn kentän tiedot
+     * @param n jos 1 nimi, jos 2 vahvuus, jos 3 ikaID
+     * @return Kenttä merkkijonona
+     */
+    public String getAvain(int n) {
+        switch (n) {
+        case 1: return nimi;
+        case 2: return ""+vahvuus;
+        case 3: return ""+ikaID;
+        default: return "";
+        }
+    }
+    
+    
+    /**
+     * Vertailija, joka osaa verrata pokemonin tiettyä kenttää toiseen pokemoniin
+     * @author Juuso ja Elias
+     * @version 28.4.2023
+     *
+     */
+    public static class Vertailija implements Comparator<Pokemon> {
+        private int n;
+        
+        /**
+         * Muodostaja
+         * @param n Mitä kenttä vertaillaan. 1=nimi, 2=vahvuus, 3=ika
+         */
+        public Vertailija(int n) {
+            this.n = n;
+        }
+        
+        @Override
+        public int compare(Pokemon p1, Pokemon p2) {
+            return p1.getAvain(n).compareToIgnoreCase(p2.getAvain(n));
+        }
     }
     
     

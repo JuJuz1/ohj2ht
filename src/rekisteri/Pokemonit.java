@@ -10,6 +10,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import fi.jyu.mit.ohj2.WildChars;
 
 /**
  * Sisältää taulukon pokemoneja (ja pokemonien lukumäärän sekä taulukon pituuden).
@@ -342,6 +348,26 @@ public class Pokemonit {
             if (p.getID() == id) return p;
         }
         return null;
+    }
+    
+    
+    /**
+     * Etsii pokemonia nimen perusteella ja tietyllä ehdolla lajiteltuna.
+     * @param hakuEhto Maski merkkijono
+     * @param n 1 jos nimi, 2 jos vahvuus, 3 jos ikä
+     * @param kaanteinen Halutaanko lista käänteisenä
+     * @return Ehtoihin sopivat pokemonit listassa
+     */
+    public Collection<Pokemon> etsiHakuehdolla(String hakuEhto, int n, boolean kaanteinen) {
+        String ehto = "*";
+        if (hakuEhto != null && hakuEhto.length() > 0) ehto = hakuEhto;
+        List<Pokemon> sopivat = new ArrayList<Pokemon>();
+        for (Pokemon p : this.taulukko) {
+            if (WildChars.onkoSamat(p.getNimi(), ehto)) sopivat.add(p);
+        }
+        Collections.sort(sopivat, new Pokemon.Vertailija(n));
+        if (kaanteinen) Collections.reverse(sopivat);
+        return sopivat;
     }
 
 
