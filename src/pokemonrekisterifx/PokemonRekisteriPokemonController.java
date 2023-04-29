@@ -198,8 +198,10 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             return;
         }
         if (!arvo && elementtiLkm == 1) {
-            pokemonKohdalla.setElementtiID(1, 0);
-            elementtiLkm = 0;
+            elementtiLkm = -1;
+            naytaVirhe("Pokemonilla täytyy olla vähintää 1 elementti");
+            elementit[k-1].setSelected(true);
+            elementtiLkm = 1;
         }
     }
     
