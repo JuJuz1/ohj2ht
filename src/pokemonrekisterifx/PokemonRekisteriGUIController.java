@@ -255,8 +255,8 @@ public class PokemonRekisteriGUIController implements Initializable {
         textVertaile = new TextField[] {textIkaMinVertaile, textIkaMaxVertaile};
         
         
-        lisaaKuuntelijatCBele(checkE, hakuehdot);
-        lisaaKuuntelijatCBele(checkEVertaile, hakuehdotVertaile);
+        lisaaKuuntelijatCBele(checkE, cb1, hakuehdot);
+        lisaaKuuntelijatCBele(checkEVertaile, cb1Vertaile, hakuehdotVertaile);
         
         lisaaKuuntalijatCBika(checkI, hakuehdot);
         lisaaKuuntalijatCBika(checkIVertaile, hakuehdotVertaile);
@@ -279,16 +279,17 @@ public class PokemonRekisteriGUIController implements Initializable {
      * Lisää checkboxeihin kuuntelijat, joita kutsutaan, kun arvo muuttuu.
      * Elementti-checkboxeille.
      * @param taulukko Taulukko checkboxeja
+     * @param valitseKaikki CheckBox, jolla valitaan kaikki elementit
      * @param ehdot Taulukko, jossa hakuehdot kokonaislukuina
      */
-    public void lisaaKuuntelijatCBele(CheckBox[] taulukko, int[] ehdot) {
+    public void lisaaKuuntelijatCBele(CheckBox[] taulukko, CheckBox valitseKaikki, int[] ehdot) {
         int i = 0;
         for (CheckBox cb : taulukko) {
             if (cb != null) {
                 cb.setSelected(true);
                 final int k = ++i;
                 cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
-                    kasitteleMuutosHakuEhtoonCBele(ehdot, k, newValue);
+                    kasitteleMuutosHakuEhtoonCBele(ehdot, valitseKaikki, taulukko, k, newValue);
                 });
             }
         }
@@ -333,15 +334,17 @@ public class PokemonRekisteriGUIController implements Initializable {
     /**
      * Käsitellään muutos hakuehdot taulukkoon elementeille (muutetaan arvo 0 tai 1)
      * @param taul Taulukko, joka sisältää hakuehdot kokonaislukuina
+     * @param valitseKaikki checkbox, jolla valitaan kaikki elementit
+     * @param checkTaul taulukko, joka sisältää elementteihin liittyvät checkboxit
      * @param k checkboxin kentän id (1-7)
      * @param arvo uusi arvo
      */
-    public void kasitteleMuutosHakuEhtoonCBele(int[] taul, int k, boolean arvo) {
-        boolean kaikki = cb1.isSelected();
+    public void kasitteleMuutosHakuEhtoonCBele(int[] taul, CheckBox valitseKaikki, CheckBox[] checkTaul, int k, boolean arvo) {
+        boolean kaikki = valitseKaikki.isSelected();
         
         int i = k-1;
         if (!arvo && kaikki) {
-            cb1.setSelected(false);
+            valitseKaikki.setSelected(false);
             taul[i] = 0;
             return;
         }
@@ -350,7 +353,7 @@ public class PokemonRekisteriGUIController implements Initializable {
             return;
         }
         if (arvo && kaikki) {
-            for (CheckBox cb : checkE) {
+            for (CheckBox cb : checkTaul) {
                 cb.setSelected(true);
             }
             for (int j = 0; j < 8; j++) {
@@ -659,7 +662,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         boolean takaperin;
         takaperin = (k % 2 == 0);
         List<Pokemon> sopivat;
-        sopivat =  (List<Pokemon>) rekisteri.etsiHakuehdolla(ehto, k, takaperin, hakuehdot);
+        sopivat =  (List<Pokemon>) rekisteri.etsiHakuehdolla(ehto, k, takaperin, hakuehdotVertaile);
         for (int i = 0; i < sopivat.size(); i++) {
             Pokemon p = sopivat.get(i);
             if (p.getID() == id) index = i;
