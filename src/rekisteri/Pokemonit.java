@@ -359,15 +359,35 @@ public class Pokemonit {
      * @param hakuEhto Maski merkkijono
      * @param n 1, 2 jos nimi, 3, 4 jos vahvuus, 5, 6 jos ikä
      * @param kaanteinen Halutaanko lista käänteisenä
+     * @param lajitteluEhdot Taulukko, joka sisältää tiedon tarkemman haun hakuehdoista. 1=true, 0=false
      * @return Ehtoihin sopivat pokemonit listassa
      */
-    public Collection<Pokemon> etsiHakuehdolla(String hakuEhto, int n, boolean kaanteinen) {
+    public Collection<Pokemon> etsiHakuehdolla(String hakuEhto, int n, boolean kaanteinen, int[] lajitteluEhdot) {
         String ehto = "*";
         if (hakuEhto != null && hakuEhto.length() > 0) ehto = hakuEhto;
         List<Pokemon> sopivat = new ArrayList<Pokemon>();
         for (int i = 0; i < lkm; i++) {
             Pokemon p = taulukko[i];
-            if (WildChars.onkoSamat(p.getNimi(), ehto)) sopivat.add(p);
+            if (WildChars.onkoSamat(p.getNimi(), ehto)) {
+                int vahv = p.getVahvuus();
+                // Tarkistetaan vahvuus:
+                // lajitteluEhdot[12] = vahvuuden minimiarvo,  lajitteluEhdot[13] = vahvuuden maksimiarvo
+                if (lajitteluEhdot[12] <= vahv && vahv <= lajitteluEhdot[13]) {
+                    int ikaI = p.getIkaID();
+                    // Tarkistetaan ikä:
+                    // lajitteluEhdot[7 - 11] = ikaryhmät (1 jos valittu, 0 jos ei)
+                    if ((ikaI == 1 && lajitteluEhdot[7] == 1) || (ikaI == 2 && lajitteluEhdot[8] == 1) || (ikaI == 3 && lajitteluEhdot[9] == 1) || 
+                            (ikaI == 4 && lajitteluEhdot[10] == 1) || (ikaI == 5 && lajitteluEhdot[11] == 1)) {
+                        int eID1 = p.getElementtiID(1);
+                        int eID2 = p.getElementtiID(2);
+                        if (lajitteluEhdot[0] == 1 || ((eID1 == 1 || eID2 == 1) && lajitteluEhdot[1] == 1) || ((eID1 == 2 || eID2 == 2) && lajitteluEhdot[2] == 1)
+                                || ((eID1 == 3 || eID2 == 3) && lajitteluEhdot[3] == 1) || ((eID1 == 4 || eID2 == 4) && lajitteluEhdot[4] == 1) || 
+                                ((eID1 == 5 || eID2 == 5) && lajitteluEhdot[5] == 1) || ((eID1 == 6 || eID2 == 6) && lajitteluEhdot[6] == 1) ) {
+                            sopivat.add(p);
+                        }
+                    }
+                }
+            }           
         }
         Collections.sort(sopivat, new Pokemon.Vertailija(n));
         if (kaanteinen) Collections.reverse(sopivat);

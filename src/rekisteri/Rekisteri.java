@@ -110,10 +110,11 @@ public class Rekisteri {
      * @param hakuehto hakuehto
      * @param kentta nimi, vahvuus vai ikä
      * @param takaperin jos true
+     * @param hakuehdot Taulukko, joka sisältää tarkemmassa haussa valitut ehdot
      * @return pokemonit, jotka käyvät hakuehtoon
      */
-    public Collection<Pokemon> etsiHakuehdolla(String hakuehto, int kentta, boolean takaperin) {
-        return pokemonit.etsiHakuehdolla(hakuehto, kentta, takaperin);
+    public Collection<Pokemon> etsiHakuehdolla(String hakuehto, int kentta, boolean takaperin, int[] hakuehdot) {
+        return pokemonit.etsiHakuehdolla(hakuehto, kentta, takaperin, hakuehdot);
     }
     
     
