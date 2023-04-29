@@ -185,6 +185,20 @@ public class Elementti {
     
     
     /**
+     * Vertailee kahta elementtiä keskenään
+     * @param e Elementti, johon tätä elementtiä verrataan
+     * @return true, jos elementtien sisältö sama, muuten false
+     */
+    public boolean equals(Elementti e) {
+        if (this.getNimi() == e.getNimi() && this.getID() == e.getID() && this.getVahvuusID() == e.getVahvuusID() 
+                && this.getHeikkousID() == e.getHeikkousID()) {
+            return true;
+        }
+        return false;
+    }
+    
+    
+    /**
      * Testipääohjelma Elementti-luokalle
      * @param args Ei käytössä
      */
