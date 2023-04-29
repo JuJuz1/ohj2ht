@@ -186,9 +186,19 @@ public class PokemonRekisteriGUIController implements Initializable {
         hae(0);
     }
     
+    
+    @FXML private void handleHakuehtoVertaile() {
+        haeVertaile(0);
+    }
+    
 
     @FXML private void handleHae() {
         hae(0);
+    }
+    
+    
+    @FXML private void handleHaeVertaile() {
+        haeVertaile(0);
     }
 
 
@@ -405,6 +415,7 @@ public class PokemonRekisteriGUIController implements Initializable {
             if ( muokattu == null ) return;
             rekisteri.korvaaTaiLisaa(muokattu);
             hae(muokattu.getID());
+            haeVertaile(0);
          
         } catch (CloneNotSupportedException e) 
         {
@@ -438,6 +449,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         uusi.rekisteroi();
         rekisteri.lisaa(uusi);
         hae(uusi.getID());
+        haeVertaile(0);
     }
     
     
@@ -453,6 +465,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         rekisteri.poista(poistettava);
         int index = chooserPokemonit.getSelectedIndex();
         hae(0);
+        haeVertaile(0);
         chooserPokemonit.setSelectedIndex(index);
     }
     
@@ -512,6 +525,35 @@ public class PokemonRekisteriGUIController implements Initializable {
             rekisteri.tulostaIka(pokemonKohdalla, os);
         }
         */
+    }
+    
+    
+    /**
+     * Nayttaa valitut pokemonit ja niiden tiedot
+     */
+    protected void naytaPokemonitVertaile() {
+        Pokemon pokemonVas = chooserPokemonit2.getSelectedObject();
+        Pokemon pokemonOik = chooserPokemonit3.getSelectedObject();
+        // pokemonKohdalla = chooserPokemonit.getSelectedObject();
+        if (pokemonVas == null || pokemonOik == null) return;
+        
+        // Näytetään vasemman pokemonin tiedot:
+        editNimiVas.setText(pokemonVas.getNimi());
+        editElementti1Vas.setText(rekisteri.annaElementti(pokemonVas, 1));
+        editElementti2Vas.setText(rekisteri.annaElementti(pokemonVas, 2));
+        editVahvuusVas.setText(""+pokemonVas.getVahvuus());
+        editIkaVas.setText(rekisteri.annaIka(pokemonVas));
+        editEvoluutioVas.setText(""+pokemonVas.getEvoluutio());
+        areaLisaVas.setText(pokemonVas.getLisatiedot());
+        
+        // Näytetään oikean pokemonin tiedot:
+        editNimiOik.setText(pokemonOik.getNimi());
+        editElementti1Oik.setText(rekisteri.annaElementti(pokemonOik, 1));
+        editElementti2Oik.setText(rekisteri.annaElementti(pokemonOik, 2));
+        editVahvuusOik.setText(""+pokemonOik.getVahvuus());
+        editIkaOik.setText(rekisteri.annaIka(pokemonOik));
+        editEvoluutioOik.setText(""+pokemonOik.getEvoluutio());
+        areaLisaOik.setText(pokemonOik.getLisatiedot());
     }
     
     
@@ -588,6 +630,42 @@ public class PokemonRekisteriGUIController implements Initializable {
     
     
     /**
+     * Alustaa pokemonit listan ja valitsee uusimman luodun pokemonin
+     * @param id pokemonin ID
+     */
+    protected void haeVertaile(int id) {
+        // Jos on hakuehtoa
+        String ehto = hakuEhto2.getText();
+        if (ehto.indexOf('*') < 0 && 0 < ehto.length()) ehto = "*" + ehto + "*";
+        else ehto = "";
+        
+        // Minkä mukaan lajiteltu:
+        int k = cbKentat2.getSelectionModel().getSelectedIndex() + 1;
+        
+        // Tyhjennetään listat:
+        chooserPokemonit2.clear();
+        chooserPokemonit3.clear();
+        
+        // Tarkistetaan ovatko vahvuudet järkeviä:
+        tarkistaVahvuudetVertaile();
+
+        int index = 0;
+        boolean takaperin;
+        takaperin = (k % 2 == 0);
+        List<Pokemon> sopivat;
+        sopivat =  (List<Pokemon>) rekisteri.etsiHakuehdolla(ehto, k, takaperin, hakuehdot);
+        for (int i = 0; i < sopivat.size(); i++) {
+            Pokemon p = sopivat.get(i);
+            if (p.getID() == id) index = i;
+            chooserPokemonit2.add(p.getNimi(), p);
+            chooserPokemonit3.add(p.getNimi(), p);
+        }
+        chooserPokemonit2.setSelectedIndex(index);
+        chooserPokemonit3.setSelectedIndex(index);
+    }
+    
+    
+    /**
      * Tarkistaa vahvuudet ja asettaa 0 ja 10000
      * minimiksi ja maksimiksi jos ns. laittomat
      */
@@ -599,6 +677,23 @@ public class PokemonRekisteriGUIController implements Initializable {
             hakuehdot[12] = 0;
             textIkaMax.setText("10000");
             hakuehdot[13] = 10000;
+        }
+    }
+    
+    
+    /**
+     * Tarkistaa vahvuudet ja asettaa 0 ja 10000
+     * minimiksi ja maksimiksi jos ns. laittomat.
+     * Vertaile-välilehden hakuehdot
+     */
+    public void tarkistaVahvuudetVertaile() {
+        int minVahv = hakuehdotVertaile[12];
+        int maxVahv = hakuehdotVertaile[13];
+        if (maxVahv < minVahv || minVahv < 0 || maxVahv < 0) {
+            textIkaMinVertaile.setText("0");
+            hakuehdotVertaile[12] = 0;
+            textIkaMaxVertaile.setText("10000");
+            hakuehdotVertaile[13] = 10000;
         }
     }
 
@@ -638,9 +733,11 @@ public class PokemonRekisteriGUIController implements Initializable {
         try {
             rekisteri.lueTiedostosta();
             hae(0);
+            haeVertaile(0);
             return null;
         } catch (SailoException ex) {
             hae(0);
+            haeVertaile(0);
             Dialogs.showMessageDialog("Tiedostosta lukemisessa ongelmia: " + ex.getMessage());
             return ex.getMessage();
         }
