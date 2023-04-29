@@ -152,7 +152,8 @@ public class PokemonRekisteriGUIController implements Initializable {
     private Rekisteri rekisteri;
     private Pokemon pokemonKohdalla;
     private int[] hakuehdot = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 10000};
-    private CheckBox[] check;
+    private CheckBox[] checkE;
+    private CheckBox[] checkI;
     private TextField[] text;
     
     
@@ -169,19 +170,31 @@ public class PokemonRekisteriGUIController implements Initializable {
         cbKentat.add("Ikä: Vanhin -> Nuorin", null);
         cbKentat.getSelectionModel().select(0); 
         
-        check = new CheckBox[] {cb1, cb2, cb3, cb4, cb5, cb6, cb7, cb8, cb9, cb10, cb11, cb12};
+        checkE = new CheckBox[] {cb1, cb2, cb3, cb4, cb5, cb6, cb7};
+        checkI = new CheckBox[] {cb8, cb9, cb10, cb11, cb12};
         text = new TextField[] {textIkaMin, textIkaMax};
         
         int i = 0;
-        for (CheckBox cb : check) {
+        for (CheckBox cb : checkE) {
                 if (cb != null) {
                 cb.setSelected(true);
                 final int k = ++i;
                 cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
-                    kasitteleMuutosHakuEhtoonCB(k, newValue);
+                    kasitteleMuutosHakuEhtoonCBele(k, newValue);
                 });
                 }
             }
+        
+        i = 0;
+        for (CheckBox cb : checkI) {
+            if (cb != null) {
+            cb.setSelected(true);
+            final int k = ++i;
+            cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                kasitteleMuutosHakuEhtoonCBika(k, newValue);
+            });
+            }
+        }
         
         i = 0;
         for (TextField t : text) {
@@ -197,12 +210,53 @@ public class PokemonRekisteriGUIController implements Initializable {
     
     
     /**
-     * Käsitellään muutos hakuehdot taulukkoon (muutetaan arvo 0 tai 1)
-     * @param k checkboxin kentän id
+     * Käsitellään muutos hakuehdot taulukkoon elementeille (muutetaan arvo 0 tai 1)
+     * @param k checkboxin kentän id (1-7)
      * @param arvo uusi arvo
      */
-    public void kasitteleMuutosHakuEhtoonCB(int k, boolean arvo) {
-        //
+    public void kasitteleMuutosHakuEhtoonCBele(int k, boolean arvo) {
+        boolean kaikki = cb1.isSelected();
+        
+        int i = k-1;
+        if (!arvo && kaikki) {
+            cb1.setSelected(false);
+            hakuehdot[i] = 0;
+            return;
+        }
+        if (!arvo) {
+            hakuehdot[i] = 0;
+            return;
+        }
+        if (arvo && kaikki) {
+            for (CheckBox cb : checkE) {
+                cb.setSelected(true);
+            }
+            for (int j = 0; j < 8; j++) {
+            hakuehdot[j] = 1;
+            }
+        }
+        if (arvo) {
+            hakuehdot[i] = 1;
+        }
+    }
+    
+    
+    /**
+     * Käsitellään muutos hakuehdot taulukkoon iälle (muutetaan arvo 0 tai 1)
+     * @param k checkboxin kentän id (1-5)
+     * @param arvo uusi arvo
+     */
+    public void kasitteleMuutosHakuEhtoonCBika(int k, boolean arvo) {
+        int i = k-1+7; // +7 koska i = {0, 1, 2, 3, 4};
+        
+        if (!arvo) {
+            hakuehdot[i] = 0;
+            return;
+        }
+        if (arvo) {
+            hakuehdot[i] = 1;
+            return;
+        }
     }
     
     
@@ -214,16 +268,24 @@ public class PokemonRekisteriGUIController implements Initializable {
     public void kasitteleMuutosHakuEhtoon(int k, TextField vahvuus) {
         String v = vahvuus.getText();
         int uusivahvuus = Mjonot.erotaInt(v, -1);
-        int minVahv = 0;
-        int maxVahv = 10000;
+        int minVahv;
+        int maxVahv;
         if (k == 1) {
             maxVahv = hakuehdot[13];
-            if (maxVahv < uusivahvuus) vahvuus.setText("0");
+            if (maxVahv <= uusivahvuus) { 
+                vahvuus.setText("0");
+                hakuehdot[12] = 0;
+            }
+            else hakuehdot[12] = uusivahvuus;
             return;
         }
         if (k == 2) {
             minVahv = hakuehdot[12];
-            if (uusivahvuus < minVahv) vahvuus.setText("10000");
+            if (uusivahvuus <= minVahv) { 
+                vahvuus.setText("10000");
+                hakuehdot[13] = 10000;
+            }
+            else hakuehdot[13] = uusivahvuus;
             return;
         }
     }
