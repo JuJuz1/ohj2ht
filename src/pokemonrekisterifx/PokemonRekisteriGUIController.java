@@ -1,8 +1,6 @@
 package pokemonrekisterifx;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -14,7 +12,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import rekisteri.Pokemon;
@@ -200,7 +197,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         for (TextField t : text) {
             if (t != null) {
                 final int k = ++i;
-                t.setOnKeyReleased(e -> kasitteleMuutosHakuEhtoon(k, (TextField)(e.getSource())));
+                t.setOnKeyReleased(e -> kasitteleMuutosHakuEhtoonVahvuus(k, (TextField)(e.getSource())));
                 }
             }
         
@@ -247,8 +244,8 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param arvo uusi arvo
      */
     public void kasitteleMuutosHakuEhtoonCBika(int k, boolean arvo) {
-        int i = k-1+7; // +7 koska i = {0, 1, 2, 3, 4};
-        
+        int i = k-1+7; // +7 koska i € {0, 1, 2, 3, 4};
+       
         if (!arvo) {
             hakuehdot[i] = 0;
             return;
@@ -265,33 +262,18 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param k textfieldin kentän id (1 tai 2 == min tai max)
      * @param vahvuus uusi arvo vahvuudelle
      */
-    public void kasitteleMuutosHakuEhtoon(int k, TextField vahvuus) {
+    public void kasitteleMuutosHakuEhtoonVahvuus(int k, TextField vahvuus) {
         String v = vahvuus.getText();
         int uusivahvuus = Mjonot.erotaInt(v, -1);
-        int minVahv;
-        int maxVahv;
         if (k == 1) {
-            maxVahv = hakuehdot[13];
-            if (maxVahv <= uusivahvuus) { 
-                vahvuus.setText("0");
-                hakuehdot[12] = 0;
-            }
-            else hakuehdot[12] = uusivahvuus;
-            return;
+            hakuehdot[12] = uusivahvuus;
         }
         if (k == 2) {
-            minVahv = hakuehdot[12];
-            if (uusivahvuus <= minVahv) { 
-                vahvuus.setText("10000");
-                hakuehdot[13] = 10000;
-            }
-            else hakuehdot[13] = uusivahvuus;
-            return;
+            hakuehdot[13] = uusivahvuus;
         }
     }
     
-    
-    
+
     /**
      * @return rekisteri
      */
@@ -324,6 +306,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         */
     }
 
+    
     /**
      * @param rekisteri rekisteri
      */
@@ -362,7 +345,6 @@ public class PokemonRekisteriGUIController implements Initializable {
         chooserPokemonit.setSelectedIndex(index);
     }
     
-
 
     /**
      * Nayttaa valitun pokemonin tiedot ja seuraavat evoluutiot
@@ -477,6 +459,8 @@ public class PokemonRekisteriGUIController implements Initializable {
         int k = cbKentat.getSelectionModel().getSelectedIndex() + 1;
         
         chooserPokemonit.clear();
+        
+        tarkistaVahvuudet();
 
         int index = 0;
         boolean takaperin;
@@ -489,6 +473,22 @@ public class PokemonRekisteriGUIController implements Initializable {
             chooserPokemonit.add(p.getNimi(), p);
         }
         chooserPokemonit.setSelectedIndex(index);
+    }
+    
+    
+    /**
+     * Tarkistaa vahvuudet ja asettaa 0 ja 10000
+     * minimiksi ja maksimiksi jos ns. laittomat
+     */
+    public void tarkistaVahvuudet() {
+        int minVahv = hakuehdot[12];
+        int maxVahv = hakuehdot[13];
+        if (maxVahv < minVahv || minVahv < 0 || maxVahv < 0) { 
+            textIkaMin.setText("0");
+            hakuehdot[12] = 0;
+            textIkaMax.setText("10000");
+            hakuehdot[13] = 10000;
+        }
     }
 
 
