@@ -9,12 +9,13 @@ import javafx.fxml.FXMLLoader;
 
 
 /**
+ * Pokemon-rekisterin pääohjelma
+ * 
  * @author Juuso Piippo & Elias Lehtinen
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 15.3.2023
- *
+ * @version 29.4.2023
  */
 public class PokemonRekisteriMain extends Application {
     @Override
@@ -43,7 +44,9 @@ public class PokemonRekisteriMain extends Application {
         }
     }
 
+    
     /**
+     * Ajetaan, kun ohjelma käynnistetään
      * @param args ei kayt.
      */
     public static void main(String[] args) {

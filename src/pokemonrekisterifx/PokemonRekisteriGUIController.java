@@ -18,19 +18,16 @@ import rekisteri.Pokemon;
 import rekisteri.Rekisteri;
 import rekisteri.SailoException;
 
-//import javafx.event.ActionEvent; sama homma ku handleTallenna
-
 /**
+ * Controlleri, joka ohjaa käyttöliittymää
+ * TODO: tulostus
+ * TODO: apua
+ * 
  * @author Juuso Piippo & Elias Lehtinen
- * @version 27.4.2023
+ * @version 29.4.2023
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * 
- * Pokemonin muokkaaminen ja lisääminen eivät toimi.
- * Luultavimmin liittyy Controllerin closestage-metodiin,
- * joka ei osaa palauttaa oikeaa viitettä muokattuun / lisättyyn
- * pokemoniin
  */
 public class PokemonRekisteriGUIController implements Initializable {
 
@@ -138,8 +135,9 @@ public class PokemonRekisteriGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle bundle) {
         alusta();
     }
+    
 
-    @FXML private void handleTallenna(/* ActionEvent event (ehkä tarvitaan jatkossa) */) {
+    @FXML private void handleTallenna() {
         tallenna();
     }
 
@@ -157,8 +155,6 @@ public class PokemonRekisteriGUIController implements Initializable {
 
     @FXML private void handleLisaaPokemon() {
         uusiPokemon();
-        /* ModalController.showModal(PokemonRekisteriGUIController.class.getResource
-            ("PokemonRekisteriLisaaUusi.fxml"),"Pokemonin lisäys", null, ""); */
     }
 
 
@@ -173,7 +169,7 @@ public class PokemonRekisteriGUIController implements Initializable {
 
 
     @FXML private void handleTietoja() {
-        Dialogs.showMessageDialog("Ei osata vielä antaa tietoja");
+        Dialogs.showMessageDialog("Pokemon-rekisteri\nVersio: "+versio+"\nTekijät:\nJuuso piippo\nElias Lehtinen");
     }
 
 
@@ -205,6 +201,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     @FXML private void handlePeruuta() {
         Dialogs.showMessageDialog("Ei osata vielä peruuttaa");
     }
+    
 
     // FXML
     // ===================================================================
@@ -212,6 +209,7 @@ public class PokemonRekisteriGUIController implements Initializable {
 
     private Rekisteri rekisteri;
     private Pokemon pokemonKohdalla;
+    private String versio = "29.4.2023";
     // Tiedot-välilehden tarkempi haku:
     private int[] hakuehdot = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 10000};
     private CheckBox[] checkE;
@@ -223,10 +221,11 @@ public class PokemonRekisteriGUIController implements Initializable {
     private CheckBox[] checkIVertaile;
     private TextField[] textVertaile;
     
+    
     /**
      * Alustaa listan
      */
-    protected void alusta() {
+    private void alusta() {
         // Lajittelutapa:
         cbKentat.clear(); 
         cbKentat.add("Nimi: A -> Ö", null);
@@ -282,7 +281,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param valitseKaikki CheckBox, jolla valitaan kaikki elementit
      * @param ehdot Taulukko, jossa hakuehdot kokonaislukuina
      */
-    public void lisaaKuuntelijatCBele(CheckBox[] taulukko, CheckBox valitseKaikki, int[] ehdot) {
+    private void lisaaKuuntelijatCBele(CheckBox[] taulukko, CheckBox valitseKaikki, int[] ehdot) {
         int i = 0;
         for (CheckBox cb : taulukko) {
             if (cb != null) {
@@ -302,7 +301,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param taulukko Taulukko checkboxeja
      * @param ehdot Taulukko, jossa hakuehdot kokonaislukuina
      */
-    public void lisaaKuuntalijatCBika(CheckBox[] taulukko, int[] ehdot) {
+    private void lisaaKuuntalijatCBika(CheckBox[] taulukko, int[] ehdot) {
         int i = 0;
         for (CheckBox cb : taulukko) {
             if (cb != null) {
@@ -320,7 +319,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param ehdot Taulukko, jossa hakuehdot kokonaislukuina
      * @param taulukko Taulukko, jossa textfieldit
      */
-    public void lisaaKuuntelijatVahvuus(TextField[] taulukko, int[] ehdot) {
+    private void lisaaKuuntelijatVahvuus(TextField[] taulukko, int[] ehdot) {
         int i = 0;
         for (TextField t : taulukko) {
             if (t != null) {
@@ -339,7 +338,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param k checkboxin kentän id (1-7)
      * @param arvo uusi arvo
      */
-    public void kasitteleMuutosHakuEhtoonCBele(int[] taul, CheckBox valitseKaikki, CheckBox[] checkTaul, int k, boolean arvo) {
+    private void kasitteleMuutosHakuEhtoonCBele(int[] taul, CheckBox valitseKaikki, CheckBox[] checkTaul, int k, boolean arvo) {
         boolean kaikki = valitseKaikki.isSelected();
         
         int i = k-1;
@@ -372,7 +371,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param k checkboxin kentän id (1-5)
      * @param arvo uusi arvo
      */
-    public void kasitteleMuutosHakuEhtoonCBika(int[] taul, int k, boolean arvo) {
+    private void kasitteleMuutosHakuEhtoonCBika(int[] taul, int k, boolean arvo) {
         int i = k-1+7; // +7 koska i € {0, 1, 2, 3, 4};
        
         if (!arvo) {
@@ -392,7 +391,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param k textfieldin kentän id (1 tai 2 == min tai max)
      * @param vahvuus uusi arvo vahvuudelle
      */
-    public void kasitteleMuutosHakuEhtoonVahvuus(int[] taul, int k, TextField vahvuus) {
+    private void kasitteleMuutosHakuEhtoonVahvuus(int[] taul, int k, TextField vahvuus) {
         String v = vahvuus.getText();
         int uusivahvuus = Mjonot.erotaInt(v, -1);
         if (k == 1) {
@@ -405,16 +404,9 @@ public class PokemonRekisteriGUIController implements Initializable {
     
 
     /**
-     * @return rekisteri
-     */
-    public Rekisteri getRekisteri() {
-        return rekisteri;
-    }
-
-    /**
      * Pokemonin tietojen muokkaus
      */
-    public void muokkaa() {
+    private void muokkaa() {
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
         if ( pokemon == null ) return;
         if ( pokemonKohdalla == null ) return;
@@ -430,18 +422,13 @@ public class PokemonRekisteriGUIController implements Initializable {
         {
             //
         } 
-        /*
-        catch (SailoException e) { 
-            Dialogs.showMessageDialog(e.getMessage()); 
-        } 
-        */
     }
 
     
     /**
      * @param rekisteri rekisteri
      */
-    public void setRekisteri(Rekisteri rekisteri) {
+    protected void setRekisteri(Rekisteri rekisteri) {
         this.rekisteri = rekisteri;
         naytaPokemon();
     }
@@ -450,7 +437,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     /**
      * Avataan dialogi pokemonin luonnille
      */
-    protected void uusiPokemon() {
+    private void uusiPokemon() {
         Pokemon uusi = new Pokemon();
         uusi.vastaa_pikachu();
         uusi = PokemonRekisteriPokemonController.kysyPokemon(null, uusi, rekisteri);
@@ -465,7 +452,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     /**
      * Poistetaan pokemon taulukosta
      */
-    protected void poistaPokemon() {
+    private void poistaPokemon() {
         Pokemon poistettava = pokemonKohdalla;
         if (poistettava == null) return;
         if ( !Dialogs.showQuestionDialog("Poisto", "Poistetaanko pokemon: " + 
@@ -482,7 +469,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     /**
      * Nayttaa valitun pokemonin tiedot ja seuraavat evoluutiot
      */
-    protected void naytaPokemon() {
+    private void naytaPokemon() {
         Pokemon pokemon = chooserPokemonit.getSelectedObject();
         pokemonKohdalla = chooserPokemonit.getSelectedObject();
         if (pokemon == null) return;
@@ -523,24 +510,13 @@ public class PokemonRekisteriGUIController implements Initializable {
         } else {
             tyhjennaEvol2();
         }
-        /*
-        if (pokemonKohdalla == null)
-            return;
-
-        areaLisa.setText("");
-        try (PrintStream os = TextAreaOutputStream.getTextPrintStream(areaLisa)) {
-            pokemonKohdalla.tulosta(os);
-            rekisteri.tulostaElementit(pokemonKohdalla, os);
-            rekisteri.tulostaIka(pokemonKohdalla, os);
-        }
-        */
     }
     
     
     /**
      * Nayttaa valitut pokemonit ja niiden tiedot
      */
-    protected void naytaPokemonitVertaile() {
+    private void naytaPokemonitVertaile() {
         Pokemon pokemonVas = chooserPokemonit2.getSelectedObject();
         Pokemon pokemonOik = chooserPokemonit3.getSelectedObject();
         // pokemonKohdalla = chooserPokemonit.getSelectedObject();
@@ -566,7 +542,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         editEvoluutioOik.setText(""+pokemonOik.getEvoluutio());
         areaLisaOik.setText(pokemonOik.getLisatiedot());
         
-        // Näytetään Kaksintaistelun jutut:
+        // Näytetään Kaksintaistelun tiedot:
         double voittoVas = rekisteri.kaksintaistelu(pokemonVas, pokemonOik);
         // Vasen pokemon:
         editTaisteluElementitVas.setText(rekisteri.elementitJonona(pokemonVas));
@@ -646,7 +622,6 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param id pokemonin ID
      */
     protected void hae(int id) {
-        // Jos on hakuehtoa
         String ehto = hakuEhto.getText();
         if (ehto.indexOf('*') < 0 && 0 < ehto.length()) ehto = "*" + ehto + "*";
         else ehto = "";
@@ -676,7 +651,6 @@ public class PokemonRekisteriGUIController implements Initializable {
      * @param id pokemonin ID
      */
     protected void haeVertaile(int id) {
-        // Jos on hakuehtoa
         String ehto = hakuEhto2.getText();
         if (ehto.indexOf('*') < 0 && 0 < ehto.length()) ehto = "*" + ehto + "*";
         else ehto = "";
@@ -711,7 +685,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * Tarkistaa vahvuudet ja asettaa 0 ja 10000
      * minimiksi ja maksimiksi jos ns. laittomat
      */
-    public void tarkistaVahvuudet() {
+    private void tarkistaVahvuudet() {
         int minVahv = hakuehdot[12];
         int maxVahv = hakuehdot[13];
         if (maxVahv < minVahv || minVahv < 0 || maxVahv < 0) {
@@ -728,7 +702,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * minimiksi ja maksimiksi jos ns. laittomat.
      * Vertaile-välilehden hakuehdot
      */
-    public void tarkistaVahvuudetVertaile() {
+    private void tarkistaVahvuudetVertaile() {
         int minVahv = hakuehdotVertaile[12];
         int maxVahv = hakuehdotVertaile[13];
         if (maxVahv < minVahv || minVahv < 0 || maxVahv < 0) {
@@ -753,7 +727,6 @@ public class PokemonRekisteriGUIController implements Initializable {
             Dialogs.showMessageDialog("Tallennuksessa ongelmia: " + ex.getMessage());
             return ex.getMessage();
         }
-        
     }
     
     
@@ -761,7 +734,7 @@ public class PokemonRekisteriGUIController implements Initializable {
      * Tarkistaa onko tiedot tallennettu (ennen ohjelman sulkemista)
      * @return true, jos on tallennettu ja sovelluksen voi sulkea
      */
-    public boolean voikoSulkea() {
+    protected boolean voikoSulkea() {
         this.tallenna();
         return true;
     }
