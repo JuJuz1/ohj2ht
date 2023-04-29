@@ -172,9 +172,11 @@ public class Elementti {
      * e1.compareTo(e2) === 1;  e2.compareTo(e1) === -1;
      * e2.compareTo(e4) === 0;  e4.compareTo(e2) === 0;
      * e4.compareTo(e1) === 0;
+     * e1.compareTo(null) === 0;
      * </pre>
      */
     public int compareTo(Elementti e2) {
+        if (e2 == null) return 0;
         int id2 = e2.getID();
         if (this.vahvuusID == id2) return 1;
         if (this.heikkousID == id2) return -1;
