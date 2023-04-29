@@ -544,8 +544,8 @@
                                                 <Insets right="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <ComboBoxChooser prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
+                                          <TextField fx:id="hakuEhto2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ComboBoxChooser fx:id="cbKentat2" prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
                                           <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
@@ -572,37 +572,37 @@
                                                                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                                </padding>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="22.0" prefWidth="146.0" text="Valitse kaikki" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+                                                            <CheckBox fx:id="cb1Vertaile" mnemonicParsing="false" prefHeight="22.0" prefWidth="146.0" text="Valitse kaikki" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="30.0" right="2.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Vesi" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb2Vertaile" mnemonicParsing="false" text="Vesi" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb3Vertaile" mnemonicParsing="false" text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Maa" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb4Vertaile" mnemonicParsing="false" text="Maa" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Ruoho" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="cb5Vertaile" mnemonicParsing="false" text="Ruoho" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="cb6Vertaile" mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="cb7Vertaile" mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
@@ -656,7 +656,7 @@
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb8Vertaile" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -664,7 +664,7 @@
                                                                   <Insets left="4.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb9Vertaile" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -672,7 +672,7 @@
                                                                   <Insets left="8.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb10Vertaile" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -680,7 +680,7 @@
                                                                   <Insets left="8.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb11Vertaile" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -688,7 +688,7 @@
                                                                   <Insets left="8.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb12Vertaile" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -724,12 +724,12 @@
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </Label>
-                                                            <TextField prefWidth="80.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <TextField fx:id="textIkaMinVertaile" prefWidth="80.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets left="12.0" right="12.0" />
                                                                </GridPane.margin>
                                                             </TextField>
-                                                            <TextField prefWidth="80.0" promptText="100" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <TextField fx:id="textIkaMaxVertaile" prefWidth="80.0" promptText="100" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets left="12.0" right="12.0" />
                                                                </GridPane.margin>
@@ -755,12 +755,12 @@
                                        <children>
                                           <ScrollPane prefHeight="400.0" prefWidth="160.0" vbarPolicy="ALWAYS">
                                              <content>
-                                                <ListChooser prefHeight="400.0" prefWidth="160.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
+                                                <ListChooser fx:id="chooserPokemonit2" prefHeight="400.0" prefWidth="160.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
                                              </content>
                                           </ScrollPane>
                                           <ScrollPane prefHeight="400.0" prefWidth="160.0" vbarPolicy="ALWAYS">
                                              <content>
-                                                <ListChooser prefHeight="400.0" prefWidth="160.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
+                                                <ListChooser fx:id="chooserPokemonit3" prefHeight="400.0" prefWidth="160.0" rivit="Pikachu&#10;Charizard&#10;Bulbasaur&#10;..." />
                                              </content>
                                           </ScrollPane>
                                        </children>
@@ -792,18 +792,18 @@
                                              </rowConstraints>
                                              <children>
                                                 <Label text="Nimi: " GridPane.rowIndex="1" />
-                                                <TextField text="Bulbasaur" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <TextField fx:id="editNimiVas" text="Bulbasaur" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
                                                 <Label text="Elementi(t):" GridPane.rowIndex="2" />
-                                                <TextField text="Vesi" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <TextField fx:id="editElementti1Vas" text="Vesi" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextField text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <TextField fx:id="editElementti2Vas" text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
@@ -811,28 +811,28 @@
                                                 <Label text="Vahvuus:" GridPane.rowIndex="4" />
                                                 <Label text="Ikä:" GridPane.rowIndex="5" />
                                                 <Label text="Lisätiedot:" GridPane.rowIndex="7" />
-                                                <TextField text="1234" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                <TextField fx:id="editVahvuusVas" text="1234" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextField text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                <TextField fx:id="editIkaVas" text="31" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextArea prefHeight="200.0" prefWidth="200.0" text="Osaa uida sekä&#10;hoidella viholliset&#10;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                <TextArea fx:id="areaLisaVas" prefHeight="200.0" prefWidth="200.0" text="Osaa uida sekä&#10;hoidella viholliset&#10;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextArea>
-                                                <TextField alignment="CENTER" text="&quot;Bulbasaur&quot;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                                <TextField fx:id="editOtsikkoVas" alignment="CENTER" text="&quot;Bulbasaur&quot;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
                                                 <Label text="Evoluutio:" GridPane.rowIndex="6" />
-                                                <TextField text="1" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                <TextField fx:id="editEvoluutioVas" text="1" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
@@ -861,18 +861,18 @@
                                              </rowConstraints>
                                              <children>
                                                 <Label text="Nimi: " GridPane.rowIndex="1" />
-                                                <TextField text="Charizard" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <TextField fx:id="editNimiOik" text="Charizard" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
                                                 <Label text="Elementi(t):" GridPane.rowIndex="2" />
-                                                <TextField text="Ruoho" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <TextField fx:id="editElementti1Oik" text="Ruoho" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextField text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                <TextField fx:id="editElementti2Oik" text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
@@ -880,28 +880,28 @@
                                                 <Label text="Vahvuus:" GridPane.rowIndex="4" />
                                                 <Label text="Ikä:" GridPane.rowIndex="5" />
                                                 <Label text="Lisätiedot:" GridPane.rowIndex="7" />
-                                                <TextField text="312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                <TextField fx:id="editVahvuusOik" text="312" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextField text="23" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                <TextField fx:id="editIkaOik" text="23" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextArea prefHeight="200.0" prefWidth="200.0" text="Haavoittuu vedestä&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                <TextArea fx:id="areaLisaOik" prefHeight="200.0" prefWidth="200.0" text="Haavoittuu vedestä&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextArea>
-                                                <TextField alignment="CENTER" text="&quot;Charizard&quot;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+                                                <TextField fx:id="editOtsikkoOik" alignment="CENTER" text="&quot;Charizard&quot;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
                                                 </TextField>
                                                 <Label text="Evoluutio:" GridPane.rowIndex="6" />
-                                                <TextField text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                <TextField fx:id="editEvoluutioOik" text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                    <GridPane.margin>
                                                       <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                                                    </GridPane.margin>
@@ -933,32 +933,32 @@
                                           <Insets bottom="25.0" left="50.0" right="50.0" top="50.0" />
                                        </VBox.margin>
                                        <children>
-                                          <TextField alignment="CENTER_RIGHT" text="1234" GridPane.rowIndex="4">
+                                          <TextField fx:id="editTaisteluVahvuusVas" alignment="CENTER_RIGHT" text="1234" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField text="312" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <TextField fx:id="editTaisteluVahvuusOik" text="312" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField alignment="CENTER_RIGHT" text="Vesi + Myrkky" GridPane.rowIndex="2">
+                                          <TextField fx:id="editTaisteluElementitVas" alignment="CENTER_RIGHT" text="Vesi + Myrkky" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField text="Ruoho + Tuli" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="editTaisteluElementitOik" text="Ruoho + Tuli" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField alignment="CENTER_RIGHT" text="80 %" GridPane.rowIndex="8">
+                                          <TextField fx:id="editTaisteluVoittoVas" alignment="CENTER_RIGHT" text="80 %" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField text="20 %" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                          <TextField fx:id="editTaisteluVoittoOik" text="20 %" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
@@ -984,12 +984,12 @@
                                              </GridPane.margin>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Evoluutiot" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-                                          <TextField alignment="CENTER_RIGHT" text="1" GridPane.rowIndex="6">
+                                          <TextField fx:id="editTaisteluEvoluutioVas" alignment="CENTER_RIGHT" text="1" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                          <TextField fx:id="editTaisteluEvoluutioOik" text="3" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>

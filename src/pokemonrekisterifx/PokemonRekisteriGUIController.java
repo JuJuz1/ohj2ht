@@ -35,10 +35,16 @@ import rekisteri.SailoException;
 public class PokemonRekisteriGUIController implements Initializable {
 
     @FXML private ListChooser<Pokemon> chooserPokemonit;
+    @FXML private ListChooser<Pokemon> chooserPokemonit2; // Vertaile-välilehti
+    @FXML private ListChooser<Pokemon> chooserPokemonit3; // Vertaile-välilehti
     
-    @FXML private TextField hakuEhto;
+    @FXML private TextField hakuEhto;   
+    @FXML private TextField hakuEhto2;  // Vertaile-välilehti
+    
     @FXML private ComboBoxChooser<String> cbKentat;
+    @FXML private ComboBoxChooser<String> cbKentat2;  // Vertaile-välilehti
     
+    // Tarkempi haku:
     @FXML private CheckBox cb1;
     @FXML private CheckBox cb2;
     @FXML private CheckBox cb3;
@@ -50,11 +56,27 @@ public class PokemonRekisteriGUIController implements Initializable {
     @FXML private CheckBox cb9;
     @FXML private CheckBox cb10;
     @FXML private CheckBox cb11;
-    @FXML private CheckBox cb12;
-    
+    @FXML private CheckBox cb12;    
     @FXML private TextField textIkaMin;
     @FXML private TextField textIkaMax;
     
+    // Vertaile-välilehden tarkempi haku:
+    @FXML private CheckBox cb1Vertaile;
+    @FXML private CheckBox cb2Vertaile;
+    @FXML private CheckBox cb3Vertaile;
+    @FXML private CheckBox cb4Vertaile;
+    @FXML private CheckBox cb5Vertaile;
+    @FXML private CheckBox cb6Vertaile;
+    @FXML private CheckBox cb7Vertaile;
+    @FXML private CheckBox cb8Vertaile;
+    @FXML private CheckBox cb9Vertaile;
+    @FXML private CheckBox cb10Vertaile;
+    @FXML private CheckBox cb11Vertaile;
+    @FXML private CheckBox cb12Vertaile;
+    @FXML private TextField textIkaMinVertaile;
+    @FXML private TextField textIkaMaxVertaile;
+    
+    // Pokemonin tiedot:
     @FXML private TextField editNimi;
     @FXML private TextField editElementti1;
     @FXML private TextField editElementti2;
@@ -63,6 +85,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     @FXML private TextField editEvoluutio;
     @FXML private TextArea areaLisa;
     
+    // Seuraava evoluutio:
     @FXML private TextField editNimiEv1;
     @FXML private TextField editElementti1Ev1;
     @FXML private TextField editElementti2Ev1;
@@ -71,6 +94,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     @FXML private TextField editEvoluutioEv1;
     @FXML private TextArea areaLisaEv1;
     
+    // Sitä seuraava evoluutio:
     @FXML private TextField editNimiEv2;
     @FXML private TextField editElementti1Ev2;
     @FXML private TextField editElementti2Ev2;
@@ -78,6 +102,36 @@ public class PokemonRekisteriGUIController implements Initializable {
     @FXML private TextField editIkaEv2;
     @FXML private TextField editEvoluutioEv2;
     @FXML private TextArea areaLisaEv2;
+    
+    // Vertaile-välilehti, vasen pokemon:
+    @FXML private TextField editOtsikkoVas;
+    @FXML private TextField editNimiVas;
+    @FXML private TextField editElementti1Vas;
+    @FXML private TextField editElementti2Vas;
+    @FXML private TextField editVahvuusVas;
+    @FXML private TextField editIkaVas;
+    @FXML private TextField editEvoluutioVas;
+    @FXML private TextArea areaLisaVas;
+    
+    @FXML private TextField editTaisteluElementitVas;
+    @FXML private TextField editTaisteluVahvuusVas;
+    @FXML private TextField editTaisteluEvoluutioVas;
+    @FXML private TextField editTaisteluVoittoVas;
+    
+    // Vertaile-välilehti, oikea pokemon:
+    @FXML private TextField editOtsikkoOik;
+    @FXML private TextField editNimiOik;
+    @FXML private TextField editElementti1Oik;
+    @FXML private TextField editElementti2Oik;
+    @FXML private TextField editVahvuusOik;
+    @FXML private TextField editIkaOik;
+    @FXML private TextField editEvoluutioOik;
+    @FXML private TextArea areaLisaOik;
+    
+    @FXML private TextField editTaisteluElementitOik;
+    @FXML private TextField editTaisteluVahvuusOik;
+    @FXML private TextField editTaisteluEvoluutioOik;
+    @FXML private TextField editTaisteluVoittoOik;
     
     
     @Override
@@ -148,16 +202,22 @@ public class PokemonRekisteriGUIController implements Initializable {
 
     private Rekisteri rekisteri;
     private Pokemon pokemonKohdalla;
+    // Tiedot-välilehden tarkempi haku:
     private int[] hakuehdot = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 10000};
     private CheckBox[] checkE;
     private CheckBox[] checkI;
     private TextField[] text;
-    
+    // Vertaile-välilehden tarkempi haku:
+    private int[] hakuehdotVertaile = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 10000};
+    private CheckBox[] checkEVertaile;
+    private CheckBox[] checkIVertaile;
+    private TextField[] textVertaile;
     
     /**
      * Alustaa listan
      */
     protected void alusta() {
+        // Lajittelutapa:
         cbKentat.clear(); 
         cbKentat.add("Nimi: A -> Ö", null);
         cbKentat.add("Nimi: Ö -> A", null);
@@ -166,40 +226,33 @@ public class PokemonRekisteriGUIController implements Initializable {
         cbKentat.add("Ikä: Nuorin -> Vanhin", null);
         cbKentat.add("Ikä: Vanhin -> Nuorin", null);
         cbKentat.getSelectionModel().select(0); 
-        
+        // Vertaile-välilehden Lajittelutapa:
+        cbKentat2.clear(); 
+        cbKentat2.add("Nimi: A -> Ö", null);
+        cbKentat2.add("Nimi: Ö -> A", null);
+        cbKentat2.add("Vahvuus: Pienin -> Suurin", null);
+        cbKentat2.add("Vahvuus: Suurin -> Pienin", null);
+        cbKentat2.add("Ikä: Nuorin -> Vanhin", null);
+        cbKentat2.add("Ikä: Vanhin -> Nuorin", null);
+        cbKentat2.getSelectionModel().select(0); 
+        // Tarkemman haun ehdot:
         checkE = new CheckBox[] {cb1, cb2, cb3, cb4, cb5, cb6, cb7};
         checkI = new CheckBox[] {cb8, cb9, cb10, cb11, cb12};
         text = new TextField[] {textIkaMin, textIkaMax};
+        // Vertaile-välilehden tarkemman haun ehdot:
+        checkEVertaile = new CheckBox[] {cb1Vertaile, cb2Vertaile, cb3Vertaile, cb4Vertaile, cb5Vertaile, cb6Vertaile, cb7Vertaile};
+        checkIVertaile = new CheckBox[] {cb8Vertaile, cb9Vertaile, cb10Vertaile, cb11Vertaile, cb12Vertaile};
+        textVertaile = new TextField[] {textIkaMinVertaile, textIkaMaxVertaile};
         
-        int i = 0;
-        for (CheckBox cb : checkE) {
-                if (cb != null) {
-                cb.setSelected(true);
-                final int k = ++i;
-                cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
-                    kasitteleMuutosHakuEhtoonCBele(k, newValue);
-                });
-                }
-            }
         
-        i = 0;
-        for (CheckBox cb : checkI) {
-            if (cb != null) {
-            cb.setSelected(true);
-            final int k = ++i;
-            cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
-                kasitteleMuutosHakuEhtoonCBika(k, newValue);
-            });
-            }
-        }
+        lisaaKuuntelijatCBele(checkE, hakuehdot);
+        lisaaKuuntelijatCBele(checkEVertaile, hakuehdotVertaile);
         
-        i = 0;
-        for (TextField t : text) {
-            if (t != null) {
-                final int k = ++i;
-                t.setOnKeyReleased(e -> kasitteleMuutosHakuEhtoonVahvuus(k, (TextField)(e.getSource())));
-                }
-            }
+        lisaaKuuntalijatCBika(checkI, hakuehdot);
+        lisaaKuuntalijatCBika(checkIVertaile, hakuehdotVertaile);
+        
+        lisaaKuuntelijatVahvuus(text, hakuehdot);
+        lisaaKuuntelijatVahvuus(textVertaile, hakuehdotVertaile);
         
         chooserPokemonit.clear();
         chooserPokemonit.addSelectionListener(e -> naytaPokemon());
@@ -207,21 +260,77 @@ public class PokemonRekisteriGUIController implements Initializable {
     
     
     /**
+     * Lisää checkboxeihin kuuntelijat, joita kutsutaan, kun arvo muuttuu.
+     * Elementti-checkboxeille.
+     * @param taulukko Taulukko checkboxeja
+     * @param ehdot Taulukko, jossa hakuehdot kokonaislukuina
+     */
+    public void lisaaKuuntelijatCBele(CheckBox[] taulukko, int[] ehdot) {
+        int i = 0;
+        for (CheckBox cb : taulukko) {
+            if (cb != null) {
+                cb.setSelected(true);
+                final int k = ++i;
+                cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                    kasitteleMuutosHakuEhtoonCBele(ehdot, k, newValue);
+                });
+            }
+        }
+    }
+    
+    
+    /**
+     * Lisää checkboxeihin kuuntelijat, joita kutsutaan, kun arvo muuttuu.
+     * Ika-checkboxeille.
+     * @param taulukko Taulukko checkboxeja
+     * @param ehdot Taulukko, jossa hakuehdot kokonaislukuina
+     */
+    public void lisaaKuuntalijatCBika(CheckBox[] taulukko, int[] ehdot) {
+        int i = 0;
+        for (CheckBox cb : taulukko) {
+            if (cb != null) {
+                cb.setSelected(true);
+                final int k = ++i;
+                cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                    kasitteleMuutosHakuEhtoonCBika(ehdot, k, newValue); });
+            }
+        }
+    }
+    
+    
+    /**
+     * Lisaa textfieldeihin kuuntelijat. Vahvuuden min ja max arvoille tarkemmassa haussa.
+     * @param ehdot Taulukko, jossa hakuehdot kokonaislukuina
+     * @param taulukko Taulukko, jossa textfieldit
+     */
+    public void lisaaKuuntelijatVahvuus(TextField[] taulukko, int[] ehdot) {
+        int i = 0;
+        for (TextField t : taulukko) {
+            if (t != null) {
+                final int k = ++i;
+                t.setOnKeyReleased(e -> kasitteleMuutosHakuEhtoonVahvuus(ehdot, k, (TextField)(e.getSource())));
+            }
+        }
+    }
+    
+    
+    /**
      * Käsitellään muutos hakuehdot taulukkoon elementeille (muutetaan arvo 0 tai 1)
+     * @param taul Taulukko, joka sisältää hakuehdot kokonaislukuina
      * @param k checkboxin kentän id (1-7)
      * @param arvo uusi arvo
      */
-    public void kasitteleMuutosHakuEhtoonCBele(int k, boolean arvo) {
+    public void kasitteleMuutosHakuEhtoonCBele(int[] taul, int k, boolean arvo) {
         boolean kaikki = cb1.isSelected();
         
         int i = k-1;
         if (!arvo && kaikki) {
             cb1.setSelected(false);
-            hakuehdot[i] = 0;
+            taul[i] = 0;
             return;
         }
         if (!arvo) {
-            hakuehdot[i] = 0;
+            taul[i] = 0;
             return;
         }
         if (arvo && kaikki) {
@@ -229,29 +338,30 @@ public class PokemonRekisteriGUIController implements Initializable {
                 cb.setSelected(true);
             }
             for (int j = 0; j < 8; j++) {
-            hakuehdot[j] = 1;
+            taul[j] = 1;
             }
         }
         if (arvo) {
-            hakuehdot[i] = 1;
+            taul[i] = 1;
         }
     }
     
     
     /**
      * Käsitellään muutos hakuehdot taulukkoon iälle (muutetaan arvo 0 tai 1)
+     * @param taul Taulukko, joka sisältää hakuehdot kokonaislukuina
      * @param k checkboxin kentän id (1-5)
      * @param arvo uusi arvo
      */
-    public void kasitteleMuutosHakuEhtoonCBika(int k, boolean arvo) {
+    public void kasitteleMuutosHakuEhtoonCBika(int[] taul, int k, boolean arvo) {
         int i = k-1+7; // +7 koska i € {0, 1, 2, 3, 4};
        
         if (!arvo) {
-            hakuehdot[i] = 0;
+            taul[i] = 0;
             return;
         }
         if (arvo) {
-            hakuehdot[i] = 1;
+            taul[i] = 1;
             return;
         }
     }
@@ -259,17 +369,18 @@ public class PokemonRekisteriGUIController implements Initializable {
     
     /**
      * Käsitellään muutos hakuehdot taulukkoon (muutetaan arvo vastaamaan vahvuutta)
+     * @param taul Taulukko, joka sisältää hakuehdot kokonaislukuina
      * @param k textfieldin kentän id (1 tai 2 == min tai max)
      * @param vahvuus uusi arvo vahvuudelle
      */
-    public void kasitteleMuutosHakuEhtoonVahvuus(int k, TextField vahvuus) {
+    public void kasitteleMuutosHakuEhtoonVahvuus(int[] taul, int k, TextField vahvuus) {
         String v = vahvuus.getText();
         int uusivahvuus = Mjonot.erotaInt(v, -1);
         if (k == 1) {
-            hakuehdot[12] = uusivahvuus;
+            taul[12] = uusivahvuus;
         }
         if (k == 2) {
-            hakuehdot[13] = uusivahvuus;
+            taul[13] = uusivahvuus;
         }
     }
     
