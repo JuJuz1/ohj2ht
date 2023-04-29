@@ -284,7 +284,6 @@ public class PokemonRekisteriPokemonController implements ModalControllerInterfa
             labelVirhe.getStyleClass().removeAll("virhe");
             return;
         }
-        //labelVirhe.setVisible(true);
         labelVirhe.setText(virhe);
         labelVirhe.getStyleClass().add("virhe");
     }
