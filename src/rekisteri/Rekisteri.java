@@ -248,15 +248,29 @@ public class Rekisteri {
      * @return Prosentteina todennäköisyys, että p1 voittaa kaksintaistelun
      */
     public double kaksintaistelu(Pokemon p1, Pokemon p2) {
-        /*
+        double p1voitto = -1;
         int vahvuus1 = p1.getVahvuus();
         int vahvuus2 = p2.getVahvuus();
         Elementti e11 = elementit.etsiElementti(p1.getElementtiID(1));
         Elementti e12 = elementit.etsiElementti(p1.getElementtiID(2));
         Elementti e21 = elementit.etsiElementti(p2.getElementtiID(1));
         Elementti e22 = elementit.etsiElementti(p2.getElementtiID(2));
-        */
-        return -1;
+        
+        double kerroin1, kerroin2;
+        int compare1 = e11.compareTo(e12);
+        if (compare1 == 1) kerroin1 = 2;
+        if (compare1 == 0) kerroin1 = 1;
+        else compare1 = 1/2;
+        
+        int compare2 = 0;
+        if (e12 != null && e22 != null) {
+            compare2 = e12.compareTo(e22);
+        }
+        if (compare2 == 1) kerroin2 = 2;
+        if (compare2 == 0) kerroin2 = 1;
+        else kerroin2 = 1/2;
+        
+        return p1voitto;
     }
     
     

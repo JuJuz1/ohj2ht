@@ -483,7 +483,7 @@ public class PokemonRekisteriGUIController implements Initializable {
     public void tarkistaVahvuudet() {
         int minVahv = hakuehdot[12];
         int maxVahv = hakuehdot[13];
-        if (maxVahv < minVahv || minVahv < 0 || maxVahv < 0) { 
+        if (maxVahv < minVahv || minVahv < 0 || maxVahv < 0) {
             textIkaMin.setText("0");
             hakuehdot[12] = 0;
             textIkaMax.setText("10000");
