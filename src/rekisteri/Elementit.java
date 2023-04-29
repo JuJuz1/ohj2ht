@@ -23,7 +23,7 @@ import java.util.Scanner;
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 13.4.2023
+ * @version 29.4.2023
  *
  */
 public class Elementit {
@@ -39,8 +39,7 @@ public class Elementit {
      * Alustetaan elementit-olio oletusarvoilla.
      */
     public Elementit() {
-        // tiedostoNimi oletusarvo = "elementit.dat"
-        // alkiot oletusarvo = new ArrayList<Elementti>()
+        //
     }
     
     
@@ -196,8 +195,8 @@ public class Elementit {
     
     
     /**
-     * Alustaa Elementit-olion kolmella elementillä kokeilua varten
-     * TODO: poista
+     * Alustaa Elementit-olion kolmella elementillä kokeilua varten.
+     * Tarvitaan testissä.
      */
     public void alustaElementeilla() {
         this.alkiot.clear();
@@ -211,8 +210,7 @@ public class Elementit {
      * @param args ei kayt.
      */
     public static void main(String[] args) {
-    // TODO Auto-generated method stub
-    
+        // TODO Auto-generated method stub
     }
 
 }

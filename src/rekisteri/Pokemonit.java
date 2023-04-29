@@ -21,15 +21,15 @@ import fi.jyu.mit.ohj2.WildChars;
  * Sisältää taulukon pokemoneja (ja pokemonien lukumäärän sekä taulukon pituuden).
  * Taulukon koko kasvaa automaattisesti tarpeen mukaan.
  * Osaa lisätä ja poistaa pokemonin.
- * TODO: Osaa lajitella pokemonit järjestykseen nimen, iän tai vahvuuden mukaan.
+ * Osaa lajitella pokemonit järjestykseen nimen, iän tai vahvuuden mukaan.
  * Osaa etsiä pokemoneja taulukosta nimen perusteella.
  * Lukee ja kirjoittaa pokemonit tiedostoon
- * TODO: Osaa vertailla kahta pokemonia kaksintaistelussa
+ * Osaa vertailla kahta pokemonia kaksintaistelussa
  * @author Juuso Piippo & Elias Lehtinen
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 26.4.2023
+ * @version 29.4.2023
  *
  */
 public class Pokemonit {
@@ -46,6 +46,7 @@ public class Pokemonit {
     public Pokemonit() {
         //
     }
+    
     
     /**
      * Melkeinpä vain luetiedostosta() testaamista varten
@@ -200,7 +201,7 @@ public class Pokemonit {
 
 
     /**
-     * Lukee jäsenistön tiedostosta.  Kesken. TODO: Tiedostosta luku
+     * Lukee jäsenistön tiedostosta.
      * @throws SailoException jos lukeminen epäonnistuu
      * @example
      * <pre name="test">
@@ -225,8 +226,6 @@ public class Pokemonit {
     public void lueTiedostosta() throws SailoException {
         try (BufferedReader fi = new BufferedReader(new FileReader(getTiedostonNimi()))) {
             String rivi;
-            // int maxKoko = Mjonot.erotaInt(rivi,10); // tehdään jotakin
-
             while ((rivi = fi.readLine()) != null) {
                 rivi = rivi.trim();
                 if ("".equals(rivi) || rivi.startsWith(";")) continue;
@@ -282,7 +281,6 @@ public class Pokemonit {
      */
     public void tallenna() throws SailoException {
             if ( !muutettu ) return; 
-            // TODO: mitä jos ei lisätietoja
             File fbak = new File(getTiedostonNimi().replace(".dat", ".bak")); 
             File ftied = new File(getTiedostonNimi()); 
             fbak.delete(); // if .. System.err.println("Ei voi tuhota"); 
@@ -312,7 +310,6 @@ public class Pokemonit {
     public String getTiedostonNimi() {
         return tiedostoNimi;
     }
-    
     
     
     /**
@@ -434,6 +431,5 @@ public class Pokemonit {
         } catch (SailoException ex) {
             System.out.println(ex.getMessage());
         }
-        
     }
 }

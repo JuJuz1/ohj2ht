@@ -15,13 +15,13 @@ import fi.jyu.mit.ohj2.Mjonot;
  * Osaa tarkistaa kenttään syötettävän tiedon oikeellisuuden. 
  * Osaa muuttaa merkkijonon pokemonin tiedoiksi. 
  * Osaa antaa pokemonin tiedot merkkijonona.
- * TODO: Osaa antaa i:nnen kentän tiedon.
  * Osaa asettaa merkkijonon kentän sisällöksi.
+ * TODO: Asettaa seuraavan evoluution id
  * @author Juuso Piippo & Elias Lehtinen
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 27.4.2023
+ * @version 29.4.2023
  *
  */
 public class Pokemon implements Cloneable {
@@ -43,7 +43,7 @@ public class Pokemon implements Cloneable {
      * Oletusmuodostaja
      */
     public Pokemon() {
-        // Attribuuttien arvot asetetaan vastaa_pikachu()-metodilla ja myöhemmin käyttäjän syötteestä
+        // Attribuuttien arvot asetetaan vastaa_pikachu()-metodilla ja nykyään "lomakkeista" :D
     }
     
     
@@ -118,7 +118,7 @@ public class Pokemon implements Cloneable {
     
     /**
      * Apumetodi elementtien tulostamisen testaamista vartern
-     * TODO: poista kun ei tarvita
+     * Testissä käyt.
      */
     public void asetaTyhjaElementti() {
         elementtiID2 = 0;

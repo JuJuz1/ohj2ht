@@ -23,7 +23,7 @@ import java.util.Scanner;
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 13.4.2023
+ * @version 29.4.2023
  *
  */
 public class Iat {
@@ -213,7 +213,7 @@ public class Iat {
      * @param args ei kayt.
      */
     public static void main(String[] args) {
-    // TODO Auto-generated method stub
+        // TODO Auto-generated method stub
     
     }
 

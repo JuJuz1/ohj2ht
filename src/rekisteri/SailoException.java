@@ -9,12 +9,12 @@ package rekisteri;
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 14.3.2023
+ * @version 29.4.2023
  *
  */
 public class SailoException extends Exception {
+    
     private static final long serialVersionUID = 1L;
-
 
     /**
      * Poikkeuksen muodostaja jolle tuodaan poikkeuksessa
@@ -24,5 +24,4 @@ public class SailoException extends Exception {
     public SailoException(String viesti) {
         super(viesti);
     }
-
 }

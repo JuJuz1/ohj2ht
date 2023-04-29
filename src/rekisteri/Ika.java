@@ -12,14 +12,13 @@ import fi.jyu.mit.ohj2.Mjonot;
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 14.3.2023
+ * @version 29.4.2023
  *
  */
 public class Ika {
     
     private int ID;         // Iän ID
     private String ika;     // Ikäalue
-    
     
     /**
      * Muodostaja
@@ -42,7 +41,6 @@ public class Ika {
     
     
     /**
-     * TODO: tee parempi käsittely jos jono väärän muotoinen, tällä hetkellä ika null
      * Muodostaja.
      * Luo uuden ikäryhmän merkkijonosta kutsumalla parse-metodia.
      * Jos jono on väärän muotoinen (liikaa tai liian vähän kenttiä) alustetaan oletusarvoilla (tyhjillä)

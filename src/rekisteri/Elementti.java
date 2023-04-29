@@ -10,7 +10,7 @@ import fi.jyu.mit.ohj2.Mjonot;
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 13.4.2023
+ * @version 29.4.2023
  *
  */
 public class Elementti {
@@ -46,7 +46,6 @@ public class Elementti {
     
     
     /**
-     * TODO: tee parempi käsittely jos jono väärän muotoinen
      * Muodostaja.
      * Luo uuden elementin merkkijonosta kutsumalla parse-metodia.
      * Jos jono on väärän muotoinen (liikaa tai liian vähän kenttiä) alustetaan oletusarvoilla (tyhjillä)
@@ -69,7 +68,6 @@ public class Elementti {
     /**
      * Alustaa elementin attribuutit merkkijonosta luetuilla arvoilla.
      * Jos kokonaislukua ei voida lukea, oletusarvo on -1.
-     * 
      * @param jono Merkkijono, josta attribuuttien arvot luetaan.
      * @return true, jos onnistui, false jos merkkijono on väärän muotoinen (liian lyhyt tai pitkä)
      */
@@ -82,8 +80,6 @@ public class Elementti {
         this.setHeikkousID(Mjonot.erotaInt(tiedot[3], -1));
         return true;
     }
-    
-    
     
     
     /**

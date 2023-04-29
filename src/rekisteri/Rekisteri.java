@@ -10,15 +10,16 @@ import java.util.Collection;
  * Yhdistää iät ja elementit pokemoneihin.
  * Välittää alempien luokkien välillä tietoa.
  * Ohjaa muita luokkia.
- * TODO: Lukee ja kirjoittaa rekisterin sisällön tiedostoihin muiden luokkien avulla.
+ * Lukee ja kirjoittaa rekisterin sisällön tiedostoihin muiden luokkien avulla.
  * @author Juuso Piippo & Elias Lehtinen
  * Emails:
  * juuso.piippo1@gmail.com
  * elias.a.lehtinen@gmail.com
- * @version 13.4.2023
+ * @version 29.4.2023
  *
  */
 public class Rekisteri {
+    
     private Pokemonit pokemonit = new Pokemonit();
     private Elementit elementit = new Elementit();
     private Iat iat = new Iat();
@@ -230,7 +231,7 @@ public class Rekisteri {
     /**
      * Tulostaa pokemonin iän.
      * Käytetään Ika-olion ja pokemonin linkittämisen testaamiseen.
-     * TODO: poista kun ei tarvita
+     * Tarvitaan testissä.
      * @param pokemon Pokemon, jonka ikä tulostetaan
      * @param ps Tietovirta, johon tulostetaan
      */
@@ -241,7 +242,11 @@ public class Rekisteri {
     
     
     /**
-     * Vertailee kaden pokemonin vahvuutta ja elementtejä ja palauttaa todennäköisyyden, että p1 voittaa
+     * Vertailee kaden pokemonin vahvuutta ja elementtejä ja palauttaa todennäköisyyden, että p1 voittaa.
+     * Todennäköisyys voittaa on suoraan verrannollinen suhteelliseen vahvuuteen.
+     * Esim. Suht. vahvuus 200 vs. suht. vahvuus 100
+     * -> 2 kertaa suurempi tn. eli käytännössä
+     * 66,7 % ja 33,3 %
      * @param p1 Ensimmäinen pokemon
      * @param p2 Toinen pokemon, johon ensimmäistä verrataan
      * @return Prosentteina todennäköisyys, että p1 voittaa kaksintaistelun
