@@ -580,6 +580,22 @@ public class PokemonRekisteriGUIController implements Initializable {
         editTaisteluEvoluutioOik.setText(""+pokemonOik.getEvoluutio());
         editTaisteluVoittoOik.setText(String.format("%2.1f %%", (1 - voittoVas)*100) );
         
+        double voittoOik = (1 - voittoVas);
+        
+        // Poistetaan kaikki stylet
+        editTaisteluVoittoOik.getStyleClass().removeAll("vihrea");
+        editTaisteluVoittoVas.getStyleClass().removeAll("vihrea");
+        editTaisteluVoittoOik.getStyleClass().removeAll("virhe");
+        editTaisteluVoittoVas.getStyleClass().removeAll("virhe");
+        
+        if (voittoOik < voittoVas) { 
+            editTaisteluVoittoVas.getStyleClass().add("vihrea");
+            editTaisteluVoittoOik.getStyleClass().add("virhe");
+        }
+        if (voittoVas < voittoOik) { 
+            editTaisteluVoittoOik.getStyleClass().add("vihrea");
+            editTaisteluVoittoVas.getStyleClass().add("virhe");
+        }
     }
     
     

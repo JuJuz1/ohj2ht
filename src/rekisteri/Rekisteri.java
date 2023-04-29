@@ -255,23 +255,34 @@ public class Rekisteri {
         Elementti e21 = elementit.etsiElementti(p2.getElementtiID(1));
         Elementti e22 = elementit.etsiElementti(p2.getElementtiID(2));
         
-        double kerroin1, kerroin2;
+        double kerroin1 = 0;
+        double kerroin2 = 0;
         int compare1 = e11.compareTo(e21);
         if (compare1 == 1) kerroin1 = 2;
         if (compare1 == 0) kerroin1 = 1;
-        else kerroin1 = 1/2;
+        if (compare1 == -1) kerroin1 = 0.5;
         
+        vahvuus1 *= kerroin1;
+        
+        if (e22 != null) { // Tark. onko toisella pokemonilla toista elementtiä
+            compare1 = e11.compareTo(e22);
+            
+            if (compare1 == 1) kerroin1 = 2;
+            if (compare1 == 0) kerroin1 = 1;
+            if (compare1 == -1) kerroin1 = 0.5;
+            
+            vahvuus1 *= kerroin1;
+        }
         int compare2 = 0;
-        if (e12 != null && e22 != null) { // Tark. onko toista elementtiä
-            // Ei tarvitse tarkistaa onko toisella 2 ja toisella 1, koska
-            // kaikilla elementeillä vain 1 vahva ja 1 heikko
+        
+        if (e12 != null) { // Tark. onko toista elementtiä ekalla pokemonilla
             compare2 = e12.compareTo(e22);
         }
         if (compare2 == 1) kerroin2 = 2;
         if (compare2 == 0) kerroin2 = 1;
-        else kerroin2 = 1/2;
+        if (compare2 == -1) kerroin2 = 0.5;
         
-        vahvuus1 *= kerroin1 * kerroin2; // Suhteelliset vahvuudet
+        vahvuus1 *= kerroin2; // Suhteelliset vahvuudet
         // vahvuus2 ei muuteta
         
         double suhde = vahvuus1 / vahvuus2; // esim. 200 / 100 = 2
@@ -284,7 +295,7 @@ public class Rekisteri {
         // -> p2 + suhde * p2 = 1 -> p2(1 + suhde) = 1
         // -> p2 = 1 / (suhde + 1)
         
-        double p2voitto = 1/ (suhde + 1); // 1 / (2+1) = 1 / 3 = 0.333...
+        double p2voitto = 1 / (suhde + 1); // 1 / (2+1) = 1 / 3 = 0.333...
         p1voitto = 1 - p2voitto; // 1 - 0.333... = 0.666...
         
         return p1voitto;
@@ -296,6 +307,7 @@ public class Rekisteri {
      * @param args ei kayt.
      */
     public static void main(String[] args) {
+        /*
         Rekisteri rekisteri = new Rekisteri();
 
         Pokemon pikachu = new Pokemon(), charizard = new Pokemon();
@@ -334,5 +346,6 @@ public class Rekisteri {
         } catch (SailoException ex) {
             System.out.println(ex.getMessage());
         }
+        */
     }
 }
