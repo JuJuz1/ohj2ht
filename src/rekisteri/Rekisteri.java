@@ -249,26 +249,44 @@ public class Rekisteri {
      */
     public double kaksintaistelu(Pokemon p1, Pokemon p2) {
         double p1voitto = -1;
-        int vahvuus1 = p1.getVahvuus();
-        int vahvuus2 = p2.getVahvuus();
+        double vahvuus1 = p1.getVahvuus();
+        double vahvuus2 = p2.getVahvuus();
         Elementti e11 = elementit.etsiElementti(p1.getElementtiID(1));
         Elementti e12 = elementit.etsiElementti(p1.getElementtiID(2));
         Elementti e21 = elementit.etsiElementti(p2.getElementtiID(1));
         Elementti e22 = elementit.etsiElementti(p2.getElementtiID(2));
         
         double kerroin1, kerroin2;
-        int compare1 = e11.compareTo(e12);
+        int compare1 = e11.compareTo(e21);
         if (compare1 == 1) kerroin1 = 2;
         if (compare1 == 0) kerroin1 = 1;
-        else compare1 = 1/2;
+        else kerroin1 = 1/2;
         
         int compare2 = 0;
-        if (e12 != null && e22 != null) {
+        if (e12 != null && e22 != null) { // Tark. onko toista elementtiä
+            // Ei tarvitse tarkistaa onko toisella 2 ja toisella 1, koska
+            // kaikilla elementeillä vain 1 vahva ja 1 heikko
             compare2 = e12.compareTo(e22);
         }
         if (compare2 == 1) kerroin2 = 2;
         if (compare2 == 0) kerroin2 = 1;
         else kerroin2 = 1/2;
+        
+        vahvuus1 *= kerroin1 * kerroin2; // Suhteelliset vahvuudet
+        vahvuus2 *= kerroin1 * kerroin2;
+        
+        double suhde = vahvuus1 / vahvuus2; // esim. 200 / 100 = 2
+        
+        // vahvuus1 2 kertaa suurempi kuin vahvuus2 -> 2 kertaa suurempi tn. voittaa
+        
+        // Yhtälöpari, jolla tämä saadaan toteutettua:
+        // p1 + p2 = 1
+        // p1 = suhde * p2
+        // -> p2 + suhde * p2 = 1 -> p2(1 + suhde) = 1
+        // -> p2 = 1 / (suhde + 1)
+        
+        double p2voitto = 1/ (suhde + 1); // 1 / (2+1) = 1 / 3 = 0.333...
+        p1voitto = 1 - p2voitto; // 1 - 0.333... = 0.666...
         
         return p1voitto;
     }
