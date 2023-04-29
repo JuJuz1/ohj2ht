@@ -497,7 +497,7 @@ public class Pokemon implements Cloneable {
         public int compare(Pokemon p1, Pokemon p2) {
             return p1.getAvain(n).compareTo(p2.getAvain(n));
         }
-    
+    }
     
     /**
      * Testipääohjelma Pokemon-luokalle
@@ -523,6 +523,5 @@ public class Pokemon implements Cloneable {
         for (String tieto : tiedot) {
             System.out.println(tieto);
         }
-    }
     }
 }

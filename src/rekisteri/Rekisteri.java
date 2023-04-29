@@ -240,6 +240,26 @@ public class Rekisteri {
         ps.println("Ikä: " + iat.etsiIka(ikaID));
     }
     
+    
+    /**
+     * Vertailee kaden pokemonin vahvuutta ja elementtejä ja palauttaa todennäköisyyden, että p1 voittaa
+     * @param p1 Ensimmäinen pokemon
+     * @param p2 Toinen pokemon, johon ensimmäistä verrataan
+     * @return Prosentteina todennäköisyys, että p1 voittaa kaksintaistelun
+     */
+    public double kaksintaistelu(Pokemon p1, Pokemon p2) {
+        /*
+        int vahvuus1 = p1.getVahvuus();
+        int vahvuus2 = p2.getVahvuus();
+        Elementti e11 = elementit.etsiElementti(p1.getElementtiID(1));
+        Elementti e12 = elementit.etsiElementti(p1.getElementtiID(2));
+        Elementti e21 = elementit.etsiElementti(p2.getElementtiID(1));
+        Elementti e22 = elementit.etsiElementti(p2.getElementtiID(2));
+        */
+        return -1;
+    }
+    
+    
     /**
      * Testipääohjelma Rekisteri-luokalle
      * @param args ei kayt.
