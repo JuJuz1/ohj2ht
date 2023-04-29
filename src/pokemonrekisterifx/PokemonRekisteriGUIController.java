@@ -266,6 +266,12 @@ public class PokemonRekisteriGUIController implements Initializable {
         
         chooserPokemonit.clear();
         chooserPokemonit.addSelectionListener(e -> naytaPokemon());
+        
+        chooserPokemonit2.clear();
+        chooserPokemonit2.addSelectionListener(e -> naytaPokemonitVertaile());
+        
+        chooserPokemonit3.clear();
+        chooserPokemonit3.addSelectionListener(e -> naytaPokemonitVertaile());
     }
     
     

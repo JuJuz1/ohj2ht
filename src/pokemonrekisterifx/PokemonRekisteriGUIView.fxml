@@ -545,7 +545,7 @@
                                              </GridPane.margin>
                                           </Label>
                                           <TextField fx:id="hakuEhto2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <ComboBoxChooser fx:id="cbKentat2" onAction="#handeHakuehtoVertaile" prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
+                                          <ComboBoxChooser fx:id="cbKentat2" onAction="#handleHakuehtoVertaile" prefHeight="26.0" prefWidth="198.0" rivit="Nimi:  A -&gt; Ö&#10;Nimi:  Ö -&gt; A&#10;Ikä:  Nuorin -&gt; Vanhin&#10;Ikä:  Vahnin -&gt; Nuorin&#10;Vahvuus:  Pienin -&gt; Suurin&#10;Vahvuus:  Suurin -&gt; Pienin" GridPane.columnIndex="1" />
                                           <Button mnemonicParsing="false" onAction="#handleHaeVertaile" prefHeight="26.0" prefWidth="120.0" text="Hae" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
