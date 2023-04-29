@@ -257,6 +257,7 @@ public class Rekisteri {
         
         double kerroin1 = 0;
         double kerroin2 = 0;
+        
         int compare1 = e11.compareTo(e21);
         if (compare1 == 1) kerroin1 = 2;
         if (compare1 == 0) kerroin1 = 1;
@@ -276,14 +277,22 @@ public class Rekisteri {
         int compare2 = 0;
         
         if (e12 != null) { // Tark. onko toista elementtiä ekalla pokemonilla
+            compare2 = e12.compareTo(e21);
+        }
+        if (compare2 == 1) kerroin2 = 2;
+        if (compare2 == 0) kerroin2 = 1;
+        if (compare2 == -1) kerroin2 = 0.5;
+        
+        vahvuus1 *= kerroin2; 
+        
+        if (e12 != null) { // Tark. onko toista elementtiä ekalla pokemonilla
             compare2 = e12.compareTo(e22);
         }
         if (compare2 == 1) kerroin2 = 2;
         if (compare2 == 0) kerroin2 = 1;
         if (compare2 == -1) kerroin2 = 0.5;
         
-        vahvuus1 *= kerroin2; // Suhteelliset vahvuudet
-        // vahvuus2 ei muuteta
+        vahvuus1 *= kerroin2;
         
         double suhde = vahvuus1 / vahvuus2; // esim. 200 / 100 = 2
         
