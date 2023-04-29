@@ -163,7 +163,6 @@ public class Rekisteri {
 
     /**
      * Palauttaa pokemonin elementit merkkijonona
-     * TODO: poista kun ei tarvita
      * @param pokemon Pokemon
      * @return Elementit merkkijonona
      * @example
@@ -172,9 +171,9 @@ public class Rekisteri {
      *  r.getElementit().alustaElementeilla();
      *  Pokemon p = new Pokemon();
      *  p.vastaa_pikachu();
-     *  r.elementitJonona(p) === "Elementit: tuli maa";
+     *  r.elementitJonona(p) === "tuli + maa";
      *  p.asetaTyhjaElementti();
-     *  r.elementitJonona(p) === "Elementit: tuli ";
+     *  r.elementitJonona(p) === "tuli";
      * </pre>
      */
     public String elementitJonona(Pokemon pokemon) {
@@ -184,9 +183,9 @@ public class Rekisteri {
         Elementti e2 = elementit.etsiElementti(id2);
         String e1Jono = "";
         String e2Jono = "";
-        if (e1 != null) e1Jono = e1.getNimi() + ' ';
-        if (e2 != null) e2Jono = e2.getNimi();
-        String jono = "Elementit: " + e1Jono + e2Jono;
+        if (e1 != null) e1Jono = e1.getNimi();
+        if (e2 != null) e2Jono = " + " + e2.getNimi();
+        String jono = e1Jono + e2Jono;
         return jono;
     }
     
@@ -273,7 +272,7 @@ public class Rekisteri {
         else kerroin2 = 1/2;
         
         vahvuus1 *= kerroin1 * kerroin2; // Suhteelliset vahvuudet
-        vahvuus2 *= kerroin1 * kerroin2;
+        // vahvuus2 ei muuteta
         
         double suhde = vahvuus1 / vahvuus2; // esim. 200 / 100 = 2
         

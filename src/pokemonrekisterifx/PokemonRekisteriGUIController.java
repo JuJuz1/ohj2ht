@@ -547,6 +547,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         if (pokemonVas == null || pokemonOik == null) return;
         
         // Näytetään vasemman pokemonin tiedot:
+        editOtsikkoVas.setText(pokemonVas.getNimi());
         editNimiVas.setText(pokemonVas.getNimi());
         editElementti1Vas.setText(rekisteri.annaElementti(pokemonVas, 1));
         editElementti2Vas.setText(rekisteri.annaElementti(pokemonVas, 2));
@@ -556,6 +557,7 @@ public class PokemonRekisteriGUIController implements Initializable {
         areaLisaVas.setText(pokemonVas.getLisatiedot());
         
         // Näytetään oikean pokemonin tiedot:
+        editOtsikkoOik.setText(pokemonOik.getNimi());
         editNimiOik.setText(pokemonOik.getNimi());
         editElementti1Oik.setText(rekisteri.annaElementti(pokemonOik, 1));
         editElementti2Oik.setText(rekisteri.annaElementti(pokemonOik, 2));
@@ -563,6 +565,21 @@ public class PokemonRekisteriGUIController implements Initializable {
         editIkaOik.setText(rekisteri.annaIka(pokemonOik));
         editEvoluutioOik.setText(""+pokemonOik.getEvoluutio());
         areaLisaOik.setText(pokemonOik.getLisatiedot());
+        
+        // Näytetään Kaksintaistelun jutut:
+        double voittoVas = rekisteri.kaksintaistelu(pokemonVas, pokemonOik);
+        // Vasen pokemon:
+        editTaisteluElementitVas.setText(rekisteri.elementitJonona(pokemonVas));
+        editTaisteluVahvuusVas.setText(""+pokemonVas.getVahvuus());
+        editTaisteluEvoluutioVas.setText(""+pokemonVas.getEvoluutio());
+        editTaisteluVoittoVas.setText(String.format("%2.1f %%", voittoVas*100) );
+        
+        // Oikea pokemon
+        editTaisteluElementitOik.setText(rekisteri.elementitJonona(pokemonOik));
+        editTaisteluVahvuusOik.setText(""+pokemonOik.getVahvuus());
+        editTaisteluEvoluutioOik.setText(""+pokemonOik.getEvoluutio());
+        editTaisteluVoittoOik.setText(String.format("%2.1f %%", (1 - voittoVas)*100) );
+        
     }
     
     
