@@ -103,37 +103,37 @@
                                                                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                                </padding>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="22.0" prefWidth="146.0" text="Valitse kaikki" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+                                                            <CheckBox fx:id="cb1" mnemonicParsing="false" prefHeight="22.0" prefWidth="146.0" text="Valitse kaikki" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="30.0" right="2.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Vesi" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb2" mnemonicParsing="false" text="Vesi" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb3" mnemonicParsing="false" text="Tuli" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Maa" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb4" mnemonicParsing="false" text="Maa" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Ruoho" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="cb5" mnemonicParsing="false" text="Ruoho" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="cb6" mnemonicParsing="false" text="Myrkky" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                            <CheckBox fx:id="cb7" mnemonicParsing="false" text="Sähkö" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                                <padding>
                                                                   <Insets bottom="2.0" left="2.0" right="8.0" top="2.0" />
                                                                </padding>
@@ -187,7 +187,7 @@
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb8" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -195,7 +195,7 @@
                                                                   <Insets left="4.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb9" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -203,7 +203,7 @@
                                                                   <Insets left="8.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb10" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -211,7 +211,7 @@
                                                                   <Insets left="8.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb11" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -219,7 +219,7 @@
                                                                   <Insets left="8.0" />
                                                                </padding>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                            <CheckBox fx:id="cb12" mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -255,12 +255,12 @@
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </Label>
-                                                            <TextField prefWidth="80.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <TextField fx:id="textIkaMin" prefWidth="80.0" promptText="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets left="12.0" right="12.0" />
                                                                </GridPane.margin>
                                                             </TextField>
-                                                            <TextField prefWidth="80.0" promptText="100" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <TextField fx:id="textIkaMax" prefWidth="80.0" promptText="100" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                                <GridPane.margin>
                                                                   <Insets left="12.0" right="12.0" />
                                                                </GridPane.margin>

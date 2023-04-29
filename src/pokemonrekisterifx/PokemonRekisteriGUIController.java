@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import fi.jyu.mit.fxgui.ComboBoxChooser;
 import fi.jyu.mit.fxgui.Dialogs;
 import fi.jyu.mit.fxgui.ListChooser;
+import fi.jyu.mit.ohj2.Mjonot;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +41,22 @@ public class PokemonRekisteriGUIController implements Initializable {
     
     @FXML private TextField hakuEhto;
     @FXML private ComboBoxChooser<String> cbKentat;
+    
+    @FXML private CheckBox cb1;
+    @FXML private CheckBox cb2;
+    @FXML private CheckBox cb3;
+    @FXML private CheckBox cb4;
+    @FXML private CheckBox cb5;
+    @FXML private CheckBox cb6;
+    @FXML private CheckBox cb7;
+    @FXML private CheckBox cb8;
+    @FXML private CheckBox cb9;
+    @FXML private CheckBox cb10;
+    @FXML private CheckBox cb11;
+    @FXML private CheckBox cb12;
+    
+    @FXML private TextField textIkaMin;
+    @FXML private TextField textIkaMax;
     
     @FXML private TextField editNimi;
     @FXML private TextField editElementti1;
@@ -134,6 +151,83 @@ public class PokemonRekisteriGUIController implements Initializable {
 
     private Rekisteri rekisteri;
     private Pokemon pokemonKohdalla;
+    private int[] hakuehdot = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 10000};
+    private CheckBox[] check;
+    private TextField[] text;
+    
+    
+    /**
+     * Alustaa listan
+     */
+    protected void alusta() {
+        cbKentat.clear(); 
+        cbKentat.add("Nimi: A -> Ö", null);
+        cbKentat.add("Nimi: Ö -> A", null);
+        cbKentat.add("Vahvuus: Pienin -> Suurin", null);
+        cbKentat.add("Vahvuus: Suurin -> Pienin", null);
+        cbKentat.add("Ikä: Nuorin -> Vanhin", null);
+        cbKentat.add("Ikä: Vanhin -> Nuorin", null);
+        cbKentat.getSelectionModel().select(0); 
+        
+        check = new CheckBox[] {cb1, cb2, cb3, cb4, cb5, cb6, cb7, cb8, cb9, cb10, cb11, cb12};
+        text = new TextField[] {textIkaMin, textIkaMax};
+        
+        int i = 0;
+        for (CheckBox cb : check) {
+                if (cb != null) {
+                cb.setSelected(true);
+                final int k = ++i;
+                cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                    kasitteleMuutosHakuEhtoonCB(k, newValue);
+                });
+                }
+            }
+        
+        i = 0;
+        for (TextField t : text) {
+            if (t != null) {
+                final int k = ++i;
+                t.setOnKeyReleased(e -> kasitteleMuutosHakuEhtoon(k, (TextField)(e.getSource())));
+                }
+            }
+        
+        chooserPokemonit.clear();
+        chooserPokemonit.addSelectionListener(e -> naytaPokemon());
+    }
+    
+    
+    /**
+     * Käsitellään muutos hakuehdot taulukkoon (muutetaan arvo 0 tai 1)
+     * @param k checkboxin kentän id
+     * @param arvo uusi arvo
+     */
+    public void kasitteleMuutosHakuEhtoonCB(int k, boolean arvo) {
+        //
+    }
+    
+    
+    /**
+     * Käsitellään muutos hakuehdot taulukkoon (muutetaan arvo vastaamaan vahvuutta)
+     * @param k textfieldin kentän id (1 tai 2 == min tai max)
+     * @param vahvuus uusi arvo vahvuudelle
+     */
+    public void kasitteleMuutosHakuEhtoon(int k, TextField vahvuus) {
+        String v = vahvuus.getText();
+        int uusivahvuus = Mjonot.erotaInt(v, -1);
+        int minVahv = 0;
+        int maxVahv = 10000;
+        if (k == 1) {
+            maxVahv = hakuehdot[13];
+            if (maxVahv < uusivahvuus) vahvuus.setText("0");
+            return;
+        }
+        if (k == 2) {
+            minVahv = hakuehdot[12];
+            if (uusivahvuus < minVahv) vahvuus.setText("10000");
+            return;
+        }
+    }
+    
     
     
     /**
@@ -326,30 +420,13 @@ public class PokemonRekisteriGUIController implements Initializable {
         boolean takaperin;
         takaperin = (k % 2 == 0);
         List<Pokemon> sopivat;
-        sopivat =  (List<Pokemon>) rekisteri.etsiHakuehdolla(ehto, k, takaperin);
+        sopivat =  (List<Pokemon>) rekisteri.etsiHakuehdolla(ehto, k, takaperin, hakuehdot);
         for (int i = 0; i < sopivat.size(); i++) {
             Pokemon p = sopivat.get(i);
             if (p.getID() == id) index = i;
             chooserPokemonit.add(p.getNimi(), p);
         }
         chooserPokemonit.setSelectedIndex(index);
-    }
-
-
-    /**
-     * Alustaa listan
-     */
-    protected void alusta() {
-        cbKentat.clear(); 
-        cbKentat.add("Nimi: A -> Ö", null);
-        cbKentat.add("Nimi: Ö -> A", null);
-        cbKentat.add("Vahvuus: Pienin -> Suurin", null);
-        cbKentat.add("Vahvuus: Suurin -> Pienin", null);
-        cbKentat.add("Ikä: Nuorin -> Vanhin", null);
-        cbKentat.add("Ikä: Vanhin -> Nuorin", null);
-        cbKentat.getSelectionModel().select(0); 
-        chooserPokemonit.clear();
-        chooserPokemonit.addSelectionListener(e -> naytaPokemon());
     }
 
 
